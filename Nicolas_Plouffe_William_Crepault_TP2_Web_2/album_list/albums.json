@@ -1,0 +1,128 @@
+{"albums": [
+    {
+        "id_album": 1,
+        "titre": "Battleground",
+        "code_album": "BAT1245",
+        "description": "POP",
+        "pht_couvt": "batt1.jpeg",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 2,
+        "titre": "Love Life",
+        "code_album": "LOF0011",
+        "description": "POP",
+        "pht_couvt": "Berlin_Love_Life.png",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 3,
+        "titre": "Falling into You",
+        "code_album": "YOU2100",
+        "description": "POP",
+        "pht_couvt": "fallingintoyou.jpg",
+	    "titre_oeuvre":[ "It's All Coming Back to Me Now","Because You Loved Me","Falling into You","Make You Happy","Seduces Me","All by Myself","Declaration of Love","Dreamin' of You","I Love You","If That's What It Takes","I Don't Know","River Deep, Mountain High","Call the Man","Fly"]
+    },
+    {
+        "id_album": 4,
+        "titre": "Plus bleu",
+        "code_album": "PLB0010",
+        "description": "Chanson française",
+        "pht_couvt": "Plusbleu.jpeg",
+        "titre_oeuvre":[ "Gitana gitana","Dis-moi que tu m'aimes", "Le droit des femmes","Avant de t'aimer","Les Caraïbes","Amour amer","Au piano bar", "Les images de la vie","La Yiddishe mama", "De déraison en déraison", "Ma dernière chanson pour toi", "Les enfants","Nous nous reverrons un jour ou l'autre","Ce métier"]
+    },
+        
+    {
+        "id_album": 5,
+        "titre": "Enrique",
+        "code_album": "ENR0147",
+        "description": "POP",
+        "pht_couvt": "enr122.png",
+        "titre_oeuvre": [ "Rhythm Divine","Be With You","I Have Always Loved You","Sad Eyes","I'm Your Man","Óyeme (Listen)","Could I Have This Kiss Forever (en duo avec Whitney Houston)","You're My #1","Alabao","Bailamos","Ritmo total (Rhythm Divine)","Más es amar (Sad Eyes)","No puedo más sin ti (I'm Your Man)"]
+    },           
+    {
+        "id_album": 6,
+        "titre": "One World, One Flame",
+        "code_album": "ONE1111",
+        "description": "Rock",
+        "pht_couvt": "onew.jpg",
+        "titre_oeuvre": ["One World, One Flame"]
+    },
+    {
+        "id_album": 7,
+        "titre": "Believe",
+        "code_album": "BEL1258",
+        "description": "POP",
+        "pht_couvt": "believe.jpg",
+        "titre_oeuvre": ["All around the world (featuring Ludacris)", "Boyfriend","As Long as You Love Me (featuring Big Sean)", "Catching Feelings", "Take You","Right Here (featuring Drake)","Fall", "Die in Your Arms", "Thought of You", "Beauty and a Beat (featuring Nicki Minaj)","Be Alright", "One Love", "Believe", "Love Me Like You Do", "Fairytale", "Out Of Town Girl","She Don't Like the Lights", "Maria", "Just Like Them"  ]
+    },
+    {
+        "id_album": 8,
+        "titre": "Colors",
+        "code_album": "COL1456",
+        "description": "Flamenco",
+        "pht_couvt": "colors.jpg",
+        "titre_oeuvre": ["Colors", "Seventh Heaven","I'm So Free", "Dear Life", "No Distraction", "Dreams","WOW","Up All Night","Square One","Fix Me"  ]
+    },
+    
+    {
+        "id_album": 9,
+        "titre": "Others",
+        "code_album": "BEL1260",
+        "description": "Country",
+        "pht_couvt": "others.jpg",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 10,
+        "titre": "Colors",
+        "code_album": "COL1466",
+        "description": "Hard rock",
+        "pht_couvt": "colors2.jpg",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 11,
+        "titre": "Ya Salam 22",
+        "code_album": "NAN2014",
+        "description": "POP",
+        "pht_couvt": "nancy1.jpg",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 15,
+        "titre": "Christmas Hymns",
+        "code_album": "FLB1970",
+        "description": "POP",
+        "pht_couvt": "fairuz3.jpg",
+        "titre_oeuvre": []
+    },
+    {
+        "id_album": 17,
+        "titre": "Wala Alik",
+        "code_album": "WAL2013",
+        "description": "POP",
+        "pht_couvt": "wala2.jpg",
+        "titre_oeuvre": ["Wana Mali","Jiti Fe Bali","Lemima",  "Salina" ]
+    },
+    
+    {
+        "id_album": 18,
+        "titre": "À vous les femmes",
+        "code_album": "JUL1979",
+        "description": "Chanson française",
+        "pht_couvt": "femmes2.jpg",
+        "titre_oeuvre": ["Pauvres diables", "L'amour c'est quoi", "Les traditions","Je n'ai pas changé", "Moi je t'aime", "Le mal de toi"  ]
+    },
+    
+    {
+        "id_album": 19,
+        "titre": "In extremis",
+        "code_album": "CAB2015",
+        "description": "Chanson française",
+        "pht_couvt": "france1.png",
+        "titre_oeuvre":[ "Dur comme fer", "À chaque amour que nous ferons", "Le Pays d'à côté", "In extremis", "Dans chaque cœur", "La Voix du crooner" , "Les Tours gratuits", "ouevre collin" ]
+	}  
+   
+]
+}

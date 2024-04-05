@@ -1,0 +1,120 @@
+body
+{    
+    background-color: rgb(66, 175, 170) !important;
+}
+header, footer
+{
+    font-family: comic sans ms;
+    background-color: rgb(66, 175, 170);
+    min-height: 105px;
+}
+.navbar.bg-body-tertiary
+{
+    font-family: comic sans ms;
+    background-color: rgb(20, 146, 140) !important;
+    height: auto;
+    min-height: 150px;
+    font-size: x-large;
+}
+main 
+{    
+    font-family: comic sans ms;
+    background-color:  rgb(139, 240, 235);
+}
+main p
+{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+}
+h1, h2, h3, h4
+{
+    text-align: center;
+    padding-top: 30px;
+}
+label
+{
+    font-size: 20px;
+}
+.custom-border 
+{
+    border: 5px solid  rgb(20, 146, 140); 
+    border-radius: 15px; 
+    min-height: 200px;    
+}
+footer p
+{
+    margin: 0px;
+}
+.bntListe
+{   
+    padding-top: 20px;
+    text-align: center;
+    padding-left: 0;
+    list-style: none; 
+}
+.albumList
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    list-style-image: url("../Images/li_note.png");
+}
+.validationList, .validationUl
+{
+    text-align: center;
+    padding-left: 0;
+    list-style: none;
+}
+.bntListe li
+{
+    margin: 20px 0px;
+}
+.styled-button
+{
+    display: inline-block;
+    text-decoration: none;
+    background-color: rgb(20, 146, 140);
+    border: 5px solid rgb(20, 146, 140);
+    color: rgb(139, 240, 235);
+    border-radius: 50px;  
+    font-size: large;  
+    font-weight: 500;
+    width: 260px;
+    padding: 10px 0px;
+	background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+.styled-button:active 
+{
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+input::placeholder
+{
+    color: rgb(189, 189, 189) !important;
+}
+.showLink, .styled-button:hover
+{
+    background-color: rgb(66, 175, 170); 
+    cursor: pointer;
+}
+#target
+{
+    color: black;
+    text-decoration: none;
+}
+#target:hover
+{
+    cursor: pointer;
+}
+.red
+{
+    color: red;
+}
+
