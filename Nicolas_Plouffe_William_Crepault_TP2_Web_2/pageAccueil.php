@@ -21,10 +21,10 @@
             <h3 id="menu">Faites votre sélection</h3>
             <div class="ulBtn">
               <ul class="bntListe">
-                <li><a href="pageListeAlbums.html" class="styled-button">Listes des albums</a></li>
-                <li><a href="pageArtiste.html" class="styled-button">Ajouter un nouvel artiste</a></li>
-                <li><a href="pageOeuvre.html" class="styled-button">Ajouter une nouvelle oeuvre</a></li>
-                <li><a href="pageAlbum.html" class="styled-button">Ajouter un nouvel album</a></li>
+                <li><a href="pageListeAlbums.php" class="styled-button">Listes des albums</a></li>
+                <li><a href="pageArtiste.php" class="styled-button">Ajouter un nouvel artiste</a></li>
+                <li><a href="pageOeuvre.php" class="styled-button">Ajouter une nouvelle oeuvre</a></li>
+                <li><a href="pageAlbum.php" class="styled-button">Ajouter un nouvel album</a></li>
               </ul>
             </div>
           </div>
