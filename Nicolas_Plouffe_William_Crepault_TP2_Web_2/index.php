@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <script>
-        window.location.href = "pageAccueil.html";
+        window.location.href = "pageAccueil.php";
     </script>
 </head>
 <body>    
