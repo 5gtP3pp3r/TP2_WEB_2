@@ -30,27 +30,34 @@
             </div>
         </div>
     </header>
-    <nav>
-        <div class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="pageAccueil.php"><b>
-                        <h1>Menu principal</h1>
-                    </b></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="pageListeAlbums.php">&nbsp;&nbsp;&nbsp;Liste des albums disponibles</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel artiste</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une nouvelle oeuvre</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel album</a></li>
-                        <li class="nav-item"><a class="nav-link disabled" aria-disabled="true"></a></li>
-                    </ul>
+
+    <?php
+        if ($pageName != 'pageAuth')
+        {
+            echo '<nav>
+            <div class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="pageAccueil.php"><b>
+                            <h1>Menu principal</h1>
+                        </b></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="pageListeAlbums.php">&nbsp;&nbsp;&nbsp;Liste des albums disponibles</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel artiste</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une nouvelle oeuvre</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel album</a></li>
+                            <li class="nav-item"><a class="nav-link disabled" aria-disabled="true"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>';
+        }
+    ?>
+    
 
     <?php
     function getPageName($page)

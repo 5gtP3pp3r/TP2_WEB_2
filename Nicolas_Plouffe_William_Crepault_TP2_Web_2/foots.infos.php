@@ -19,7 +19,11 @@
 
     function GetScripts($pageName)
     {
-        if ($pageName == 'pageAcceuil')
+        if ($pageName == 'pageAuth')
+        {
+            return '<script src="java_script/validationAuth.js"></script>';
+        }
+        else if ($pageName == 'pageAcceuil')
         {
             return '<script src="java_script/highlightBtn.js"></script>';
         }
