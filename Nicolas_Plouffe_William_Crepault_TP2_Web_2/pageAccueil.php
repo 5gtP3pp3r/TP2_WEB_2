@@ -7,8 +7,8 @@
         <div class="col-sm-12 col-lg-6">
           <div class="custom-border px-2">
             <h3>Informations</h3>
-            <p>Vous êtes donc maintenant sur le site My Music Online. D'ici, vous avez accès
-              à plusieurs fonctionnalités. Vous pouvez, grace aux liens de la barre
+            <p>Vous êtes maintenant sur le site My Music Online. Selon votre rôle, vous avez 
+              accès à plusieurs fonctionnalités. Vous pouvez, grace aux liens de la barre
               de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles et ajouter des informations sur des
               albums de musique ou sur des artistes. De plus vous pouvez même ajouter des
