@@ -43,6 +43,7 @@ function validateInputs(event){
     else{
         validList +="<li><p>Nom de la pièce: "+ pieceName.value +"</p></li>";
     }
+
     if (artistName.value.trim() == EMPTY){
         errorList +="<li><p>Veuillez entrez un nom d'artiste valide</p></li>";
         isValid = false;
@@ -50,9 +51,11 @@ function validateInputs(event){
     else{
         validList +="<li><p>Nom de l'artiste: "+ artistName.value +"</p></li>";
     }
+
     if (roleOptions.value > VALUE_ZERO){
         validList +="<li><p>Rôle de l'ariste: "+ roleOptions.options[roleOptions.selectedIndex].text +"</p></li>";
     }
+
     if (albumValue.value <= MIN_VALUE || !ValuePattern.test(albumValue.value)){
         errorList +="<li><p>Veuillez entrer une valeur ($) valide</p></li>";
         isValid = false;
@@ -60,6 +63,7 @@ function validateInputs(event){
     else{
         validList +="<li><p>Valeur de l'album: "+ albumValue.value +"$</p></li>";
     }
+
     if (timeInSec.value <= VALUE_ZERO || timeInSec.value > MAX_VALUE){
         errorList +="<li><p>Veuillez entrer un temps en seconde valide</p></li>";
         isValid = false;
@@ -67,6 +71,7 @@ function validateInputs(event){
     else{
         validList +="<li><p>Temps: "+ timeInSec.value +" secondes</p></li>";
     }
+
     if (sizeMB.value == EMPTY){
         validList = validList;
     }
@@ -76,7 +81,8 @@ function validateInputs(event){
     }
     else{
         validList +="<li><p>Taille: "+ sizeMB.value +" MB</p></li>";
-    }   
+    } 
+
     if (inputDate.value == EMPTY){
         validList +="<li><p>Date de publication: "+ today +"</p></li>";
     }
@@ -86,7 +92,8 @@ function validateInputs(event){
     }  
     else{
         validList +="<li><p>Date de publication: "+ inputDate.value +"</p></li>";
-    }      
+    }  
+        
     if (albumCode.value.trim() == "" || !codePattern.test(albumCode.value)){
         errorList +="<li><p>Veuillez entrer un code valide</p></li>";
         isValid = false;
@@ -111,7 +118,7 @@ function validateInputs(event){
 function clearInputs(){  
     setTimeout(function() {
         listResult.innerHTML = EMPTY;  
-        inputDate.value = today; // Date remise à la valeur du jour
+        inputDate.value = today; 
         pieceName.value = EMPTY;
         artistName.value = EMPTY;
         timeInSec.value = EMPTY;
@@ -122,16 +129,6 @@ function clearInputs(){
         youtubeLink.value = EMPTY;
         lyrics.value = EMPTY;
     }, 0);
-    /* Un setTimeout a du être instalé ici
-    sinon je n'étais pas capable de redéfinir 
-    une valeur par défaut à la date comme je le 
-    souhaitais. Après recherche, le problème 
-    serait lié à comment le navigateur charge 
-    JavaScript, temps, priorités, étapes...
-    aucun site ne connait se phénomène.
-    CHAT gpt m'a aidé pour cette situation.
-    Possible que cette situation ne s'aplique 
-    qu'à mes setups personnelles et mon browser.*/
 } 
 
 

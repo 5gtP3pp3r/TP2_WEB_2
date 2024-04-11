@@ -26,12 +26,14 @@ $(document).ready(function () {
         } else{
             validList += "<li><p>Titre de l'album: " + $("#titre").val() + "</p></li>";            
         }
+
         if (!regexCode.test($("#code").val())){
             errorList += "<li><p>Veuillez entrer un code valide</p></li>";  
             isValid = false;          
         } else{
             validList += "<li><p>Code de l'album: " + $("#code").val() + "</p></li>";
         }
+
         if ($("#dateAjout").val() > today || $("#dateAjout").val() <today) {
             errorList += "<li><p>Veuillez entrer la date d'aujourd'hui</p></li>";
             isValid = false;
@@ -40,12 +42,14 @@ $(document).ready(function () {
         } else{
             validList += "<li><p>Date d'ajout: " + $("#dateAjout").val() + "</p></li>";
         }
+
         if ($("#genreMusical").val() == VALUE_ZERO){ 
             errorList += "<li><p>Veuillez entrer un genre valide</p></li>";
             isValid = false;
         } else{
             validList += "<li><p>Genre: " + $("#genreMusical option:selected").text() + "</p></li>";
         }
+
         if (!regexImage.test($("#photo").val()) || $("#photo").val() == EMPTY){
             errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
             isValid = false;
@@ -53,6 +57,7 @@ $(document).ready(function () {
             validList += "<li><p>Photo: " + $("#photo").val() + "</p></li>";
         }
 
+        
         if (!isValid){
             $("#listResult").html(errorList);
             $("#listResult").addClass("red");
@@ -70,9 +75,6 @@ $(document).ready(function () {
             $("#dateAjout").val(today);
             $("#genreMusical").val(VALUE_ZERO);
             $("#photo").val(EMPTY);
-            /* Même phénomène que pour le code
-            de la page "Oeuvre".*/
         },0);
     });
-
 });
