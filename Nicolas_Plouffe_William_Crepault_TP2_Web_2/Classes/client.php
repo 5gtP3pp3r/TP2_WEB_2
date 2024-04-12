@@ -2,6 +2,11 @@
 
 class Client
 {
+    #region Const
+    public $patternAlphaOnly = '/^[A-Za-z]{2,20}$/';
+
+    #endregion
+
     #region Attributs
 
     private $nom;
@@ -27,7 +32,11 @@ class Client
 
     public function getNom()
     {
-        return $this->nom;
+        if (preg_match($this->patternAlphaOnly, $this->nom)) {
+            return $this->nom;
+        } else {
+            throw new Exception("Le nom doit contenir entre 2 et 20 lettres.");
+        }
     }
 
     public function getPrenom()
