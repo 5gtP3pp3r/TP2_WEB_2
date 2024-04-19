@@ -5,7 +5,7 @@ class Session
 
     #region Conststantes et variables de session
     const PASSWORD_REGEX = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
-    const USERNAME_REGEX = '/^[A-Za-z0-9]{2,20}$/';
+    const USERNAME_REGEX = '/^[A-Za-z0-9]{3,16}$/';
 
     #endregion
 
@@ -23,7 +23,9 @@ class Session
 
     public function setUserName($userName)
     {
-
+        if (!preg_match(self::USERNAME_REGEX, $userName)) {
+            throw new Exception('Nom d\'utilisateur invalide');
+        }
 
         $this->userName = $userName;
     }
@@ -35,6 +37,9 @@ class Session
 
     public function setPassword($password)
     {
+        if (!preg_match(self::PASSWORD_REGEX, $password)) {
+            throw new Exception('Mot de passe invalide');
+        }
         $this->password = $password;
     }
 
@@ -57,9 +62,7 @@ class Session
 
     #endregion
 
-
-
-
+    #region Méthodes
     public function remove($key)
     {
         unset($_SESSION[$key]);
@@ -69,4 +72,6 @@ class Session
     {
         session_destroy();
     }
+
+    #endregion
 }
