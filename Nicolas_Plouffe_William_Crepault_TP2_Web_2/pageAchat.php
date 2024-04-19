@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
-                    <h3>Oeuvres disponibles</h3>
+                    <h3>Oeuvres disponibles:</h3>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-6">
