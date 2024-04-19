@@ -15,8 +15,11 @@
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
                     <h3 id="menu">Voir mon panier:&nbsp;&nbsp;</h3>
-                    <div class="col-sm-12 d-flex justify-content-end">                                                      
-                        <button type="button" id="deconnetion" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp;&nbsp;&nbsp;(qt)</button>
+                    <div class="col-sm-12 d-flex justify-content-end">   
+                        <?php    
+                        $qt = 1;                                                
+                        echo '<button type="button" id="deconnetion" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp;'.$qt.' article(s)</button>'
+                        ?>
                     </div>
                 </div>
             </div>
