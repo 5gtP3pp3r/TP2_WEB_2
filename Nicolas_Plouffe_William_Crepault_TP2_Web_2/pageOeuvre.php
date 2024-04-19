@@ -6,7 +6,7 @@
     </div>
     <div class="container-fluid">
         <div class="row py-4">
-            <div class="col-sm-12 py-4 d-flex justify-content-end">
+            <div class="col-sm-12 py-4 d-flex justify-content-end px-4">
                 <?php include("boutonsConDecon.infos.php"); ?>
             </div>
             <div class="col-sm-12 col-lg-6">

@@ -5,7 +5,7 @@
             <h2>Liste des albums diponibles</h2>
         </div>
         <div class="container-fluid py-4">
-        <div class="col-sm-12 py-4 d-flex justify-content-end">
+        <div class="col-sm-12 py-4 d-flex justify-content-end px-4">
         <?php include("boutonsConDecon.infos.php"); ?>    
       </div>
             <div class="custom-border px-2">
