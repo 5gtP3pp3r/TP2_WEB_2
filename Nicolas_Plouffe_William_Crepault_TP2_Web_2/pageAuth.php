@@ -8,7 +8,7 @@
         <div class="row py-4">
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
-                    <h3>Authetification</h3>
+                    <h3>Authentification</h3>
                     <form action="submit">
                         <div class="col-md-8">
                             <label for="nomUtilisateur">Nom d'utilisateur</label>

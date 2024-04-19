@@ -32,6 +32,7 @@
     </header>
 
     <?php
+    /* Conditions à ajouter dans le nav par rapport à la class utilisateur*/ 
     if ($pageNom != 'pageAuth') {
         echo '<nav>
             <div class="navbar navbar-expand-lg bg-body-tertiary">
@@ -45,9 +46,9 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="pageListeAlbums.php">&nbsp;&nbsp;&nbsp;Liste des albums disponibles</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel artiste</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une nouvelle oeuvre</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un nouvel album</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>
                             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true"></a></li>
                         </ul>
                     </div>

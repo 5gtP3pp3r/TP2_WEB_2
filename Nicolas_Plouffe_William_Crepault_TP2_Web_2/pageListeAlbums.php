@@ -5,6 +5,9 @@
             <h2>Liste des albums diponibles</h2>
         </div>
         <div class="container-fluid py-4">
+        <div class="col-sm-12 py-4 d-flex justify-content-end">
+        <?php include("boutonsConDecon.infos.php"); ?>    
+      </div>
             <div class="custom-border px-2">
                 <div class="row" id="jasonFile">
                     <!-- Zone objets json -->
