@@ -1,10 +1,11 @@
-<?php include ("heads.infos.php"); ?>
+<?php include("heads.infos.php"); ?>
 
 <main>
+    <h2>Ajouter une nouvelle oeuvre</h2>
     <div class="container-fluid">
-        <h2>Ajouter une nouvelle oeuvre</h2>
-    </div>
-    <div class="container-fluid">
+        <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
+            <?php include("boutonsConDecon.infos.php"); ?>
+        </div>
         <div class="row py-4">
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
@@ -13,7 +14,7 @@
                         <div class="row py-2">
                             <div class="group-form col-sm-12 col-lg-6">
                                 <label for="pieceName"><span class="red"><b>*</b></span>Pièce</label>
-                                <input type="text" id="pieceName" class="form-control" name="pieceName">
+                                <input type="text" id="pieceName" class="form-control">
                             </div>
                             <div class="group-form col-sm-12 col-lg-6">
                                 <label for="artistName"><span class="red"><b>*</b></span>Artiste</label>
@@ -33,20 +34,17 @@
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="timeInSec"><span class="red"><b>*</b></span>Temps (sec)</label>
-                                <input type="number" id="timeInSec" placeholder="max 999" min="0" step="15"
-                                    class="form-control">
+                                <input type="number" id="timeInSec" placeholder="max 999" min="0" step="15" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="sizeMB">Taille (MB)</label>
-                                <input type="number" id="sizeMB" placeholder="max 999" min="0" step="0.5"
-                                    class="form-control">
+                                <input type="number" id="sizeMB" placeholder="max 999" min="0" step="0.5" class="form-control">
                             </div>
                         </div>
                         <div class="row py-2">
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="albumValue"><span class="red"><b>*</b></span>Valeur ($)</label>
-                                <input type="number" id="albumValue" placeholder="0.00" min="0.95" step="1"
-                                    class="form-control">
+                                <input type="number" id="albumValue" placeholder="0.00" min="0.95" step="1" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="datePublication"><span class="red"><b>*</b></span>Publication</label>
@@ -91,4 +89,4 @@
     </div>
 </main>
 
-<?php include ("foots.infos.php"); ?>
+<?php include("foots.infos.php"); ?>

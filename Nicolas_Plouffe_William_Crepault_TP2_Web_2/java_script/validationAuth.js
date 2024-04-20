@@ -1,6 +1,7 @@
 "use strict";
 
 // Ce fichier ne fait que confirmer le regex coté client, la confirmation via la BD sera faite ailleur
+document.addEventListener("DOMContentLoaded", function() {
 
 const regexNom = /^[A-Za-z]{2,}$/;
 const regexPassword = /^[a-zA-Z\d]{6,}$/;
@@ -8,6 +9,7 @@ const EMPTY = "";
 
 let nomUtilisateur = document.getElementById("nomUtilisateur");
 let password = document.getElementById("password");
+let role = document.getElementById("role");
 
 let listResult = document.getElementById("listResult");
 
@@ -24,24 +26,30 @@ function validationAuth(event){
     listResult.classList.remove("red");
     let isValid = true;
 
-    if (nomUtilisateur.value.trim() == EMPTY || !regexNom.test(nomUtilisateur.value)){
+    if (nomUtilisateur && (nomUtilisateur.value.trim() == EMPTY || !regexNom.test(nomUtilisateur.value))){
         errorList += "<li><p>Entrez un nom d'utilisateur valide</p></li>";
         isValid = false;
     }
-    else
-    {
+    else if (nomUtilisateur) {
         validList += "<li><p>Nom d'utilisateur valide</p></li>";
     }
 
-    if (password.value.trim() == EMPTY || !regexPassword.test(password.value)){
+    if (password && (password.value.trim() == EMPTY || !regexPassword.test(password.value))){
         errorList += "<li><p>Entrez un mot de passe valide</p></li>";
         isValid = false;
     }
-    else
-    {
+    else if (password) {
         validList += "<li><p>Mot de passe valide</p></li>";
     }
 
+    if (role && (role.value == 0)){
+        errorList += "<li><p>Entrez un role valide</p></li>";
+        isValid = false;
+    }
+    else if (role) 
+    {
+        validList += "<li><p>Rôle valide</p></li>";
+    }
 
     if (!isValid){
         listResult.innerHTML = errorList;
@@ -59,3 +67,4 @@ function resetForm(){
     photo.value = EMPTY;
     
 }
+});

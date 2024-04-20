@@ -1,7 +1,7 @@
 <?php include("heads.infos.php"); ?>
 
 <main>
-    <h2>Authentification</h2>
+    <h2>Ajouter un utilisateur</h2>
     <div class="container-fluid">
         <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
             <?php include("boutonsConDecon.infos.php"); ?>
@@ -14,10 +14,18 @@
                         <div class="col-md-8">
                             <label for="nomUtilisateur">Nom d'utilisateur</label>
                             <input type="text" id="nomUtilisateur" name="nomUtilisateur" class="form-control">
-                        </div>
+                        </div>                        
                         <div class="col-md-8">
                             <label for="password">Mot de passe</label>
                             <input type="text" id="password" name="password" class="form-control">
+                        </div>
+                        <div class="col-md-8">
+                            <label for="role">Rôle</label>
+                            <select id="role" class="form-control">
+                                <option value="0">Choix de rôle</option>
+                                <option value="1">Client</option>
+                                <option value="2">Admin</option>
+                            </select>
                         </div>
                         <div class="ulBtn">
                             <ul class="bntListe">

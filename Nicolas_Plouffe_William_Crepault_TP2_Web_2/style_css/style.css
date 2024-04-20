@@ -19,7 +19,7 @@ header, footer
 main 
 {    
     font-family: comic sans ms;
-    background-color:  rgb(139, 240, 235);
+    background-color:  rgb(140, 240, 235);
 }
 main p
 {
@@ -77,11 +77,11 @@ footer p
     text-decoration: none;
     background-color: rgb(20, 146, 140);
     border: 5px solid rgb(20, 146, 140);
-    color: rgb(139, 240, 235);
+    color: rgb(140, 240, 235);
     border-radius: 50px;  
     font-size: large;  
     font-weight: 500;
-    width: 260px;
+    width: 230px;
     padding: 10px 0px;
 	background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
