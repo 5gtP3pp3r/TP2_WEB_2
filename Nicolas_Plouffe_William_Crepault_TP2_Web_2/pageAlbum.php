@@ -3,10 +3,10 @@
 <main>
     <h2>Ajouter un nouvel album</h2>
     <div class="container-fluid">
+        <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
+            <?php include("boutonsConDecon.infos.php"); ?>
+        </div>
         <div class="row py-4">
-            <div class="col-sm-12 py-4 d-flex justify-content-end px-4">
-                <?php include("boutonsConDecon.infos.php"); ?>
-            </div>
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>

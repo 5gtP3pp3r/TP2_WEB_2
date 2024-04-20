@@ -1,14 +1,12 @@
 <?php include("heads.infos.php"); ?>
 
 <main>
+    <h2>Ajouter une nouvelle oeuvre</h2>
     <div class="container-fluid">
-        <h2>Ajouter une nouvelle oeuvre</h2>
-    </div>
-    <div class="container-fluid">
+        <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
+            <?php include("boutonsConDecon.infos.php"); ?>
+        </div>
         <div class="row py-4">
-            <div class="col-sm-12 py-4 d-flex justify-content-end px-4">
-                <?php include("boutonsConDecon.infos.php"); ?>
-            </div>
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Les champs avec <span class="red"><b>*</b></span> sont obligatoires</h3>

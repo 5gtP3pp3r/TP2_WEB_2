@@ -22,13 +22,17 @@
         switch ($pageNom)
         {
             case 'pageAuth':
-                return '<script src="java_script/validationAuth.js"></script>';
+                return '<script src="java_script/date.js"></script>' . 
+                       '<script src="java_script/validationAuth.js"></script>';
             case 'pageAcceuil':
-                return '<script src="java_script/highlightBtn.js"></script>';
+                return '<script src="java_script/date.js"></script>' . 
+                       '<script src="java_script/highlightBtn.js"></script>';
             case 'pageListeAlbums':
-                return '<script src="java_script/jsonList.js"></script>';
+                return '<script src="java_script/date.js"></script>' . 
+                       '<script src="java_script/jsonList.js"></script>';
             case 'pageArtiste':
-                return '<script src="java_script/validationArtisteJS.js"></script>';
+                return '<script src="java_script/date.js"></script>' . 
+                       '<script src="java_script/validationArtisteJS.js"></script>';
             case 'pageOeuvre':
                 return '<script src="java_script/date.js"></script>' . 
                        '<script src="java_script/validationOeuvre.js"></script>';
