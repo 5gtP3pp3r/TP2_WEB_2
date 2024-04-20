@@ -35,16 +35,45 @@ function validerDesChamps()
     }
 }
 
+function GestionMenuVille()
+{
+    require_once('ConnectionDB.php');
+
+    $pdo = connectionDB(); // Connexion à la base de données
+
+    $sql = "SELECT * FROM villes"; // Requête SQL
+
+    $pdoResultantBrute = $pdo->query($sql); // Exécution de la requête
+
+    $ppoResultantDeployee = $pdoResultantBrute->fetchAll(); // Récupération des données
+
+    foreach ($ppoResultantDeployee as $col => $colVal) {
+        echo '<option value="' . $colVal["id"] . '">' . $colVal["nom_ville"] . '</option>';
+    }
+    $pdo = null; // Fermeture de la connexion
+
+}
+
 function injectionArtiste()
 {
+
     $conn = connectionDB();
-    $sql = "INSERT INTO artiste (nom_artiste, pht_artiste, id_ville) VALUES (:nom_artiste, :ville, :photoArtiste)";
+    $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) VALUES (:nomArtiste, :photoArtiste, :ville )";
+
     $stmt = $conn->prepare($sql); // Préparation de la requête
 
-    $stmt->bindParam(':nom_artiste', $_POST['idArtiste']);
-    $stmt->bindParam(':ville', $_POST['ville']);
+    $stmt->bindParam(':nomArtiste', $_POST['idArtiste']);
     $stmt->bindParam(':photoArtiste', $_POST['photoArtiste']);
+    $stmt->bindParam(':ville', $_POST['ville']);
 
     $stmt->execute();
     $conn = null; // Fermeture de la connexion
+
+
+}
+
+function testConnection()
+{
+
+    echo "test";
 }
