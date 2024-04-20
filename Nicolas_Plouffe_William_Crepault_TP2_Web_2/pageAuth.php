@@ -1,4 +1,7 @@
-<?php include("heads.infos.php"); ?>
+<?php 
+    include("heads.infos.php"); 
+    include 'connecxionBD.php';
+?>
 
 <main>
     <h2>Authentification</h2>
