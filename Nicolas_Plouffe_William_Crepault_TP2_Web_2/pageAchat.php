@@ -1,4 +1,7 @@
-<?php include("heads.infos.php"); ?>
+<?php 
+    include("heads.infos.php"); 
+    require_once("ConnectionDB.php");
+?>
 
 <main>
     <h2>Passer un achat</h2>
