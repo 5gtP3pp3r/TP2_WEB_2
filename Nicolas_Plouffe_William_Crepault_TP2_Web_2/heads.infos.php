@@ -33,7 +33,7 @@
 
     <?php
     /* Conditions à ajouter dans le nav par rapport à la class utilisateur*/ 
-    if ($pageNom != 'pageAuth') {
+    if ($pageNom != 'pageAuth' && $pageNom != 'pageAjoutUtilisateur') {
         echo '<nav>
             <div class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">

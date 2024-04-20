@@ -21,6 +21,8 @@
     {
         switch ($pageNom)
         {
+            case 'pageAjoutUtilisateur':
+                return '<script src="java_script/validationAuth.js"></script>';
             case 'pageAuth':
                 return '<script src="java_script/validationAuth.js"></script>';
             case 'pageAcceuil':

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function ()
     {
         ajoutUtilisateur.addEventListener('click', function() 
         {
-            window.location.href = 'pageAuth.php';
+            window.location.href = 'pageAjoutUtilisateur.php';
         });
     }
 
