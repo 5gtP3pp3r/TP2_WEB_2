@@ -1,9 +1,10 @@
 "use strict";
 
 function getAlbums(){
-    fetch("album_list/albums.json") 
+    fetch("conversionBDJson.php") 
     .then(response => response.json())
     .then(json => {
+        console.log(json);    // temporaire
         const albumList = json.albums;
         const jasonFile = document.getElementById("jasonFile"); 
 
@@ -16,7 +17,7 @@ function getAlbums(){
             albumPlaceholder.appendChild(albumTitle);
 
             let albumLink = document.createElement("a");
-            albumLink.href = "https://www.google.com/search?q=" + album.titre + " album infos"; //   ;)
+            albumLink.href = "https://www.google.com/search?q=" + album.titre + " album infos";
                             
             let albumImg = document.createElement("img");
             albumImg.src = "images/" + album.pht_couvt;

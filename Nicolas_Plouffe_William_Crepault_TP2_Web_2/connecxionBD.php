@@ -1,14 +1,13 @@
 <?php
 
-
-function connectionDB()
+function connecxionBD()
 {
     try {
 
         $serverName = 'localhost';
         $userName = 'root';
         $password = '';
-        $bd = 'tp2_web_2';
+        $bd = 'tp2_media_web';
 
         $conn = new PDO("mysql:host=$serverName;dbname=$bd", $userName, $password);
         return $conn;

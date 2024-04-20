@@ -1,6 +1,6 @@
 <?php 
     include("heads.infos.php"); 
-    require_once("ConnectionDB.php");
+    //require_once("ConnectionDB.php");
 ?>
 
 <main>
