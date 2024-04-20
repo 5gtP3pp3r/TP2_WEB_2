@@ -10,7 +10,19 @@
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form action="submit">
+                    <form method="POST">
+                        <?php
+            require_once('PHP/ajouterArtistes.php'); 
+            testConnection();
+            if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+
+              injectionArtiste();
+            }
+
+
+
+            ?>
+
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-4">
                                 <label for="idArtiste">Nom</label>
@@ -19,24 +31,11 @@
                             <div class="form-group col-md-6 col-lg-4">
                                 <label>Ville</label>
                                 <select id="ville" class="form-control" name="ville">
-                                    <option value="0" id="choixDefaut">Choix de ville</option>
-                                    <option value="1" id="NewYork">New York</option>
-                                    <option value="2" id="LosAngeles">Los Angeles</option>
-                                    <option value="3" id="Memphis">Memphis</option>
-                                    <option value="4" id="Chicago">Chicago</option>
-                                    <option value="5" id="Londre">Londre</option>
-                                    <option value="6" id="Paris">Paris</option>
-                                    <option value="7" id="Rome">Rome</option>
-                                    <option value="8" id="Montreal">Montreal</option>
-                                    <option value="9" id="Quebec">Quebec</option>
-                                    <option value="10" id="RioDeJaneiro">Rio de Janeiro</option>
-                                    <option value="11" id="Mexico">Mexico</option>
-                                    <option value="12" id="Tokyo">Tokyo</option>
-                                    <option value="13" id="Manchester">Manchester</option>
-                                    <option value="14" id="Liverpool">Liverpool</option>
-                                    <option value="14" id="Mumbai">Mumbai</option>
-                                    <option value="15" id="Sydney">Sydney</option>
-                                    <option value="16" id="Berlin">Berlin</option>
+                                    <?php
+                  require_once('PHP/ajouterArtistes.php');
+                  GestionMenuVille();
+                  ?>
+
                                 </select>
                             </div>
                             <div class="form-group col-md-6 col-lg-4">
@@ -46,9 +45,10 @@
                             <div class="ulBtn">
                                 <ul class="bntListe">
                                     <li><button type="reset" id="resetUS1" class="styled-button">Effacer</button></li>
-                                    <li><button type="submit" id="submitUS1" class="styled-button">Enregistrer</button>
+                                    <li> <button type="submit" id="submitUS1" class="styled-button">Enregistrer</button>
                                     </li>
                                 </ul>
+
                             </div>
                         </div>
                     </form>
