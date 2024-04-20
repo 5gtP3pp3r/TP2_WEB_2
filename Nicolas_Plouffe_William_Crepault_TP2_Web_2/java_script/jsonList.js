@@ -1,7 +1,7 @@
 "use strict";
 
 function getAlbums(){
-    fetch("conversionBDJson.php") 
+    fetch("fichiersPHP/conversionBDJson.php") 
     .then(response => response.json())
     .then(json => {
         console.log(json);    // temporaire

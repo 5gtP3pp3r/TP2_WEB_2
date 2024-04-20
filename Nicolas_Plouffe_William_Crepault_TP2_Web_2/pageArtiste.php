@@ -12,7 +12,7 @@
                     <h3>Tout les champs sont obligatoires</h3>
                     <form method="POST">
                         <?php
-            require_once('PHP/ajouterArtistes.php'); 
+            require_once('fichiersPHP/ajouterArtistes.php'); 
             testConnection();
             if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
 
@@ -32,7 +32,7 @@
                                 <label>Ville</label>
                                 <select id="ville" class="form-control" name="ville">
                                     <?php
-                  require_once('PHP/ajouterArtistes.php');
+                  require_once('fichiersPHP/ajouterArtistes.php');
                   GestionMenuVille();
                   ?>
 

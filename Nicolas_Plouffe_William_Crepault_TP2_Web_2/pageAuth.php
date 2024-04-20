@@ -1,6 +1,39 @@
-<?php 
-    include("heads.infos.php"); 
-    include 'connecxionBD.php';
+<?php
+
+include 'PHP/connecxionBD.php';
+
+/*if (session_id() == "") {
+    session_start();
+}
+if (isset($_SESSION['user'])) {
+    header("Location: ex1page1.php");
+    exit();
+}
+include_once("ex1def.php");
+$cr = "";
+if (isset($_POST["login"])) {
+    $cr = htmlspecialchars($_POST["login"]);
+    if (isset($_POST["passw"])) {
+        $pass = htmlspecialchars($_POST["passw"]);
+        try {
+            $usr = ChercherUser($cr, $pass);
+            if (!is_null($usr)) {
+                $_SESSION['user'] = serialize($usr);
+                $_SESSION['nb'] = 0;
+                $rep = "no";
+                header("Location: ex1page1.php");
+                exit();
+            } else {
+                $rep = 'yes';
+            }
+        } catch (Exception $e) {
+            // Invalid date              
+            $rep = $e->getMessage();
+        }
+    }
+}*/
+include("heads.infos.php");
+
 ?>
 
 <main>
