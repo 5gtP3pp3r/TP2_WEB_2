@@ -1,14 +1,15 @@
 <?php include("heads.infos.php"); ?>
 
-<!-- page nom compète, pour l'instant elle ne redirige pas l'utilisateur selon son rôle. -->
-
 <main>
-    <h2>Bienvenue sur My Music Online</h2>
+    <h2>Authentification</h2>
     <div class="container-fluid">
+        <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
+            <?php include("boutonsConDecon.infos.php"); ?>
+        </div>
         <div class="row py-4">
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
-                    <h3>Authentification</h3>
+                    <h3>Tout les champs sont obligatoires</h3>
                     <form action="submit">
                         <div class="col-md-8">
                             <label for="nomUtilisateur">Nom d'utilisateur</label>
