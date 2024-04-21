@@ -1,6 +1,6 @@
 <?php
 
-require_once('ConnecxionBD.php');
+require_once('ConnexionBD.php');
 
 
 function validerChampsNom()

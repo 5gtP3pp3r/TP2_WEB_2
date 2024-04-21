@@ -1,6 +1,6 @@
 <?php
 
-include 'fichiersPHP/connecxionBD.php';
+include 'fichiersPHP/connexionBD.php';
 
 if (session_id() == "") {
     session_start();

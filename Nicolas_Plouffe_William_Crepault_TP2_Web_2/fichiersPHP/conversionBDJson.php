@@ -1,5 +1,5 @@
 <?php
-include 'connecxionBD.php'; 
+include 'connexionBD.php'; 
 
 header('Content-Type: application/json');
 
