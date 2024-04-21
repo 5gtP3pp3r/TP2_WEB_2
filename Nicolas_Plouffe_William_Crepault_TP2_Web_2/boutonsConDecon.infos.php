@@ -16,6 +16,7 @@ if (isset($_POST['logout'])) {
             echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
         }
     } else {
+        echo '<button type="button" id="enregistrer" class="styled-button">S\'enregistrer</button>';
         echo '<button type="button" id="connexion" class="styled-button">Connexion</button>';
     }
 ?>
