@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($_POST['nomUtilisateur'])) {
         $errors[] = "Le nom d'utilisateur est requis.";
-    } elseif (!preg_match('/^[a-zA-Z0-9]{6,45}$/', $_POST['nomUtilisateur'])) {
+    } elseif (!preg_match('/^[a-zA-Z0-9]{3,45}$/', $_POST['nomUtilisateur'])) {
         $errors[] = "Le nom d'utilisateur doit contenir entre 6 et 45 caractères alphanumériques.";
     }
 
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="ville">Ville</label>
-                                <select id="ville" class="form-control">
+                                <select id="ville" name="ville" class="form-control">
                                     <option value="0">Choix de villes</option>
                                     <?php
                                     $villes = chercherVilles();
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="role">Rôle</label>
-                                <select id="role" class="form-control">
+                                <select id="role" name="role" class="form-control">
                                     <option value="0">Choix de rôle</option>
                                     <?php
                                     echo '<option value="client">Client</option>';
@@ -134,13 +134,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <ul class="validationUl" id="listResult">
                             <!-- Zone de validation client-->
                         </ul>
-                        <?php if (!empty($errors)) : ?>
-                            <ul class="validationUl text-danger">
-                                <?php foreach ($errors as $error) : ?>
-                                    <li><?php echo htmlspecialchars($error); ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
+                        <?php
+                        if (!empty($errors)) {
+                            echo '<ul class="validationUl">';
+                            foreach ($errors as $error) {
+                                echo '<li class="text-danger"><?php echo htmlspecialchars($error); ?></li>';
+                            }
+                            echo '</ul>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
