@@ -16,6 +16,21 @@ function connecxionBD()
     }
 }
 
+function chercherVille($id_ville)
+{
+    $conn = connecxionBD();
+    $sql = "SELECT * FROM villes WHERE id_ville = :idVille";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':idVille', $id_ville, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user) {
+        return $user;
+    }
+    return null;
+}
+
 function chercherUser($username, $email)
 {
     $conn = connecxionBD();
@@ -29,7 +44,6 @@ function chercherUser($username, $email)
     if ($user) {
         return $user;
     }
-
     return null;
 }
 
