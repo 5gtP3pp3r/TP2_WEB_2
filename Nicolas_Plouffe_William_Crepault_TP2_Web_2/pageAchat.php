@@ -4,7 +4,7 @@ include("heads.infos.php");
 include("fichiersPHP/connexionBD.php");
 include("fichiersPHP/Oeuvre.class.php");
 try {
-    $res = "";
+    
     if (!empty($_GET["action"])) {
         switch ($_GET["action"]) {
             case "add":
@@ -44,33 +44,29 @@ try {
                 <div class="custom-border px-2">
                     <h3>Oeuvres disponibles:</h3>
                     <div>
-                        <ul class="list-unstyled">
-                            <?php
-                            $product_array = chercherOeuvre("-1");
-                            if (!empty($product_array)) {
-                                foreach ($product_array as $oeuvre) {
-                                    echo '<div class="row py-3">';
-                                    echo '<div class="col-sm-12 col-md-4 col-lg-2"><span><b>Code album: </b></span>' . $oeuvre->getCodeAlbum() . '</div>';
-                                    echo '<div class="col-sm-12 col-md-4 col-lg-2"><span><b>Titre: </b></span>' . $oeuvre->getTitreOeuvre() . '</div>';
-                                    echo '<div class="col-sm-12 col-md-4 col-lg-2"><span><b>Prix: </b></span>' . $oeuvre->getPrix() . '<span>$</span></div>';
-                                    echo '<div class="col-sm-12 col-md-12 col-lg-6">';
-                                    echo '<form action="pageAchat.php?action=add&id_oeuvre=' . $oeuvre->getIdOeuvre() . '" method="post" class="d-flex align-items-center">';
-                                    echo '<input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">';
-                                    echo '<button type="button" id="panier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer_panier"> vider panier</button>';
-                                    echo '</form>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</li>';
-                                }
-                            }
-                            ?>
-                        </ul>
+                        <?php
+                        $product_array = chercherOeuvre("-1");
+                        if (!empty($product_array)) {
+                            foreach ($product_array as $oeuvre) {
+                        ?>
+                            <div class="row py-3">
+                                <div class="col-sm-12 col-md-4 col-lg-3"><span><b>Code album: </b></span><?php echo $oeuvre->getCodeAlbum() ?></div>
+                                <div class="col-sm-12 col-md-4 col-lg-3"><span><b>Titre: </b></span><?php echo $oeuvre->getTitreOeuvre() ?></div>
+                                <div class="col-sm-12 col-md-4 col-lg-2"><span><b>Prix: </b></span><?php echo $oeuvre->getPrix() ?><span>$</span></div>
+                                <div class="col-sm-12 col-md-12 col-lg-4">
+                                    <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
+                                        <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">
+                                        <button type="button" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php }} ?>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-lg-4">
                 <div class="custom-border px-2">
-                    <h3 id="menu">Voir mon panier:&nbsp;&nbsp;</h3>
+                    <h3 id="menu">Voir mon panier:</h3>
                     <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
                         <?php
                         if (isset($_SESSION["cart_item"])) {
@@ -80,17 +76,13 @@ try {
                             if (!empty($_SESSION["cart_item"])) {
                                 $monpanier = unserialize($_SESSION['cart_item']);
 
-                                $nb = $monpanier->getCountItems();
+                                $qt = $monpanier->getCountItems();
                                 echo '<button type="button" id="panier" class="styled-button"><img src="Images/panier.png" 
                                      alt="panier">&nbsp;&nbsp;' . $qt . ' articles</button>';
                             }
                         } else
                             echo '<button type="button" id="panier" class="styled-button"><img src="Images/panier.png" 
                         alt="panier">&nbsp;&nbsp; article</button>';
-                        ?>
-                        <?php
-                        $qt = 1;
-
                         ?>
                     </div>
                 </div>
