@@ -2,6 +2,49 @@
 include("heads.infos.php");
 include('fichiersPHP/connexionBD.php');
 
+$errors = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (empty($_POST['nomUtilisateur'])) {
+        $errors[] = "Le nom d'utilisateur est requis.";
+    } elseif (!preg_match('/^[a-zA-Z0-9]{6,45}$/', $_POST['nomUtilisateur'])) {
+        $errors[] = "Le nom d'utilisateur doit contenir entre 6 et 45 caractères alphanumériques.";
+    }
+
+    $age = $_POST['age'] ?? null;
+    if (empty($age)) {
+        $errors[] = "L'âge est requis.";
+    } elseif ($age < 18 || $age > 100) {
+        $errors[] = "L'âge doit être entre 18 et 100 ans.";
+    }
+
+    if (empty($_POST['email'])) {
+        $errors[] = "L'email est requis.";
+    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "L'email n'est pas valide.";
+    }
+
+    if (empty($_POST['password'])) {
+        $errors[] = "Le mot de passe est requis.";
+    } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $_POST['password'])) {
+        $errors[] = "Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
+    }
+
+    if (empty($_POST['ville']) || $_POST['ville'] == '0') {
+        $errors[] = "Choix de ville requis.";
+    }
+
+    if (empty($_POST['role']) || $_POST['role'] == '0') {
+        $errors[] = "Choix d'un rôle requis.";
+    }
+
+    // Si pas d'erreurs, procéder à l'enregistrement des données
+    if (count($errors) === 0) {
+        // Logique d'insertion ici
+        // rediriger l'utilisateur ou afficher un message de succès
+    }
+}
 ?>
 <main>
     <?php
@@ -29,11 +72,11 @@ include('fichiersPHP/connexionBD.php');
                             </div>
                             <div class="col-sm-12 col-md-3">
                                 <label for="age">Age</label><Span> (18 ans et plus)</Span>
-                                <input type="number" id="age" name="age" placeholder="max 120" min="18" step="1" class="form-control">
+                                <input type="number" id="age" name="age" placeholder="max 100" min="18" step="1" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="email">Courriel</label>
-                                <input type="email" id="email" name="email" class="form-control">
+                                <input type="email" id="email" name="email" placeholder="nom@domaine.com" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="password">Mot de passe</label>
@@ -89,8 +132,15 @@ include('fichiersPHP/connexionBD.php');
                     <h3>Informations personnelles</h3>
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
-                            <!-- Zone de validation -->
+                            <!-- Zone de validation client-->
                         </ul>
+                        <?php if (!empty($errors)) : ?>
+                            <ul class="validationUl text-danger">
+                                <?php foreach ($errors as $error) : ?>
+                                    <li><?php echo htmlspecialchars($error); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
