@@ -35,5 +35,12 @@ document.addEventListener('DOMContentLoaded', function ()
         });
     }
 
-    // Ajoutez les autres clicks de redirection ici
+    let enregistrer = document.getElementById('enregistrer');
+    if(enregistrer)
+    {
+        enregistrer.addEventListener('click', function() 
+        {
+            window.location.href = 'pageAjoutUtilisateur.php';
+        });
+    }
 });

@@ -3,7 +3,7 @@ include 'connexionBD.php';
 
 header('Content-Type: application/json');
 
-$conn = connecxionBD();  
+$conn = connexionBD();  
 
 $albums = [];
 

@@ -39,7 +39,7 @@ function GestionMenuVille()
 {
     require_once('connexionBD.php');
 
-    $pdo = connecxionBD(); // Connexion à la base de données
+    $pdo = connexionBD(); // Connexion à la base de données
 
     $sql = "SELECT * FROM villes"; // Requête SQL
 
@@ -57,7 +57,7 @@ function GestionMenuVille()
 function injectionArtiste()
 {
 
-    $conn = connecxionBD();
+    $conn = connexionBD();
     $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) VALUES (:nomArtiste, :photoArtiste, :ville )";
 
     $stmt = $conn->prepare($sql); // Préparation de la requête

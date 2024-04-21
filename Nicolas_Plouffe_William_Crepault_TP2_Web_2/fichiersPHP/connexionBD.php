@@ -1,6 +1,6 @@
 <?php
 
-function connecxionBD()
+function connexionBD()
 {
     try {
 
@@ -16,24 +16,37 @@ function connecxionBD()
     }
 }
 
-function chercherVille($id_ville)
+function chercherVilles()
 {
-    $conn = connecxionBD();
-    $sql = "SELECT * FROM villes WHERE id_ville = :idVille";
+    $conn = connexionBD();
+    $sql = "SELECT id, nom_ville FROM villes";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':idVille', $id_ville, PDO::PARAM_STR);
     $stmt->execute();
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user) {
-        return $user;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function chercherIdUserDispo() {
+    $conn = connexionBD();
+    // Sélectionner tous les IDs utilisés entre 5 et 11
+    $sql = "SELECT id FROM utilisateurs WHERE id BETWEEN 5 AND 11";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $idsUtilises = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
+    // Trouver les IDs non utilisés dans la plage
+    $idsDisponibles = [];
+    for ($id = 5; $id <= 11; $id++) {
+        if (!in_array($id, $idsUtilises)) {
+            $idsDisponibles[] = $id;
+        }
     }
-    return null;
+    return $idsDisponibles;
 }
 
 function chercherUser($username, $email)
 {
-    $conn = connecxionBD();
+    $conn = connexionBD();
     $sql = "SELECT * FROM utilisateurs WHERE nom = :username AND courriel = :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -49,7 +62,7 @@ function chercherUser($username, $email)
 
 function chercherOeuvre($p_idOeuvre)
 {
-    $conn = connecxionBD();
+    $conn = connexionBD();
     $resultset = [];
 
     if ($p_idOeuvre == "-1") {
