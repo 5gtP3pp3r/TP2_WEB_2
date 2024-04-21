@@ -1,22 +1,34 @@
 
 <?php
 
-if (isset($_POST['logout'])) {
-        session_unset(); 
-        session_destroy(); 
-        header("Location: index.php"); 
+if ($pageNom == 'pageAuth') {
+} else {
+    if (isset($_POST['logout'])) {
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
         exit();
     }
-    
+
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'ADMIN') {
             echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
-        } elseif ($_SESSION['role'] == 'GERANT') {
+        } 
+        elseif ($_SESSION['role'] == 'GERANT' && $pageNom == 'pageAjoutUtilisateur'){
+            echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
+        }
+        elseif ($_SESSION['role'] == 'GERANT') {
             echo '<button type="button" id="ajoutUtilisateur" class="styled-button">Ajout utilisateur</button>';
             echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
         }
-    } else {
+        
+    } 
+    elseif ($pageNom == 'pageAjoutUtilisateur') {
+        echo '<button type="button" id="connexion" class="styled-button">Connexion</button>';
+    } 
+    else {
         echo '<button type="button" id="enregistrer" class="styled-button">S\'enregistrer</button>';
         echo '<button type="button" id="connexion" class="styled-button">Connexion</button>';
     }
+}
 ?>
