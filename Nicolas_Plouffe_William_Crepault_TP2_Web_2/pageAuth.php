@@ -1,37 +1,34 @@
 <?php
 
-include 'PHP/connecxionBD.php';
+include 'fichiersPHP/connecxionBD.php';
 
-/*if (session_id() == "") {
+if (session_id() == "") {
     session_start();
 }
-if (isset($_SESSION['user'])) {
-    header("Location: ex1page1.php");
+
+if (isset($_SESSION['user'])) {   
+    header("Location: pageAccueil.php");
     exit();
 }
-include_once("ex1def.php");
-$cr = "";
-if (isset($_POST["login"])) {
-    $cr = htmlspecialchars($_POST["login"]);
-    if (isset($_POST["passw"])) {
-        $pass = htmlspecialchars($_POST["passw"]);
-        try {
-            $usr = ChercherUser($cr, $pass);
-            if (!is_null($usr)) {
-                $_SESSION['user'] = serialize($usr);
-                $_SESSION['nb'] = 0;
-                $rep = "no";
-                header("Location: ex1page1.php");
-                exit();
-            } else {
-                $rep = 'yes';
-            }
-        } catch (Exception $e) {
-            // Invalid date              
-            $rep = $e->getMessage();
+
+if (isset($_POST["nomUtilisateur"]) && isset($_POST["password"])) {
+    $username = htmlspecialchars($_POST["nomUtilisateur"]);
+    $password = htmlspecialchars($_POST["password"]);
+
+    try {
+        $usr = ChercherUser($username, $password);
+        if ($usr !== null) {
+            $_SESSION['user'] = serialize($usr);
+            $_SESSION['role'] = $usr['urRole'];
+            header("Location: pageAccueil.php");
+            exit();
+        } else {
+            $rep = 'Identifiant ou mot de passe incorrect.';
         }
+    } catch (Exception $e) {
+        $rep = $e->getMessage();
     }
-}*/
+}
 include("heads.infos.php");
 
 ?>
@@ -46,14 +43,14 @@ include("heads.infos.php");
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form action="submit">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="col-md-8">
                             <label for="nomUtilisateur">Nom d'utilisateur</label>
                             <input type="text" id="nomUtilisateur" name="nomUtilisateur" class="form-control">
                         </div>
                         <div class="col-md-8">
                             <label for="password">Mot de passe</label>
-                            <input type="text" id="password" name="password" class="form-control">
+                            <input type="password" id="password" name="password" class="form-control">
                         </div>
                         <div class="ulBtn">
                             <ul class="bntListe">
@@ -70,8 +67,13 @@ include("heads.infos.php");
                     <h3>Informations personnelles</h3>
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
-                            <!-- Zone de validation -->
+                            <!-- Zone de validation client-->
                         </ul>
+                        <div class="d-flex justify-content-center">
+                            <?php if (isset($rep) && !empty($rep)) {
+                                echo "<p class='text-center text-danger'>$rep</p>";
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>

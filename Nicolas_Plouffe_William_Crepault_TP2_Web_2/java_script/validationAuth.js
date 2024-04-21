@@ -19,8 +19,8 @@ let errorList = EMPTY;
 document.getElementById("submitUS0").addEventListener("click", validationAuth);
 document.getElementById("resetUS0").addEventListener("click", resetForm);
 
-function validationAuth(event){
-    event.preventDefault();
+function validationAuth(/*event*/){
+    //event.preventDefault();
     validList = EMPTY;
     errorList = EMPTY;
     listResult.classList.remove("red");

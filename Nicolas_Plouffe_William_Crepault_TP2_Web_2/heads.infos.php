@@ -1,3 +1,10 @@
+<?php 
+    if (session_status() == PHP_SESSION_NONE) 
+    {
+        session_start();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <!--**********Travail par William Crépault  et Nicolas Plouffe**********-->
@@ -31,10 +38,8 @@
         </div>
     </header>
 
-    <?php
-    /* Conditions à ajouter dans le nav par rapport à la class utilisateur*/ 
-    //if ($pageNom != 'pageAuth' && $pageNom != 'pageAjoutUtilisateur') {
-        echo '<nav>
+    
+         '<nav>
             <div class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="pageAccueil.php"><b>
@@ -46,18 +51,22 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="pageListeAlbums.php"><b>&nbsp;&nbsp;&nbsp;Liste des albums disponibles</b></a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pageAchat.php"><b>&nbsp;&nbsp;&nbsp;Passer un achat</b></a></li>
-                            <li class="nav-item"><a class="nav-link disabled" aria-disabled="true"></a></li>
-                        </ul>
+                            <?php
+                        if (isset($_SESSION['role'])) {
+                            if ($_SESSION['role'] == 'CLIENT') {
+                                echo '<li class="nav-item"><a class="nav-link" href="pageAchat.php"><b>&nbsp;&nbsp;&nbsp;Passer un achat</b></a></li>';
+                            } elseif ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
+                                echo '<li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
-        </nav>';
-    //}
-    ?>
+        </nav>
+    
 
 
     <?php

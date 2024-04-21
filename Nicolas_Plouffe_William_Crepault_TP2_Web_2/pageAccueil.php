@@ -25,9 +25,18 @@
           <div class="ulBtn">
             <ul class="bntListe">
               <li><a href="pageListeAlbums.php" class="styled-button">Listes des albums</a></li>
-              <li><a href="pageArtiste.php" class="styled-button">Ajouter un artiste</a></li>
-              <li><a href="pageOeuvre.php" class="styled-button">Ajouter une oeuvre</a></li>
-              <li><a href="pageAlbum.php" class="styled-button">Ajouter un album</a></li>
+              <?php
+                if (isset($_SESSION['role'])) {
+                  if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'ADMIN') {
+                    echo '<li><a href="pageAchat.php" class="styled-button">Passer un achat</a></li>';
+                  }
+                  elseif ($_SESSION['role'] == 'GERANT') {
+                    echo '<li><a href="pageArtiste.php" class="styled-button">Ajouter un artiste</a></li>';
+                    echo '<li><a href="pageOeuvre.php" class="styled-button">Ajouter une oeuvre</a></li>';
+                    echo '<li><a href="pageAlbum.php" class="styled-button">Ajouter un album</a></li>';
+                  }
+                }
+              ?>
             </ul>
           </div>
         </div>

@@ -1,17 +1,21 @@
 
 <?php
 
-    session_start();
-
-    // faire apparaitre les bon boutons avec role session
-//    if(isset($_SESSION['user']) && $_SESSION['user'] == 'admin')
-//    {
-        echo '<button type="button" id="ajoutUtilisateur" class="styled-button">Ajout utilisateur</button>';
-        echo '<button type="button" id="deconnexion" class="styled-button">Déconnecxion</button>';
-//    }
-//    else 
-//    {
-        echo '<button type="button" id="connexion" class="styled-button">Connecxion</button>';
-//    }
-        
+if (isset($_POST['logout'])) {
+        session_unset(); 
+        session_destroy(); 
+        header("Location: index.php"); 
+        exit();
+    }
+    
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'ADMIN') {
+            echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
+        } elseif ($_SESSION['role'] == 'GERANT') {
+            echo '<button type="button" id="ajoutUtilisateur" class="styled-button">Ajout utilisateur</button>';
+            echo '<form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>';
+        }
+    } else {
+        echo '<button type="button" id="connexion" class="styled-button">Connexion</button>';
+    }
 ?>
