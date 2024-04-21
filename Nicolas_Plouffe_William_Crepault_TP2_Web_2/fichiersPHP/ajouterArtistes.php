@@ -1,6 +1,6 @@
 <?php
 
-require_once('ConnexionBD.php');
+require_once('connexionBD.php');
 
 
 function validerChampsNom()
@@ -37,7 +37,7 @@ function validerDesChamps()
 
 function GestionMenuVille()
 {
-    require_once('ConnecxionBD.php');
+    require_once('connexionBD.php');
 
     $pdo = connecxionBD(); // Connexion à la base de données
 
