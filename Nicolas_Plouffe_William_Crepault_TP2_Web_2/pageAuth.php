@@ -11,19 +11,19 @@ if (isset($_SESSION['user'])) {
     exit();
 }
 
-if (isset($_POST["nomUtilisateur"]) && isset($_POST["email"])) {
-    $username = htmlspecialchars($_POST["nomUtilisateur"]);
+if (isset($_POST["password"]) && isset($_POST["email"])) {
+    $motPasse = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
 
     try {
-        $usr = ChercherUser($username, $email);
+        $usr = chercherUser($motPasse, $email);
         if ($usr !== null) {
             $_SESSION['user'] = serialize($usr);
             $_SESSION['role'] = $usr['urRole'];
             header("Location: pageAccueil.php");
             exit();
         } else {
-            $rep = 'Identifiant ou mot de passe incorrect.';
+            $rep = 'Courriel ou mot de passe incorrect.';
         }
     } catch (Exception $e) {
         $rep = $e->getMessage();
@@ -45,13 +45,13 @@ include("heads.infos.php");
                     <h3>Tout les champs sont obligatoires</h3>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="col-md-8">
-                            <label for="nomUtilisateur">Nom d'utilisateur</label>
-                            <input type="text" id="nomUtilisateur" name="nomUtilisateur" class="form-control">
-                        </div>
-                        <div class="col-md-8">
                             <label for="email">Adresse mail</label>
                             <input type="email" id="email" name="email" class="form-control">
                         </div>
+                        <div class="col-sm-12 col-md-8">
+                                <label for="password">Mot de passe</label>
+                                <input type="password" id="password" name="password" class="form-control">
+                            </div>
                         <div class="ulBtn">
                             <ul class="bntListe">
                                 <li><button type="reset" id="resetUS0" class="styled-button">Effacer</button></li>

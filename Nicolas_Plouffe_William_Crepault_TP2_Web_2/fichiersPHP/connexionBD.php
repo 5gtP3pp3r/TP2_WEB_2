@@ -44,18 +44,19 @@ function chercherIdUserDispo() {
     return $idsDisponibles;
 }
 
-function chercherUser($username, $email)
+function chercherUser($motPasse, $email)
 {
     $conn = connexionBD();
-    $sql = "SELECT * FROM utilisateurs WHERE nom = :username AND courriel = :email";
+    $sql = "SELECT * FROM utilisateurs WHERE courriel = :email";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user) {
-        return $user;
+        if (password_verify($motPasse, $user['mot_passe'])) {
+            return $user; 
+        }
     }
     return null;
 }
