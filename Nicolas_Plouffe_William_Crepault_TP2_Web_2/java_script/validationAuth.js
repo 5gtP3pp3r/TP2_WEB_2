@@ -1,13 +1,14 @@
 "use strict";
 
-// Ce fichier ne fait que confirmer le regex coté client, la confirmation via la BD sera faite ailleur
 document.addEventListener("DOMContentLoaded", function() {
 
 const regexNom = /^[A-Za-z]{2,}$/;
 const regexPassword = /^[a-zA-Z\d]{6,}$/;
+const regexEmail = /^[\w.-]+@[a-zA-Z_-]+?\.[a-zA-Z]{2,6}$/;
 const EMPTY = "";
 
 let nomUtilisateur = document.getElementById("nomUtilisateur");
+let email = document.getElementById("email");
 let password = document.getElementById("password");
 let role = document.getElementById("role");
 
@@ -34,6 +35,13 @@ function validationAuth(/*event*/){
         validList += "<li><p>Nom d'utilisateur valide</p></li>";
     }
 
+    if (email && (email.value.trim() == EMPTY || !regexEmail.test(email.value))){
+        errorList += "<li><p>Entrez une adresse mail valide</p></li>";
+        isValid = false;
+    }
+    else if (email) {
+        validList += "<li><p>Adresse mail valide</p></li>";
+    }   
     if (password && (password.value.trim() == EMPTY || !regexPassword.test(password.value))){
         errorList += "<li><p>Entrez un mot de passe valide</p></li>";
         isValid = false;

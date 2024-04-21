@@ -11,12 +11,12 @@ if (isset($_SESSION['user'])) {
     exit();
 }
 
-if (isset($_POST["nomUtilisateur"]) && isset($_POST["password"])) {
+if (isset($_POST["nomUtilisateur"]) && isset($_POST["email"])) {
     $username = htmlspecialchars($_POST["nomUtilisateur"]);
-    $password = htmlspecialchars($_POST["password"]);
+    $email = htmlspecialchars($_POST["email"]);
 
     try {
-        $usr = ChercherUser($username, $password);
+        $usr = ChercherUser($username, $email);
         if ($usr !== null) {
             $_SESSION['user'] = serialize($usr);
             $_SESSION['role'] = $usr['urRole'];
@@ -49,8 +49,8 @@ include("heads.infos.php");
                             <input type="text" id="nomUtilisateur" name="nomUtilisateur" class="form-control">
                         </div>
                         <div class="col-md-8">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" name="password" class="form-control">
+                            <label for="email">Adresse mail</label>
+                            <input type="email" id="email" name="email" class="form-control">
                         </div>
                         <div class="ulBtn">
                             <ul class="bntListe">

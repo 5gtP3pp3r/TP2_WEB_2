@@ -16,15 +16,16 @@ function connecxionBD()
     }
 }
 
-function ChercherUser($username, $password) {   
+function ChercherUser($username, $email) {   
     $conn = connecxionBD();
-    $sql = "SELECT * FROM utilisateurs WHERE nom = :username";
+    $sql = "SELECT * FROM utilisateurs WHERE nom = :username AND courriel = :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
     
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user && password_verify($password, $user['mot_passe'])) {
+    if ($user) {
         return $user;
     }
     
