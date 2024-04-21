@@ -3,7 +3,6 @@ include("heads.infos.php");
 include('fichiersPHP/connexionBD.php');
 
 ?>
-
 <main>
     <?php
     if (isset($_SESSION['role'])) {
@@ -22,7 +21,7 @@ include('fichiersPHP/connexionBD.php');
             <div class="col-sm-12 col-lg-6">
                 <div class="custom-border px-2 container-fluid">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form action="submit">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="row py-2">
                             <div class="col-sm-12 col-md-6">
                                 <label for="nomUtilisateur">Nom d'utilisateur</label>
