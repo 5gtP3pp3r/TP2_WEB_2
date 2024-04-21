@@ -15,7 +15,7 @@ let age = document.getElementById("age");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let role = document.getElementById("role");
-let ville = document.getElementById("role"); 
+let ville = document.getElementById("ville"); 
 
 let listResult = document.getElementById("listResult");
 
