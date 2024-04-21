@@ -2,20 +2,20 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-const regexNom = /^[A-Za-z]{2,}$/;
-const regexPassword = /^[a-zA-Z\d]{6,}$/;
+const regexNom = /^^[a-zA-Z0-9]{6,45}$/;
+const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 const regexEmail = /^[\w.-]+@[a-zA-Z_-]+?\.[a-zA-Z]{2,6}$/;
 const MIN_VALUE = 0;
 const MIN_AGE = 18;
-const MAX_AGE = 120;
+const MAX_AGE = 100;
 const EMPTY = "";
 
 let nomUtilisateur = document.getElementById("nomUtilisateur");
-let age = document.getElementById("age"); /********/
+let age = document.getElementById("age"); 
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let role = document.getElementById("role");
-let ville = document.getElementById("role"); /*********/
+let ville = document.getElementById("role"); 
 
 let listResult = document.getElementById("listResult");
 
