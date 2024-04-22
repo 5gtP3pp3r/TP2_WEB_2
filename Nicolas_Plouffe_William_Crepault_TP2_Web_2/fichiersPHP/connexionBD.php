@@ -100,11 +100,11 @@ function chercherOeuvre($idOeuvre)
     $resultset = [];
 
     if ($idOeuvre == "-1") {
-        $reqsql = "SELECT oeuvres.id, albums.code_album, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
+        $reqsql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
                    INNER JOIN albums ON oeuvres.id_album = albums.id";
         $reponse = $conn->prepare($reqsql);
     } else {
-        $reqsql = "SELECT oeuvres.id, code_album, oeuvres.titre_oeuvre, prix FROM oeuvres
+        $reqsql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, prix FROM oeuvres
                    INNER JOIN albums ON  albums.id = oeuvres.id_album
                    WHERE oeuvres.id = :id
                    ORDER BY oeuvres.id";
@@ -116,10 +116,10 @@ function chercherOeuvre($idOeuvre)
 
     while ($donnees = $reponse->fetch()) {
         $idOeuvre = $donnees['id'];
-        $codeAlbum = $donnees['code_album'];
+        $AlbumImg = $donnees['pht_couvt'];
         $titreOeuvre = $donnees['titre_oeuvre'];
         $prix = $donnees['prix'];
-        $p = new Oeuvre($idOeuvre, $codeAlbum, $titreOeuvre, $prix);
+        $p = new Oeuvre($idOeuvre, $AlbumImg, $titreOeuvre, $prix);
 
         $resultset[] = $p;
     }

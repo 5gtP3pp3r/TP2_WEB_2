@@ -3,14 +3,14 @@ class Oeuvre
 {
   //Atributs
   private $m_IdOeuvre;
-  private $m_CodeAlbum;
+  private $m_AlbumImg;
   private $m_TitreOeuvre;
   private $m_Prix;
   //Constructeur 
-  public function __construct($p_IdOeuvre, $p_CodeAlbum, $p_TitreOeuvre, $p_Prix)
+  public function __construct($p_IdOeuvre, $p_AlbumImg, $p_TitreOeuvre, $p_Prix)
   {
     $this->setIdOeuvre($p_IdOeuvre);
-    $this->setCodeAlbum($p_CodeAlbum);
+    $this->setAlbumImg($p_AlbumImg);
     $this->setTitreOeuvre($p_TitreOeuvre);
     $this->setPrix($p_Prix);
   }
@@ -24,13 +24,13 @@ class Oeuvre
     $this->m_IdOeuvre = $p_idOeuvre;
   }
 
-  public function getCodeAlbum()
+  public function getAlbumImg()
   {
-    return $this->m_CodeAlbum;
+    return $this->m_AlbumImg;
   }
-  public function setCodeAlbum($p_CodeAlbum)
+  public function setAlbumImg($p_AlbumImg)
   {
-    $this->m_CodeAlbum = $p_CodeAlbum;
+    $this->m_AlbumImg = $p_AlbumImg;
   }
 
   public function getTitreOeuvre()
@@ -55,6 +55,6 @@ class Oeuvre
   //Methodes  
   public function __toString()
   {
-    return $this->m_CodeAlbum . " " . $this->m_TitreOeuvre . " " . $this->m_Prix;
+    return $this->m_IdOeuvre . " " . $this->m_TitreOeuvre . " " . $this->m_Prix;
   }
 }

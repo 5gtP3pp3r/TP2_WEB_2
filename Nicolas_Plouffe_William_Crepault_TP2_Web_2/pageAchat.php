@@ -53,9 +53,9 @@ try {
                             foreach ($product_array as $oeuvre) {
                         ?>
                             <div class="row py-3">
-                                <div class="col-sm-12 col-md-4 col-lg-3"><span><b>Code album: </b></span><?php echo $oeuvre->getCodeAlbum() ?></div>
-                                <div class="col-sm-12 col-md-4 col-lg-3"><span><b>Titre: </b></span><?php echo $oeuvre->getTitreOeuvre() ?></div>
-                                <div class="col-sm-12 col-md-4 col-lg-2"><span><b>Prix: </b></span><?php echo $oeuvre->getPrix() ?><span>$</span></div>
+                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize"></div>
+                                <div class="col-sm-12 col-md-4 col-lg-3 d-flex align-items-center"><span><b>Titre:&nbsp;</b></span><?php echo $oeuvre->getTitreOeuvre() ?></div>
+                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center"><span><b>Prix:&nbsp;</b></span><?php echo $oeuvre->getPrix() ?><span>$</span></div>
                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                     <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
                                         <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">

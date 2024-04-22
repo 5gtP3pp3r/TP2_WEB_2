@@ -117,4 +117,9 @@ input::placeholder
 {
     color: red;
 }
+.resize
+{
+    width: 100px;
+    height: auto;
+}
 
