@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
 }
 
 if (isset($_POST["password"]) && isset($_POST["email"])) {
-    $motPasse = htmlspecialchars($_POST["password"]);
+    $motPasse = ($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
 
     try {

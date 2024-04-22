@@ -3,7 +3,6 @@
 function connexionBD()
 {
     try {
-
         $serverName = 'localhost';
         $userName = 'root';
         $password = '';
@@ -29,15 +28,13 @@ function chercherVilles()
 function chercherIdUserDispo()
 {
     $conn = connexionBD();
-    // Sélectionner tous les IDs utilisés entre 5 et 11
     $sql = "SELECT id FROM utilisateurs WHERE id BETWEEN 5 AND 11";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $idsUtilises = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
-    // Trouver les IDs non utilisés dans la plage
     $idsDisponibles = [];
-    for ($id = 5; $id <= 11; $id++) {
+    for ($id = 5; $id < 11; $id++) {
         if (!in_array($id, $idsUtilises)) {
             $idsDisponibles[] = $id;
         }
@@ -62,15 +59,16 @@ function chercherUser($motPasse, $email)
     return null;
 }
 
-function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role)
+function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
 {
     $conn = connexionBD();
     try {
-        if ($role > 5 && $role < 11) {
+        if ($roleId > 5 && $roleId < 11) {
             $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $role, PDO::PARAM_INT); // urRole BD déterminé par le ID si disponible
-        } else {
+            $stmt->bindParam(':id', $roleId, PDO::PARAM_INT); // urRole BD déterminé par le ID si disponible
+        } 
+        elseif ($roleId == 1) {
             $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
             $stmt = $conn->prepare($sql);
         }
@@ -83,15 +81,11 @@ function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role)
 
         $stmt->execute();
 
-        if ($role > 5 && $role < 11) {
+        if ($roleId > 5 && $roleId < 11) {
             $updateSql = "UPDATE utilisateurs SET urRole = 'GERANT' WHERE id > 5 AND id < 11";
             $updateStmt = $conn->prepare($updateSql);
             $updateStmt->execute();
         }
-
-        $updateStmt = $conn->prepare($updateSql);
-        $updateStmt->bindParam(':id', $idDisponible, PDO::PARAM_INT);
-        $updateStmt->execute();
 
         return true;
     } catch (PDOException $e) {

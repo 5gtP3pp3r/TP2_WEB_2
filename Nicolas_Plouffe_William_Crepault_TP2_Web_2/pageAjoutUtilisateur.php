@@ -45,13 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $motPasse = $_POST['password'];
         $motPasseHash = password_hash($motPasse, PASSWORD_DEFAULT);
-        $role = $_POST['role'];
+        $roleId = $_POST['role'];
         $ville = $_POST['ville'];
         $age = $_POST['age'];
 
-        $idDisponible = ($role === 'GERANT') ? $role : null;
-
-        $resultat = ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role);
+        $resultat = ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId);
 
         if ($resultat) {
             $successMessage = "Utilisateur enregistré avec succès !";
@@ -115,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <select id="role" name="role" class="form-control">
                                     <option value="0">Choix de rôle</option>
                                     <?php
-                                    echo '<option value="client">Client</option>';
+                                    echo '<option value="1">Client</option>';
                                     if (isset($_SESSION['role'])) {
                                         if ($_SESSION['role'] == 'GERANT') {
                                             $idsDisponibles = chercherIdUserDispo();
