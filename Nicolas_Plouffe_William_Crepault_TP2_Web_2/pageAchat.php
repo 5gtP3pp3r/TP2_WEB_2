@@ -1,17 +1,20 @@
 <?php
 
 include("heads.infos.php");
-include("fichiersPHP/connexionBD.php");
-include("fichiersPHP/Oeuvre.class.php");
+require_once "fichiersPHP/connexionBD.php";
+require_once "fichiersPHP/Panier.class.php" ;
+require_once "fichiersphp/Oeuvre.class.php" ;
+$res = "";
+
 try {
     
     if (!empty($_GET["action"])) {
+        
         switch ($_GET["action"]) {
             case "add":
                 if (!empty($_POST["quantity"])) {
-
+                    
                     $item = chercherOeuvre($_GET["id_oeuvre"])[0];
-
                     if (isset($_SESSION["cart_item"]) && !empty($_SESSION["cart_item"])) {
                         $monpanier = unserialize($_SESSION["cart_item"]);
                         $monpanier->addItem($item, $_POST["quantity"]);
@@ -56,7 +59,7 @@ try {
                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                     <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
                                         <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">
-                                        <button type="button" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
+                                        <button type="submit" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
                                     </form>
                                 </div>
                             </div>

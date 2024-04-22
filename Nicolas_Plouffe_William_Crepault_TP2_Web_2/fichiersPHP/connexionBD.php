@@ -94,28 +94,28 @@ function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
     }
 }
 
-function chercherOeuvre($p_idOeuvre)
+function chercherOeuvre($idOeuvre)
 {
     $conn = connexionBD();
     $resultset = [];
 
-    if ($p_idOeuvre == "-1") {
-        $reqsql = "SELECT albums.code_album, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
+    if ($idOeuvre == "-1") {
+        $reqsql = "SELECT oeuvres.id, albums.code_album, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
                    INNER JOIN albums ON oeuvres.id_album = albums.id";
         $reponse = $conn->prepare($reqsql);
     } else {
         $reqsql = "SELECT oeuvres.id, code_album, oeuvres.titre_oeuvre, prix FROM oeuvres
-                 INNER JOIN albums ON  albums.id = oeuvres.id_album
-                 WHERE oeuvre.id = :oeuvre.id
-                 ORDER BY oeuvres.id";
+                   INNER JOIN albums ON  albums.id = oeuvres.id_album
+                   WHERE oeuvres.id = :id
+                   ORDER BY oeuvres.id";
         $reponse = $conn->prepare($reqsql);
-        $reponse->bindParam(':oeuvre.id', $idOeuvre, PDO::PARAM_STR);
+        $reponse->bindParam(':id', $idOeuvre, PDO::PARAM_STR);
     }
 
     $reponse->execute();
 
     while ($donnees = $reponse->fetch()) {
-        $idOeuvre = $donnees['code_album'];
+        $idOeuvre = $donnees['id'];
         $codeAlbum = $donnees['code_album'];
         $titreOeuvre = $donnees['titre_oeuvre'];
         $prix = $donnees['prix'];
@@ -124,5 +124,5 @@ function chercherOeuvre($p_idOeuvre)
         $resultset[] = $p;
     }
     if (!empty($resultset))
-        return $resultset;
+        return $resultset;   
 }

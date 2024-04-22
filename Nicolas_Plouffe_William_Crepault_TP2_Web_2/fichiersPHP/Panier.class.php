@@ -1,5 +1,5 @@
 <?php
-require_once 'fichiersPHP/Oeuvre.class.php';
+
 class Panier
 {
     protected $items = array();
@@ -19,42 +19,39 @@ class Panier
         return (empty($this->items));
     }
 
-    public function addItem(Oeuvre $p_Item, $p_Quantite)
+    public function addItem(Oeuvre $p_idOeuvre, $p_Quantite)
     {
 
         if ($this->valideQte($p_Quantite) == true) {
 
-            $idOeuvre = $p_Item->getIdOeuvre();
-
+            $idOeuvre = $p_idOeuvre->getIdOeuvre();
             if (!$idOeuvre) {
                 throw new Exception("Le panier utilise l'ID du produit.");
             }
             if (isset($this->items[$idOeuvre])) {
-                $this->updateItem($p_Item, $p_Quantite);
+                $this->updateItem($p_idOeuvre, $p_Quantite);
             } else {
-                $this->items[$idOeuvre] = array('item' => $p_Item, 'qty' => $p_Quantite);
+                $this->items[$idOeuvre] = array('item' => $p_idOeuvre, 'qty' => $p_Quantite);
             }
         }
     }
 
-    public function updateItem(Oeuvre $p_Item, $p_Quantite)
+    public function updateItem(Oeuvre $p_idOeuvre, $p_Quantite)
     {
         if ($this->valideQte($p_Quantite) == true) {
 
-            $idOeuvre = $p_Item->getTitreOeuvre();
-
+            $idOeuvre = $p_idOeuvre->getIdOeuvre();
             if ($p_Quantite === 0) {
-                $this->deleteItem($p_Item);
+                $this->deleteItem($p_idOeuvre);
             } elseif (($p_Quantite > 0) && ($p_Quantite != $this->items[$idOeuvre]['qty'])) {
                 $this->items[$idOeuvre]['qty'] = $p_Quantite;
             }
         }
-    } // updateItem() 
+    }  
 
     public function deleteItem(Oeuvre $p_Item)
     {
         $idOeuvre = $p_Item->getIdOeuvre();
-
         if (isset($this->items[$idOeuvre])) {
 
             unset($this->items[$idOeuvre]);
