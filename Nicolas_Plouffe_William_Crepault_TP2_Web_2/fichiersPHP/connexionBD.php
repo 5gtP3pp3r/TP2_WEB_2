@@ -83,12 +83,21 @@ function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role)
 
         $stmt->execute();
 
+        if ($role > 5 && $role < 11) {
+            $updateSql = "UPDATE utilisateurs SET urRole = 'GERANT' WHERE id > 5 AND id < 11";
+            $updateStmt = $conn->prepare($updateSql);
+            $updateStmt->execute();
+        }
+
+        $updateStmt = $conn->prepare($updateSql);
+        $updateStmt->bindParam(':id', $idDisponible, PDO::PARAM_INT);
+        $updateStmt->execute();
+
         return true;
     } catch (PDOException $e) {
         error_log("Erreur lors de l'ajout de l'utilisateur: " . $e->getMessage());
         return false;
     }
-   
 }
 
 function chercherOeuvre($p_idOeuvre)
