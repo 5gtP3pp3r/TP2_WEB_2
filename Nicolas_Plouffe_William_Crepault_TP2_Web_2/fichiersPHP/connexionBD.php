@@ -26,7 +26,8 @@ function chercherVilles()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function chercherIdUserDispo() {
+function chercherIdUserDispo()
+{
     $conn = connexionBD();
     // Sélectionner tous les IDs utilisés entre 5 et 11
     $sql = "SELECT id FROM utilisateurs WHERE id BETWEEN 5 AND 11";
@@ -55,10 +56,39 @@ function chercherUser($motPasse, $email)
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user) {
         if (password_verify($motPasse, $user['mot_passe'])) {
-            return $user; 
+            return $user;
         }
     }
     return null;
+}
+
+function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role)
+{
+    $conn = connexionBD();
+    try {
+        if ($role > 5 && $role < 11) {
+            $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $role, PDO::PARAM_INT); // urRole BD déterminé par le ID si disponible
+        } else {
+            $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
+            $stmt = $conn->prepare($sql);
+        }
+
+        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
+        $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
+        $stmt->bindParam(':age', $age, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        error_log("Erreur lors de l'ajout de l'utilisateur: " . $e->getMessage());
+        return false;
+    }
+   
 }
 
 function chercherOeuvre($p_idOeuvre)

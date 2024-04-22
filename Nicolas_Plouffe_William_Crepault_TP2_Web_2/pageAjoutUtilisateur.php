@@ -39,10 +39,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Choix d'un rôle requis.";
     }
 
-    // Si pas d'erreurs, procéder à l'enregistrement des données
     if (count($errors) === 0) {
-        // Logique d'insertion ici
-        // rediriger l'utilisateur ou afficher un message de succès
+
+        $nom = $_POST['nomUtilisateur'];
+        $email = $_POST['email'];
+        $motPasse = $_POST['password'];
+        $motPasseHash = password_hash($motPasse, PASSWORD_DEFAULT);
+        $role = $_POST['role'];
+        $ville = $_POST['ville'];
+        $age = $_POST['age'];
+
+        $idDisponible = ($role === 'GERANT') ? $role : null;
+
+        $resultat = ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $role);
+
+        if ($resultat) {
+            $successMessage = "Utilisateur enregistré avec succès !";
+        } else {
+            $errors[] = "Erreur lors de l'enregistrement dans la base de données.";
+        }
     }
 }
 ?>
@@ -132,17 +147,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h3>Informations personnelles</h3>
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
-                            <!-- Zone de validation client-->
-                        </ul>
-                        <?php
-                        if (!empty($errors)) {
-                            echo '<ul class="validationUl">';
-                            foreach ($errors as $error) {
-                                echo '<li class="text-danger"><?php echo htmlspecialchars($error); ?></li>';
+                            <!-- Zone de validation client -->
+                            <?php
+                            if (!empty($errors)) {
+                                foreach ($errors as $error) {
+                                    echo '<li class="text-danger">' . htmlspecialchars($error) . '</li>';
+                                }
+                            } elseif (isset($successMessage)) {
+                                echo '<li class="text-success">' . htmlspecialchars($successMessage) . '</li>';
                             }
-                            echo '</ul>';
-                        }
-                        ?>
+                            ?>
+                        </ul>
                     </div>
                 </div>
             </div>
