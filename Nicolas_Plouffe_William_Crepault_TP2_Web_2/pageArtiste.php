@@ -1,4 +1,7 @@
-<?php include("heads.infos.php"); ?>
+<?php include("heads.infos.php");
+include("fichiersPHP\connexionBD.php");
+include("fichiersPHP\ajouterArtistes.php");
+?>
 
 <main>
     <h2>Ajouter un nouvel artiste</h2>
@@ -12,16 +15,15 @@
                     <h3>Tout les champs sont obligatoires</h3>
                     <form method="POST">
                         <?php
-            require_once('fichiersPHP/ajouterArtistes.php'); 
-            testConnection();
-            if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+                        testConnection();
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
 
-              injectionArtiste();
-            }
-
+                            injectionArtiste();
+                        }
 
 
-            ?>
+
+                        ?>
 
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-4">
@@ -31,10 +33,12 @@
                             <div class="form-group col-md-6 col-lg-4">
                                 <label>Ville</label>
                                 <select id="ville" class="form-control" name="ville">
+                                    <option value="0">Choix de ville</option>
                                     <?php
-                  require_once('fichiersPHP/ajouterArtistes.php');
-                 chercherVilles();
-                  ?>
+                                    echo " <h1>test</h1>";
+                                    AfficherMenuVille();
+                                    echo "<p>test2</p>";
+                                    ?>
 
                                 </select>
                             </div>
