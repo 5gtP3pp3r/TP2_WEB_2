@@ -43,4 +43,13 @@ document.addEventListener('DOMContentLoaded', function ()
             window.location.href = 'pageAjoutUtilisateur.php';
         });
     }
+
+    let retourAchat = document.getElementById('retourAchat');
+    if(retourAchat)
+    {
+        retourAchat.addEventListener('click', function() 
+        {
+            window.location.href = 'pageAchat.php';
+        });
+    }
 });
