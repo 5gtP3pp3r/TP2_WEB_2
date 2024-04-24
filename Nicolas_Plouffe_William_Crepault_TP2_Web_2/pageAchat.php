@@ -2,8 +2,8 @@
 
 include("heads.infos.php");
 require_once "fichiersPHP/connexionBD.php";
-require_once "fichiersPHP/Panier.class.php" ;
-require_once "fichiersphp/Oeuvre.class.php" ;
+require_once "fichiersPHP/Panier.class.php";
+require_once "fichiersphp/Oeuvre.class.php";
 $res = "";
 
 try {
@@ -58,7 +58,7 @@ try {
                                 <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center"><span>
                                     <b>Titre:&nbsp;</b></span><?php echo $oeuvre->getTitreOeuvre() ?></div>
                                 <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center"><span>
-                                    <b>Prix:&nbsp;</b></span><?php echo $oeuvre->getPrix() ?><span>$</span></div>
+                                    <b>Prix:&nbsp;</b></span><?php echo $oeuvre->getPrix() ?><span>.00$</span></div>
                                 <div class="col-sm-12 col-md-12 col-lg-4">
                                     <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-end">
                                         <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">
