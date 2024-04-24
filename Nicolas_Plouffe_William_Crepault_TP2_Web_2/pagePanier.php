@@ -48,7 +48,7 @@ if (!empty($_GET["action"])) {
 
                                 $items_price = $article["qty"] * $oeuvreChoisi->getPrix();
                     ?>
-                        <div class="row py-3">
+                                <div class="row py-3">
                                     <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize"></div>
                                     <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center"><span>
                                             <b>Titre:&nbsp;</b></span><?php echo $oeuvreChoisi->getTitreOeuvre() ?></div>
@@ -75,30 +75,32 @@ if (!empty($_GET["action"])) {
                             }
                         }
                             ?>
-                        </div>    
-                    </div>
+                                </div>
                 </div>
             </div>
-        <?php
+        </div>
+    <?php
                     } else {
-        ?>
-            <h3>Votre panier est vide</h3>
-        <?php }
-        ?>
-        </div>
+    ?>
+        <h3>Votre panier est vide</h3>
+    <?php }
+    ?>
+    </div>
 
-        <div class="col-sm-12 col-lg-4">
-            <div class="custom-border px-2">
-                <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
-                <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
-                    <?php
-                    echo '<button type="button" id="panier" class="styled-button"><img src="Images/retirer_panier.png" 
-                             alt="retirer_panier"> vider panier</button>'
-                    ?>
-                </div>
+    <div class="col-sm-12 col-lg-4">
+        <div class="custom-border px-2">
+            <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
+            <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
+                <?php
+                echo '<button type="button" id="panier" class="styled-button"><img src="Images/retirer_panier.png" 
+                             alt="retirer_panier"> vider panier</button>';
+                echo '<button type="button" id="retourAchat" class="styled-button">retour achat</button>';
 
+                ?>
             </div>
+
         </div>
+    </div>
     </div>
     </div>
     </div>
