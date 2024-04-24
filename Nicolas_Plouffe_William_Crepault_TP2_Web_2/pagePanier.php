@@ -49,56 +49,48 @@ if (!empty($_GET["action"])) {
                                 $items_price = $article["qty"] * $oeuvreChoisi->getPrix();
                     ?>
                                 <div class="row py-3">
-                                    <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize"></div>
+                                    <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img 
+                                         src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize"></div>
                                     <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center"><span>
                                             <b>Titre:&nbsp;</b></span><?php echo $oeuvreChoisi->getTitreOeuvre() ?></div>
                                     <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center"><span>
-                                            <b>Prix:&nbsp;</b></span><?php echo $oeuvreChoisi->getPrix() ?><span>$</span></div>
+                                            <b>Prix:&nbsp;</b></span><?php echo $oeuvreChoisi->getPrix() ?><span>.00$</span></div>
                                     <div class="col-sm-12 col-md-12 col-lg-4">
                                         <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end">
-                                            <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">
-                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier"> ajouter panier</button>
+                                            <input type="number" name="quantity" value="<?php echo $article["qty"]; ?>" class="form-control mr-2" style="width: 100px;">
+                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer panier</button>
                                         </form>
                                     </div>
-                                    <div class="d-flex flex-row align-items-center">
-                                        <h5 class="mt-1 mr-1 ml-1 text-success"><?php echo $article["qty"]; ?></h5>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-primary"><?php echo "$ " . $oeuvreChoisi->getPrix(); ?></h5>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-primary"><?php echo "$ " . number_format($items_price, 2); ?></h5>
-                                    </div>
                             <?php
-                                $total_quantity += $article["qty"];
-                                $total_price += ($article["qty"] * $oeuvreChoisi->getPrix());
+                             $total_quantity += $article["qty"];
+                             $total_price += ($article["qty"] * $oeuvreChoisi->getPrix());
                             }
+                           
                         }
+                        
                             ?>
+                            <div>
+                                <h5 class="text-primary"><?php echo "Total achat: " . number_format($items_price, 2) . "$"; ?></h5>
+                            </div>
+                            <?php  ?>
                                 </div>
                 </div>
             </div>
         </div>
-    <?php
-                    } else {
-    ?>
+    <?php } else { ?>
         <h3>Votre panier est vide</h3>
-    <?php }
-    ?>
+    <?php } ?>
     </div>
-
     <div class="col-sm-12 col-lg-4">
         <div class="custom-border px-2">
             <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
             <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
                 <?php
                 echo '<button type="button" id="panier" class="styled-button"><img src="Images/retirer_panier.png" 
-                             alt="retirer_panier"> vider panier</button>';
-                echo '<button type="button" id="retourAchat" class="styled-button">retour achat</button>';
-
+                             alt="retirer_panier"> Vider panier</button>';
+                echo '<button type="button" id="retourAchat" class="styled-button">Retour achat</button>';
                 ?>
             </div>
-
         </div>
     </div>
     </div>
