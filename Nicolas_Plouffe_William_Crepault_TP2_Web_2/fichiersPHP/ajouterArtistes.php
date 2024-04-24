@@ -35,6 +35,9 @@ function validerDesChamps()
     }
 }
 
+
+// Modified $SELECTION_PLACEHOLDER$ code
+/*
 function GestionMenuVille()
 {
     require_once('connexionBD.php');
@@ -53,6 +56,8 @@ function GestionMenuVille()
     $pdo = null; // Fermeture de la connexion
 
 }
+*/
+
 
 function injectionArtiste()
 {
