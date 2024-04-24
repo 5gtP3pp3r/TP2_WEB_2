@@ -60,6 +60,7 @@ function injectionArtiste()
 {
 
     $conn = connexionBD();
+    try{
     $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) VALUES (:nomArtiste, :photoArtiste, :ville )";
 
     $stmt = $conn->prepare($sql); // Préparation de la requête
@@ -70,7 +71,11 @@ function injectionArtiste()
 
     $stmt->execute();
     $conn = null; // Fermeture de la connexion
-
+    }catch(PDOException $e)
+    {
+        error_log("erreur ajout artiste: " . $e->getMessage());
+        return false;
+    }
 
 }
 
