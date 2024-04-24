@@ -33,7 +33,7 @@
                                 <select id="ville" class="form-control" name="ville">
                                     <?php
                   require_once('fichiersPHP/ajouterArtistes.php');
-                  GestionMenuVille();
+                 chercherVilles();
                   ?>
 
                                 </select>
