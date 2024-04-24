@@ -1,8 +1,5 @@
 <?php
 
-require_once('connexionBD.php');
-
-
 function validerChampsNom()
 {
     $regexNom = "/^[a-zàâçéèêëîïôûùüÿñæœ0-9 .'-]*$/i";
@@ -37,10 +34,10 @@ function validerDesChamps()
 
 
 // Modified $SELECTION_PLACEHOLDER$ code
-/*
-function GestionMenuVille()
+
+function AfficherMenuVille()
 {
-    require_once('connexionBD.php');
+    require_once("connexionBD.php");
 
     $pdo = connexionBD(); // Connexion à la base de données
 
@@ -56,7 +53,7 @@ function GestionMenuVille()
     $pdo = null; // Fermeture de la connexion
 
 }
-*/
+
 
 
 function injectionArtiste()
