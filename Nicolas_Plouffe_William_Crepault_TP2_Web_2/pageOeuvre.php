@@ -7,7 +7,7 @@
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Les champs avec <span class="red"><b>*</b></span> sont obligatoires</h3>
                     <form action="submit">
@@ -75,7 +75,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Informations sur l'oeuvre</h3>
                     <div class="validationList" id="resultList">

@@ -20,8 +20,6 @@ if (!empty($_GET["action"])) {
                 } else {
                     echo "ID de l'œuvre non spécifié.";
                 }
-
-                var_dump($oeuvre);
                 $monPanier->deleteItem($oeuvre);
 
                 if ($monPanier->isEmpty())
@@ -42,7 +40,7 @@ if (!empty($_GET["action"])) {
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-12 col-lg-8">
+            <div class="col-sm-12 mb-3 col-lg-8">
                 <div class="custom-border px-2">
                     <h3>Mes Articles:</h3>
                     <?php
@@ -87,15 +85,17 @@ if (!empty($_GET["action"])) {
             <?php } ?>                     
                 </div>
             </div>                        
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 mb-3 col-lg-4">
                 <div class="custom-border px-2">
                     <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
-                    <div class="col-sm-12 d-flex justify-content-center px-4 py-2">    
-                    <form action="pagePanier.php?action=empty" method="post" class="d-flex justify-content-center ">                    
-                        <button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
-                             alt="retirer_panier"> Vider panier</button>
-                         <button type="button" id="retourAchat" class="styled-button">Retour achat</button>  
-                    </form>                      
+                    <div class="ulBtn">
+                        <form action="pagePanier.php?action=empty" method="post">
+                        <ul class="bntListe">
+                            <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
+                                        alt="retirer_panier"> Vider panier</button></li>
+                            <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button>  </li>
+                        </ul>
+                        </form> 
                     </div>
                 </div>
             </div>
