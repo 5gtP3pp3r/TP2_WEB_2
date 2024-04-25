@@ -11,7 +11,20 @@ if (!empty($_GET["action"])) {
             if (!empty($_SESSION["cart_item"])) {
                 $monPanier = unserialize($_SESSION['cart_item']);
                 // echo (" supprimer item code ".$_GET["code"]);
-                $oeuvre = getProductsByCode($_GET["code"])[0];
+                //$oeuvre = getProductsByCode($_GET["code"])[0];
+
+                if (isset($_GET['id_oeuvre'])) {
+                    $oeuvre = chercherOeuvre($_GET["id_oeuvre"])[0];
+                    $monPanier->deleteItem($oeuvre);
+                    if ($monPanier->isEmpty())
+                        unset($_SESSION["cart_item"]);
+                    else
+                        $_SESSION['cart_item'] = serialize($monPanier);
+                } else {
+                    echo "ID de l'œuvre non spécifié.";
+                }
+
+                var_dump($oeuvre);
                 $monPanier->deleteItem($oeuvre);
 
                 if ($monPanier->isEmpty())
@@ -43,59 +56,54 @@ if (!empty($_GET["action"])) {
                         if (!empty($_SESSION["cart_item"])) {
                             $monPanier = unserialize($_SESSION['cart_item']);
                             $listItems = $monPanier->getItems();
+                            $total_quantite = 0;
+                            $total_prix = 0;  
                             foreach ($listItems as $article) {
                                 $oeuvreChoisi = $article["item"];
-
-                                $items_price = $article["qty"] * $oeuvreChoisi->getPrix();
-                    ?>
-                                <div class="row py-3">
-                                    <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img 
-                                         src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize"></div>
-                                    <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center"><span>
-                                            <b>Titre:&nbsp;</b></span><?php echo $oeuvreChoisi->getTitreOeuvre() ?></div>
-                                    <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center"><span>
-                                            <b>Prix:&nbsp;</b></span><?php echo $oeuvreChoisi->getPrix() ?><span>.00$</span></div>
-                                    <div class="col-sm-12 col-md-12 col-lg-4">
-                                        <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end">
-                                            <input type="number" name="quantity" value="<?php echo $article["qty"]; ?>" class="form-control mr-2" style="width: 100px;">
-                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer panier</button>
+                                $items_prix = $article["qty"] * $oeuvreChoisi->getPrix();  
+                                $total_quantite += $article["qty"];
+                                $total_prix += $items_prix;
+                                ?>
+                                <div class="row py-2">
+                                    <div class="col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
+                                        <img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize">
+                                    </div>
+                                    <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
+                                        <p><b>Titre:&nbsp;</b><?php echo $oeuvreChoisi->getTitreOeuvre(); ?></p>
+                                    </div>
+                                    <div class="col-md-4 col-lg-2 d-flex justify-content-center px-0">
+                                        <p><b>Prix:&nbsp;</b><?php echo $oeuvreChoisi->getPrix() ?>.00$</p>
+                                    </div>
+                                    <div class="col-md-12 col-lg-4 px-2">
+                                    <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
+                                        <p>Quantité: <?php echo $article["qty"]; ?></p>
+                                        <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier">Retirer panier</button>
                                         </form>
                                     </div>
-                            <?php
-                             $total_quantity += $article["qty"];
-                             $total_price += ($article["qty"] * $oeuvreChoisi->getPrix());
-                            }
-                           
-                        }
-                        
-                            ?>
-                            <div>
-                                <h5 class="text-primary"><?php echo "Total achat: " . number_format($items_price, 2) . "$"; ?></h5>
-                            </div>
-                            <?php  ?>
                                 </div>
+                                <?php } } ?>
+                    <div>
+                        <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
+                    </div>   
+                    <?php } else { ?>
+                <div><h3>Votre panier est vide</h3></div>
+            <?php } ?>                     
+                </div>
+            </div>                        
+            <div class="col-sm-12 col-lg-4">
+                <div class="custom-border px-2">
+                    <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
+                    <div class="col-sm-12 d-flex justify-content-center px-4 py-2">    
+                    <form action="pagePanier.php?action=empty" method="post" class="d-flex justify-content-center ">                    
+                        <button type="button" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
+                             alt="retirer_panier"> Vider panier</button>
+                         <button type="button" id="retourAchat" class="styled-button">Retour achat</button>  
+                    </form>                      
+                    </div>
                 </div>
             </div>
         </div>
-    <?php } else { ?>
-        <h3>Votre panier est vide</h3>
-    <?php } ?>
-    </div>
-    <div class="col-sm-12 col-lg-4">
-        <div class="custom-border px-2">
-            <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
-            <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
-                <?php
-                echo '<button type="button" id="panier" class="styled-button"><img src="Images/retirer_panier.png" 
-                             alt="retirer_panier"> Vider panier</button>';
-                echo '<button type="button" id="retourAchat" class="styled-button">Retour achat</button>';
-                ?>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+    </div>   
 </main>
 
 

@@ -12,16 +12,16 @@ try {
         
         switch ($_GET["action"]) {
             case "add":
-                if (!empty($_POST["quantity"])) {
+                if (!empty($_POST["quantite"])) {
                     
                     $item = chercherOeuvre($_GET["id_oeuvre"])[0];
                     if (isset($_SESSION["cart_item"]) && !empty($_SESSION["cart_item"])) {
                         $monpanier = unserialize($_SESSION["cart_item"]);
-                        $monpanier->addItem($item, $_POST["quantity"]);
+                        $monpanier->addItem($item, $_POST["quantite"]);
                         $_SESSION['cart_item'] = serialize($monpanier);
                     } else {
                         $monpanier = new Panier();
-                        $monpanier->addItem($item, $_POST["quantity"]);
+                        $monpanier->addItem($item, $_POST["quantite"]);
                         $_SESSION['cart_item'] = serialize($monpanier);
                     }
                 }
@@ -52,20 +52,23 @@ try {
                         if (!empty($product_array)) {
                             foreach ($product_array as $oeuvre) {
                         ?>
-                            <div class="row py-3">
-                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center d-flex justify-content-center"><img 
-                                    src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize"></div>
-                                <div class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center"><span>
-                                    <b>Titre:&nbsp;</b></span><?php echo $oeuvre->getTitreOeuvre() ?></div>
-                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex align-items-center"><span>
-                                    <b>Prix:&nbsp;</b></span><?php echo $oeuvre->getPrix() ?><span>.00$</span></div>
-                                <div class="col-sm-12 col-md-12 col-lg-4">
-                                    <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-end">
-                                        <input type="number" name="quantity" value="1" min="1" max="10" class="form-control mr-2" style="width: 100px;">
-                                        <button type="submit" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
-                                    </form>
+                            <div class="row py-2 align-items-center">
+                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center">
+                                    <img src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize">
                                 </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center">
+                                    <p><b>Titre:&nbsp;</b><?php echo $oeuvre->getTitreOeuvre() ?></p>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center px-0">
+                                    <p><b>Prix:&nbsp;</b><?php echo $oeuvre->getPrix() ?>.00$</p>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-between">
+                                <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
+                                    <input type="number" name="quantite" value="1" min="1" max="10" class="form-control" style="width: 75px; margin-right: 25px;">
+                                    <button type="submit" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
+                                </form>
                             </div>
+                        </div>
                         <?php }} ?>
                     </div>
                 </div>
@@ -88,13 +91,12 @@ try {
                             }
                         } else
                             echo '<button type="button" id="panier" class="styled-button"><img src="Images/panier.png" 
-                        alt="panier">&nbsp;&nbsp; article</button>';
+                            alt="panier">&nbsp;&nbsp; article</button>';
                         ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+    </div>    
 </main>
 <?php include("foots.infos.php"); ?>
