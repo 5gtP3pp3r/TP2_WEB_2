@@ -59,41 +59,6 @@ function chercherUser($motPasse, $email)
     return null;
 }
 
-function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
-{
-    $conn = connexionBD();
-    try {
-        if ($roleId > 5 && $roleId < 11) {
-            $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $roleId, PDO::PARAM_INT); // urRole BD déterminé par le ID si disponible
-        } 
-        elseif ($roleId == 1) {
-            $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
-            $stmt = $conn->prepare($sql);
-        }
-
-        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
-        $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
-        $stmt->bindParam(':age', $age, PDO::PARAM_INT);
-
-        $stmt->execute();
-
-        if ($roleId > 5 && $roleId < 11) {
-            $updateSql = "UPDATE utilisateurs SET urRole = 'GERANT' WHERE id > 5 AND id < 11";
-            $updateStmt = $conn->prepare($updateSql);
-            $updateStmt->execute();
-        }
-
-        return true;
-    } catch (PDOException $e) {
-        error_log("Erreur lors de l'ajout de l'utilisateur: " . $e->getMessage());
-        return false;
-    }
-}
-
 function chercherOeuvre($idOeuvre)
 {
     $conn = connexionBD();
@@ -126,3 +91,54 @@ function chercherOeuvre($idOeuvre)
     if (!empty($resultset))
         return $resultset;   
 }
+
+function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
+{
+    $conn = connexionBD();
+    try {
+        if ($roleId > 5 && $roleId < 11) {
+            $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $roleId, PDO::PARAM_INT); 
+            // urRole GERANT déterminé par le ID si disponible
+        } 
+        elseif ($roleId == 1) {
+            $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
+            $stmt = $conn->prepare($sql);
+        }
+
+        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
+        $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
+        $stmt->bindParam(':age', $age, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        if ($roleId > 5 && $roleId < 11) {
+            $updateSql = "UPDATE utilisateurs SET urRole = 'GERANT' WHERE id > 5 AND id < 11";
+            $updateStmt = $conn->prepare($updateSql);
+            $updateStmt->execute();
+        }
+
+        return true;
+    } catch (PDOException $e) {
+        error_log("Erreur lors de l'ajout de l'utilisateur: " . $e->getMessage());
+        return false;
+    }
+}
+
+function ajouterCommande()
+{
+    $conn = connexionBD();
+    try {
+
+    }
+    catch (PDOException $e) {
+        error_log("Erreur lors de l'ajout de commande: " . $e->getMessage());
+        return false;
+    }
+    // à construire   insert dans commandes: id, id_utilisateur, date_commande, etat_commande
+    //                insert dabs ligne_commandes: id, id_oeuvre, Quantite
+}
+
