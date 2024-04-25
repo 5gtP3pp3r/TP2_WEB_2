@@ -66,7 +66,7 @@ if (!empty($_GET["action"])) {
                                 ?>
                                 <div class="row py-2">
                                     <div class="col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
-                                        <img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize">
+                                        <img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize img-fluid rounded">
                                     </div>
                                     <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
                                         <p><b>Titre:&nbsp;</b><?php echo $oeuvreChoisi->getTitreOeuvre(); ?></p>
@@ -76,7 +76,7 @@ if (!empty($_GET["action"])) {
                                     </div>
                                     <div class="col-md-12 col-lg-4 px-2">
                                     <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
-                                        <p>Quantité: <?php echo $article["qty"]; ?></p>
+                                        <p><b>Quantité: </b><?php echo $article["qty"]; ?></p>
                                         <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier">Retirer panier</button>
                                         </form>
                                     </div>

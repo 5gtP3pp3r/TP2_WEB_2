@@ -54,7 +54,7 @@ try {
                         ?>
                             <div class="row py-2 align-items-center">
                                 <div class="col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center">
-                                    <img src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize">
+                                    <img src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize img-fluid rounded">
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center">
                                     <p><b>Titre:&nbsp;</b><?php echo $oeuvre->getTitreOeuvre() ?></p>
