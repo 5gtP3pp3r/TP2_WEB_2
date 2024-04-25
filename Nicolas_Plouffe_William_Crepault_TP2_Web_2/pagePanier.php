@@ -95,7 +95,7 @@ if (!empty($_GET["action"])) {
                     <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
                     <div class="col-sm-12 d-flex justify-content-center px-4 py-2">    
                     <form action="pagePanier.php?action=empty" method="post" class="d-flex justify-content-center ">                    
-                        <button type="button" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
+                        <button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
                              alt="retirer_panier"> Vider panier</button>
                          <button type="button" id="retourAchat" class="styled-button">Retour achat</button>  
                     </form>                      
