@@ -3,7 +3,7 @@
 include("heads.infos.php");
 require_once "fichiersPHP/connexionBD.php";
 require_once "fichiersPHP/Panier.class.php";
-require_once "fichiersphp/Oeuvre.class.php";
+
 $res = "";
 
 try {

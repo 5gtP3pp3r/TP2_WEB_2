@@ -3,15 +3,12 @@ include("heads.infos.php");
 require_once "fichiersPHP/connexionBD.php";
 require_once "fichiersPHP/Panier.class.php";
 
-
-
 if (!empty($_GET["action"])) {
     switch ($_GET["action"]) {
         case "remove":
             if (!empty($_SESSION["cart_item"])) {
                 $monPanier = unserialize($_SESSION['cart_item']);
-                // echo (" supprimer item code ".$_GET["code"]);
-                //$oeuvre = getProductsByCode($_GET["code"])[0];
+
 
                 if (isset($_GET['id_oeuvre'])) {
                     $oeuvre = chercherOeuvre($_GET["id_oeuvre"])[0];
@@ -84,7 +81,7 @@ if (!empty($_GET["action"])) {
                                 <?php } } ?>
                     <div>
                         <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
-                    </div>   
+                        </div>   
                     <?php } else { ?>
                 <div><h3>Votre panier est vide</h3></div>
             <?php } ?>                     
