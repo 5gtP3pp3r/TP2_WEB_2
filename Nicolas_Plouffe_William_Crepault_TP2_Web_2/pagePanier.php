@@ -53,11 +53,13 @@ if (!empty($_GET["action"])) {
                             $listItems = $monPanier->getItems();
                             $total_quantite = 0;
                             $total_prix = 0;  
+                        
                             foreach ($listItems as $article) {
                                 $oeuvreChoisi = $article["item"];
                                 $items_prix = $article["qty"] * $oeuvreChoisi->getPrix();  
                                 $total_quantite += $article["qty"];
                                 $total_prix += $items_prix;
+
                                 ?>
                                 <div class="row py-2">
                                     <div class="col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
@@ -79,11 +81,12 @@ if (!empty($_GET["action"])) {
                                 <?php } } ?>
                     <div>
                         <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
+                        <button class="styled-button">Passer la commande</button>
                         </div>   
                     <?php } else { ?>
                 <div><h3>Votre panier est vide</h3></div>
-            <?php } ?>                     
-                </div>
+            <?php }var_dump($monPanier); /* temp placé ici */ajouterCommande($monPanier); ?>                     
+                </div>  
             </div>                        
             <div class="col-sm-12 mb-3 col-lg-4">
                 <div class="custom-border px-2">

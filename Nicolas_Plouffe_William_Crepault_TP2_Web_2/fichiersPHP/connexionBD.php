@@ -128,8 +128,22 @@ function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
     }
 }
 
-function ajouterCommande()
+function ajouterCommande($monPanier)
 {
+    require_once "Panier.class.php";
+    $oeuvreComms = $monPanier->getItems();
+    $ligneCommande = [];
+
+    foreach ($oeuvreComms as $oeuvreComm){
+        $idOeuvre = $oeuvreComm['item']->getIdOeuvre();
+
+        $ligneCommande[] = [
+            'id_oeuvre' => $idOeuvre,
+            'Quantite' => $oeuvreComm['qty']
+        ];
+        var_dump($ligneCommande);
+    }
+
     $conn = connexionBD();
     try {
 
