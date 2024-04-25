@@ -30,3 +30,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 $albums = array_values($albums);
 
 echo json_encode(['albums' => $albums]);
+
+/* Je ne voulais pas refaire l'affichage des albums au complet.
+J'ai cherché sur le net si je pouvais convertir les données de
+la bd en json pour réutiliser mon script "jsonList.js.*/
