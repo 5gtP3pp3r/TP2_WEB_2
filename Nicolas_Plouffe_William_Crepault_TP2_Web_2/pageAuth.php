@@ -40,7 +40,7 @@ include("heads.infos.php");
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -62,7 +62,7 @@ include("heads.infos.php");
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Informations personnelles</h3>
                     <div class="validationList" id="resultList">

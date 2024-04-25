@@ -43,7 +43,7 @@ try {
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-12 col-lg-8">
+            <div class="col-sm-12 mb-3 col-lg-8">
                 <div class="custom-border px-2">
                     <h3>Oeuvres disponibles:</h3>
                     <div>
@@ -73,7 +73,7 @@ try {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 mb-3 col-lg-4">
                 <div class="custom-border px-2">
                     <h3 id="menu">Voir mon panier:</h3>
                     <div class="col-sm-12 d-flex justify-content-center px-4 py-2">

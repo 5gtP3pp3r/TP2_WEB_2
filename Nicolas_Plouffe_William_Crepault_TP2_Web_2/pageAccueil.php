@@ -7,7 +7,7 @@
       <?php include("boutonsConDecon.infos.php"); ?>
     </div>
     <div class="row py-4">
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 mb-3 col-lg-6">
         <div class="custom-border px-2">
           <h3>Informations</h3>
           <?php
@@ -44,7 +44,7 @@
           <p> Bonne navigation!</p>
         </div>
       </div>
-      <div class="col-sm-12 col-lg-6">
+      <div class="col-sm-12 mb-3 col-lg-6">
         <div class="custom-border px-2">
           <h3 id="menu">Faites votre sélection</h3>
           <div class="ulBtn">

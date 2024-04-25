@@ -43,8 +43,10 @@ class Panier
             $idOeuvre = $p_idOeuvre->getIdOeuvre();
             if ($p_Quantite === 0) {
                 $this->deleteItem($p_idOeuvre);
-            } elseif (($p_Quantite > 0) && ($p_Quantite != $this->items[$idOeuvre]['qty'])) {
-                $this->items[$idOeuvre]['qty'] = $p_Quantite;
+            } elseif ($p_Quantite > 0) {
+                $this->items[$idOeuvre]['qty'] += $p_Quantite;
+                // ajoute au panier à chaque clique je ne veux pas 
+                // "écraser" la quantité, mais l'ajouter au panier.
             }
         }
     }  

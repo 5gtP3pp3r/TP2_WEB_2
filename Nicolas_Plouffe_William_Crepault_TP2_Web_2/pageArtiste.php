@@ -10,7 +10,7 @@ include("fichiersPHP\ajouterArtistes.php");
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
                     <form method="POST">
@@ -58,7 +58,7 @@ include("fichiersPHP\ajouterArtistes.php");
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6">
+            <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Informations sur l'auteur</h3>
                     <div class="validationList" id="resultList">
