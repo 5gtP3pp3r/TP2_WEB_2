@@ -134,7 +134,8 @@ function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 
 function ajouterCommande($monPanier)
 {
-    
+    echo "*****MONPANIER*****";
+    var_dump($monPanier);
     $conn = connexionBD();
     $utilisateur = unserialize($_SESSION['user']);
     $idUtil = $utilisateur->getId();    
@@ -150,8 +151,10 @@ function ajouterCommande($monPanier)
         $reponse->execute();
     
         $idCommande = $conn->lastInsertId();
-        echo "****".$idCommande."****";
+        echo "****ID COMMANDE ".$idCommande."****";
         $oeuvreComms = $monPanier->getItems();
+        var_dump($oeuvreComms);
+        echo "-------ID ET QUANTITE---------";
         $ligneCommande = [];
 
         foreach ($oeuvreComms as $oeuvreComm){
