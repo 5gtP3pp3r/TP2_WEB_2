@@ -52,15 +52,15 @@ if (!empty($_GET["action"])) {
                             $monPanier = unserialize($_SESSION['cart_item']);
                             $listItems = $monPanier->getItems();
                             $total_quantite = 0;
-                            $total_prix = 0;  
-                        
+                            $total_prix = 0;
+
                             foreach ($listItems as $article) {
                                 $oeuvreChoisi = $article["item"];
-                                $items_prix = $article["qty"] * $oeuvreChoisi->getPrix();  
+                                $items_prix = $article["qty"] * $oeuvreChoisi->getPrix();
                                 $total_quantite += $article["qty"];
                                 $total_prix += $items_prix;
 
-                                ?>
+                    ?>
                                 <div class="row py-2">
                                     <div class="col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
                                         <img src="Images/<?php echo $oeuvreChoisi->getAlbumImg() ?>" alt="<?php echo $oeuvreChoisi->getAlbumImg() ?>" class="resize img-fluid rounded">
@@ -72,38 +72,45 @@ if (!empty($_GET["action"])) {
                                         <p><b>Prix:&nbsp;</b><?php echo $oeuvreChoisi->getPrix() ?>.00$</p>
                                     </div>
                                     <div class="col-md-12 col-lg-4 px-2">
-                                    <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
-                                        <p><b>Quantité: </b><?php echo $article["qty"]; ?></p>
-                                        <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier">Retirer panier</button>
+                                        <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
+                                            <p><b>Quantité: </b><?php echo $article["qty"]; ?></p>
+                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier">Retirer panier</button>
                                         </form>
                                     </div>
                                 </div>
-                                <?php } } ?>
-                    <div>
-                        <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
-                        <button class="styled-button">Passer la commande</button>
-                        </div>   
+                        <?php }
+                        } ?>
+                        <div>
+                            <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
+                            <form action="pagePanier.php?ajouterCommande" method="post">
+                                <input type="hidden" name="action" value="ajouterCommande">
+                                <button type="submit" class="styled-button">Passer la commande</button>
+                            </form>
+                        </div>
                     <?php } else { ?>
-                <div><h3>Votre panier est vide</h3></div>
-            <?php }var_dump($monPanier); /* temp placé ici */ajouterCommande($monPanier); ?>                     
-                </div>  
-            </div>                        
+                        <div>
+                            <h3>Votre panier est vide</h3>
+                        </div>
+                    <?php }if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'ajouterCommande'){
+    ajouterCommande($monPanier);
+} ?>
+                </div>
+            </div>
             <div class="col-sm-12 mb-3 col-lg-4">
                 <div class="custom-border px-2">
                     <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
                     <div class="ulBtn">
                         <form action="pagePanier.php?action=empty" method="post">
-                        <ul class="bntListe">
-                            <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" 
-                                        alt="retirer_panier"> Vider panier</button></li>
-                            <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button>  </li>
-                        </ul>
-                        </form> 
+                            <ul class="bntListe">
+                                <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer_panier"> Vider panier</button></li>
+                                <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button> </li>
+                            </ul>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 </main>
 
 
