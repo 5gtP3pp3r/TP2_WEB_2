@@ -23,7 +23,10 @@ function validationArtiste(event) {
   listResult.classList.remove("red");
   let isValid = true;
 
-  if (nomArtiste.value.trim() == EMPTY) {
+  if (
+    nomArtiste.value.trim() == EMPTY ||
+    !regexNomArtiste.test(nomArtiste.value)
+  ) {
     errorList += "<li><p>Veuillez entrez un nom d'artiste valide</p></li>";
     isValid = false;
   }
