@@ -22,9 +22,7 @@
         switch ($pageNom)
         {
             case 'pageAjoutUtilisateur':
-                return '<script src="java_script/validationAuth.js"></script>';
-            case 'pageAuth':
-                return '<script src="java_script/validationAuth.js"></script>';
+                return '<script src="java_script/validationUtilisateur.js"></script>';
             case 'pageAcceuil':
                 return '<script src="java_script/highlightBtn.js"></script>';
             case 'pageListeAlbums':
