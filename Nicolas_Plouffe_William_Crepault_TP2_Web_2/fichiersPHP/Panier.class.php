@@ -1,5 +1,5 @@
 <?php
-require_once "fichiersPHP/Oeuvre.class.php";
+require_once "Oeuvre.class.php";
 class Panier
 {
     protected $items = array();

@@ -1,4 +1,6 @@
 <?php
+require_once "Panier.class.php";
+require_once "Utilisateur.class.php";
 
 function connexionBD()
 {
@@ -18,8 +20,8 @@ function connexionBD()
 function chercherVilles()
 {
     $conn = connexionBD();
-    $sql = "SELECT id, nom_ville FROM villes";
-    $stmt = $conn->prepare($sql);
+    $reqSql = "SELECT id, nom_ville FROM villes";
+    $stmt = $conn->prepare($reqSql);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,8 +30,8 @@ function chercherVilles()
 function chercherIdUserDispo()
 {
     $conn = connexionBD();
-    $sql = "SELECT id FROM utilisateurs WHERE id BETWEEN 5 AND 11";
-    $stmt = $conn->prepare($sql);
+    $reqSql = "SELECT id FROM utilisateurs WHERE id BETWEEN 5 AND 11";
+    $stmt = $conn->prepare($reqSql);
     $stmt->execute();
     $idsUtilises = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
 
@@ -42,18 +44,18 @@ function chercherIdUserDispo()
     return $idsDisponibles;
 }
 
-function chercherUser($motPasse, $email)
+function chercherUtil($motPasse, $email)
 {
     $conn = connexionBD();
-    $sql = "SELECT * FROM utilisateurs WHERE courriel = :email";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->execute();
+    $reqSql = "SELECT * FROM utilisateurs WHERE courriel = :email";
+    $reponse = $conn->prepare($reqSql);
+    $reponse->bindParam(':email', $email, PDO::PARAM_STR);
+    $reponse->execute();
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user) {
-        if (password_verify($motPasse, $user['mot_passe'])) {
-            return $user;
+    $utilisateur = $reponse->fetch(PDO::FETCH_ASSOC);
+    if ($utilisateur) {
+        if (password_verify($motPasse, $utilisateur['mot_passe'])) {
+            return $utilisateur;
         }
     }
     return null;
@@ -65,16 +67,16 @@ function chercherOeuvre($idOeuvre)
     $resultset = [];
 
     if ($idOeuvre == "-1") {
-        $reqsql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
+        $reqSql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, oeuvres.prix FROM oeuvres
                    INNER JOIN albums ON oeuvres.id_album = albums.id";
-        $reponse = $conn->prepare($reqsql);
+        $reponse = $conn->prepare($reqSql);
     } else {
-        $reqsql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, prix FROM oeuvres
+        $reqSql = "SELECT oeuvres.id, pht_couvt, oeuvres.titre_oeuvre, prix FROM oeuvres
                    INNER JOIN albums ON  albums.id = oeuvres.id_album
                    WHERE oeuvres.id = :id
                    ORDER BY oeuvres.id";
-        $reponse = $conn->prepare($reqsql);
-        $reponse->bindParam(':id', $idOeuvre, PDO::PARAM_STR);
+        $reponse = $conn->prepare($reqSql);
+        $reponse->bindParam(':id', $idOeuvre, PDO::PARAM_INT);
     }
 
     $reponse->execute();
@@ -84,36 +86,37 @@ function chercherOeuvre($idOeuvre)
         $AlbumImg = $donnees['pht_couvt'];
         $titreOeuvre = $donnees['titre_oeuvre'];
         $prix = $donnees['prix'];
-        $p = new Oeuvre($idOeuvre, $AlbumImg, $titreOeuvre, $prix);
+        $oeuvre = new Oeuvre($idOeuvre, $AlbumImg, $titreOeuvre, $prix);
 
-        $resultset[] = $p;
+        $resultset[] = $oeuvre;
     }
     if (!empty($resultset))
         return $resultset;   
 }
 
-function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
+function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 {
     $conn = connexionBD();
     try {
-        if ($roleId > 5 && $roleId < 11) {
-            $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $roleId, PDO::PARAM_INT); 
-            // urRole GERANT déterminé par le ID si disponible
+        if ($roleId >= 6 && $roleId <= 10) {
+            $reqSql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) 
+                       VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
+            $reponse = $conn->prepare($reqSql);
+            $reponse->bindParam(':id', $roleId, PDO::PARAM_INT);
         } 
         elseif ($roleId == 1) {
-            $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
-            $stmt = $conn->prepare($sql);
+            $reqSql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) 
+                       VALUES (:nom, :email, :motPasseHash, :ville, :age)";
+            $reponse = $conn->prepare($reqSql);
         }
-
-        $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
-        $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
-        $stmt->bindParam(':age', $age, PDO::PARAM_INT);
-
-        $stmt->execute();
+      
+        $reponse->bindParam(':nom', $nom, PDO::PARAM_STR);
+        $reponse->bindParam(':email', $email, PDO::PARAM_STR);
+        $reponse->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
+        $reponse->bindParam(':ville', $ville, PDO::PARAM_INT);
+        $reponse->bindParam(':age', $age, PDO::PARAM_INT);
+        
+        $reponse->execute();
 
         if ($roleId > 5 && $roleId < 11) {
             $updateSql = "UPDATE utilisateurs SET urRole = 'GERANT' WHERE id > 5 AND id < 11";
@@ -128,31 +131,54 @@ function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
     }
 }
 
+
 function ajouterCommande($monPanier)
 {
-    require_once "Panier.class.php";
-    $oeuvreComms = $monPanier->getItems();
-    $ligneCommande = [];
-
-    foreach ($oeuvreComms as $oeuvreComm){
-        $idOeuvre = $oeuvreComm['item']->getIdOeuvre();
-
-        $ligneCommande[] = [
-            'id_oeuvre' => $idOeuvre,
-            'Quantite' => $oeuvreComm['qty']
-        ];
-        var_dump($ligneCommande);
-    }
-
     $conn = connexionBD();
-    try {
+    $utilisateur = unserialize($_SESSION['user']);
+    $idUtil = $utilisateur->getId();    
+    $dateCommande = date("Y-m-d H:i:s");
 
+    try {
+        $reqSql = "INSERT INTO commandes (id_utilisateur, date_commande)
+                   VALUES (:id_utilisateur, :dateCommande)";
+        $reponse = $conn->prepare($reqSql);
+        $reponse->bindParam(':id_utilisateur', $idUtil, PDO::PARAM_INT);
+        $reponse->bindParam(':dateCommande', $dateCommande, PDO::PARAM_STR);
+
+        $reponse->execute();
+    
+        $idCommande = $conn->lastInsertId();
+        $oeuvreComms = $monPanier->getItems();
+
+        $ligneCommande = [];
+
+        foreach ($oeuvreComms as $oeuvreComm){
+            $idOeuvre = $oeuvreComm['item']->getIdOeuvre();
+        
+            $ligneCommande[] = [
+                'id_oeuvre' => $idOeuvre,
+                'quantite' => $oeuvreComm['qty']
+            ];        
+        }   
+        foreach ($ligneCommande as $commande){
+            $idOeuvre = $commande['id_oeuvre'];
+            $quantite = $commande['quantite'];
+
+            $reqSql = "INSERT INTO ligne_commandes (id_commande, id_oeuvre, Quantite)
+                       VALUES (:id_commande, :id_oeuvre, :quantite)";
+            $reponse = $conn->prepare($reqSql);
+            $reponse->bindParam(':id_commande', $idCommande, PDO::PARAM_INT);
+            $reponse->bindParam(':id_oeuvre', $idOeuvre, PDO::PARAM_INT);
+            $reponse->bindParam(':quantite', $quantite, PDO::PARAM_INT);
+
+            $reponse->execute();
+        }
+        return true;
     }
     catch (PDOException $e) {
         error_log("Erreur lors de l'ajout de commande: " . $e->getMessage());
         return false;
     }
-    // à construire   insert dans commandes: id, id_utilisateur, date_commande, etat_commande
-    //                insert dabs ligne_commandes: id, id_oeuvre, Quantite
 }
-
+  

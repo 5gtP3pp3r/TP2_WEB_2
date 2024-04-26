@@ -1,5 +1,5 @@
 <?php
-class Oeuvre
+class Utilisateur
 {
   //Atributs
   private $m_Id;
@@ -36,7 +36,7 @@ class Oeuvre
   }
   public function setNom($p_Nom)
   {
-    $this->m_Nom = $p_Nom;
+    $this->m_Nom = $p_Nom;   
   }
 
   public function getEmail()
@@ -45,7 +45,7 @@ class Oeuvre
   }
   public function setEmail($p_Email)
   {
-    $this->m_Email = $p_Email;
+    $this->m_Email = $p_Email;    
   }
 
   public function getMotPasse()
@@ -54,7 +54,7 @@ class Oeuvre
   }
   public function setMotPasse($p_MotPasse)
   {
-    $this->m_MotPasse = $p_MotPasse;
+    $this->m_MotPasse = $p_MotPasse;    
   }
 
   public function getVille()
@@ -63,7 +63,7 @@ class Oeuvre
   }
   public function setVille($p_Ville)
   {
-    $this->m_Ville = $p_Ville;
+    $this->m_Ville = $p_Ville;        
   }
 
   public function getRole()
@@ -72,7 +72,7 @@ class Oeuvre
   }
   public function setRole($p_Role)
   {
-    $this->m_Role = $p_Role;
+    $this->m_Role = $p_Role;    
   }
 
   public function getAge()
@@ -81,12 +81,12 @@ class Oeuvre
   }
   public function setAge($p_Age)
   {
-    $this->m_Age = $p_Age;
+    $this->m_Age = $p_Age;      
   }
-
   //Methodes  
   public function __toString()
   {
     return $this->m_Nom . " " . $this->m_Email . " " . $this->m_Role;
   }
 }
+?>
