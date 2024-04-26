@@ -57,9 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                     <h3>Mes Articles:</h3>
                     <?php 
                     if (isset($_SESSION["achat_reussi"])) {
-                        echo '<h3 class="text-success">' . $_SESSION["achat_reussi"] . '</h3>';
-                        unset($_SESSION["achat_reussi"]);
-                    }
+                        ?>
+                        <div class="row py-2">
+                            <div class="col-sm-12 col-md-9 d-flex justify-content-end mb-3">
+                                <h3 class="text-success"><?=$_SESSION["achat_reussi"]?></h3>
+                            </div>
+                            <div class="col-sm-12 col-md-3 d-flex justify-content-center mb-3">
+                            <img src="Images/enveloppe.png" alt="enveloppe">
+                            </div>
+                        </div>
+                        <?php unset($_SESSION["achat_reussi"]);?>
+                   <?php } 
+                   
                      else if ($afficherPanier){
                     
                         $monPanier = unserialize($_SESSION['panier_oeuvre']);
