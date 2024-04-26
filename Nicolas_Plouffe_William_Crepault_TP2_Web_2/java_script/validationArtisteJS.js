@@ -26,28 +26,21 @@ function validationArtiste(event) {
   if (
     nomArtiste.value.trim() == EMPTY ||
     !regexNomArtiste.test(nomArtiste.value)
-  ) {
+  ) 
+  {
     errorList += "<li><p>Veuillez entrez un nom d'artiste valide</p></li>";
     isValid = false;
   }
-
   if (ville.value == VALUE_ZERO) {
     errorList += "<li><p>Veullez choisir une ville dans la liste</p></li>";
     isValid = false;
-  } else if (ville.value > VALUE_ZERO) {
-    validList +=
-      "<li><p>Ville de l'artiste: " +
-      ville.options[ville.selectedIndex].text +
-      "</p></li>";
-  }
-
+  } 
   if (photo.value.trim() == EMPTY || !regexImage.test(photo.value)) {
     errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
     isValid = false;
   }
   if (!isValid) {
     event.preventDefault();
-
     listResult.innerHTML = errorList;
     listResult.classList.add("red");
   }
