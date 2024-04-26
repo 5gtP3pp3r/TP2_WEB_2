@@ -1,6 +1,7 @@
 <?php
 
 include('fichiersPHP/connexionBD.php');
+require_once 'fichiersPHP/Utilisateur.class.php';
 
 if (session_id() == "") {
     session_start();
@@ -16,10 +17,20 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
     $email = htmlspecialchars($_POST["email"]);
 
     try {
-        $usr = chercherUser($motPasse, $email);
-        if ($usr !== null) {
-            $_SESSION['user'] = serialize($usr);
-            $_SESSION['role'] = $usr['urRole'];
+        $util = chercherUtil($motPasse, $email);
+        if ($util !== null) {
+            $utilisateur = new Utilisateur(
+                $util['id'],
+                $util['nom'],
+                $util['couriel'],
+                $util['mot_passe'],
+                $util['ville'],
+                $util['urRole'],
+                $util['age']
+            );
+            $_SESSION['user'] = serialize($utilisateur);
+            $_SESSION['role'] = $utilisateur->getRole();
+            
             header("Location: pageAccueil.php");
             exit();
         } else {

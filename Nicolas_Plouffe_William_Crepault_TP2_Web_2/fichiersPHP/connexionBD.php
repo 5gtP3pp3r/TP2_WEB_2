@@ -42,7 +42,7 @@ function chercherIdUserDispo()
     return $idsDisponibles;
 }
 
-function chercherUser($motPasse, $email)
+function chercherUtil($motPasse, $email)
 {
     $conn = connexionBD();
     $sql = "SELECT * FROM utilisateurs WHERE courriel = :email";
@@ -50,10 +50,10 @@ function chercherUser($motPasse, $email)
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($user) {
-        if (password_verify($motPasse, $user['mot_passe'])) {
-            return $user;
+    $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($utilisateur) {
+        if (password_verify($motPasse, $utilisateur['mot_passe'])) {
+            return $utilisateur;
         }
     }
     return null;
@@ -92,27 +92,26 @@ function chercherOeuvre($idOeuvre)
         return $resultset;   
 }
 
-function ajoutUtilisateurBD($nom, $email, $motPasseHash, $ville, $age, $roleId)
+function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 {
     $conn = connexionBD();
     try {
-        if ($roleId > 5 && $roleId < 11) {
+        if ($roleId >= 6 && $roleId <= 10) {
             $sql = "INSERT INTO utilisateurs (id, nom, courriel, mot_passe, id_ville, age) VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $roleId, PDO::PARAM_INT); 
-            // urRole GERANT déterminé par le ID si disponible
+            $stmt->bindParam(':id', $roleId, PDO::PARAM_STR);
         } 
         elseif ($roleId == 1) {
             $sql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) VALUES (:nom, :email, :motPasseHash, :ville, :age)";
             $stmt = $conn->prepare($sql);
         }
-
+      
         $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
         $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
         $stmt->bindParam(':age', $age, PDO::PARAM_INT);
-
+        
         $stmt->execute();
 
         if ($roleId > 5 && $roleId < 11) {
