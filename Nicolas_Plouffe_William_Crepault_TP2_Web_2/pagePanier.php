@@ -74,7 +74,7 @@ if (!empty($_GET["action"])) {
                                     <div class="col-md-12 col-lg-4 px-2">
                                         <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
                                             <p><b>Quantité: </b><?php echo $article["qty"]; ?></p>
-                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier">Retirer panier</button>
+                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
                                         </form>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@ if (!empty($_GET["action"])) {
                     <div class="ulBtn">
                         <form action="pagePanier.php?action=empty" method="post">
                             <ul class="bntListe">
-                                <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer_panier"> Vider panier</button></li>
+                                <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/vider_panier.png" alt="vider_panier"> Vider panier</button></li>
                                 <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button> </li>
                             </ul>
                         </form>

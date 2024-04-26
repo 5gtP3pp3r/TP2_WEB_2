@@ -65,7 +65,7 @@ try {
                                 <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-between">
                                 <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
                                     <input type="number" name="quantite" value="1" min="1" max="10" class="form-control" style="width: 75px; margin-right: 25px;">
-                                    <button type="submit" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> ajouter panier</button>
+                                    <button type="submit" id="ajoutPanier" class="styled-button"><img src="Images/ajout_panier.png" alt="ajouter panier"> Ajouter</button>
                                 </form>
                             </div>
                         </div>
