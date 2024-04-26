@@ -134,8 +134,6 @@ function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 
 function ajouterCommande($monPanier)
 {
-    echo "*****MONPANIER*****";
-    var_dump($monPanier);
     $conn = connexionBD();
     $utilisateur = unserialize($_SESSION['user']);
     $idUtil = $utilisateur->getId();    
@@ -151,10 +149,8 @@ function ajouterCommande($monPanier)
         $reponse->execute();
     
         $idCommande = $conn->lastInsertId();
-        echo "****ID COMMANDE ".$idCommande."****";
         $oeuvreComms = $monPanier->getItems();
-        var_dump($oeuvreComms);
-        echo "-------ID ET QUANTITE---------";
+
         $ligneCommande = [];
 
         foreach ($oeuvreComms as $oeuvreComm){
@@ -164,14 +160,11 @@ function ajouterCommande($monPanier)
                 'id_oeuvre' => $idOeuvre,
                 'quantite' => $oeuvreComm['qty']
             ];        
-        }  
-        var_dump($ligneCommande); 
+        }   
         foreach ($ligneCommande as $commande){
             $idOeuvre = $commande['id_oeuvre'];
             $quantite = $commande['quantite'];
-            echo "****".$idOeuvre."****";
-            echo "****".$quantite."****";
-            echo "****".$idCommande."****";
+
             $reqSql = "INSERT INTO ligne_commandes (id_commande, id_oeuvre, Quantite)
                        VALUES (:id_commande, :id_oeuvre, :quantite)";
             $reponse = $conn->prepare($reqSql);
