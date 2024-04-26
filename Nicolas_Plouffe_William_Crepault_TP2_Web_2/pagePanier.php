@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                                 <div class="col-md-12 col-lg-4 px-2">
                                     <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre(); ?>" method="post" class="d-flex align-items-end justify-content-center">
                                         <p style="margin-right: 25px;"><b>Quantité: </b><?php echo $article["qty"]; ?></p>
-                                        <button type="submit" id="retirerPanier" class="styled-button" style="width: 150px;"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
+                                        <button type="submit" id="retirerPanier" class="styled-button" style="width: 140px;"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
                                     </form>
                                 </div>
                             </div>

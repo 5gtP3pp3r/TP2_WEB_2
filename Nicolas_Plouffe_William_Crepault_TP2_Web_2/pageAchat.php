@@ -65,7 +65,7 @@ try {
                                 <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center">
                                 <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
                                     <input type="number" name="quantite" value="1" min="1" max="10" class="form-control" style="width: 75px; margin-right: 25px;">
-                                    <button type="submit" id="ajoutPanier" class="styled-button" style="width: 150px;"><img src="Images/ajout_panier.png" alt="ajouter panier"> Ajouter</button>
+                                    <button type="submit" id="ajoutPanier" class="styled-button" style="width: 140px;"><img src="Images/ajout_panier.png" alt="ajouter panier"> Ajouter</button>
                                 </form>
                             </div>
                         </div>
@@ -87,11 +87,11 @@ try {
 
                                 $qt = $monpanier->getCountItems();
                                 echo '<button type="button" id="panier" class="styled-button"><img src="Images/panier.png" 
-                                     alt="panier">&nbsp;&nbsp;' . $qt . ' articles</button>';
+                                     alt="panier">&nbsp;&nbsp;' . $qt . ' Articles</button>';
                             }
                         } else
                             echo '<button type="button" id="panier" class="styled-button"><img src="Images/panier.png" 
-                            alt="panier">&nbsp;&nbsp; article</button>';
+                            alt="panier">&nbsp;&nbsp; Article</button>';
                         ?>
                     </div>
                 </div>
