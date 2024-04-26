@@ -162,10 +162,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php
                             if (!empty($errors)) {
                                 foreach ($errors as $error) {
-                                    echo '<li class="text-danger">' . htmlspecialchars($error) . '</li>';
+                                    echo '<li class="text-danger"><p>' . htmlspecialchars($error) . '</p></li>';
                                 }
                             } elseif (isset($successMessage)) {
-                                echo '<li class="text-success">' . htmlspecialchars($successMessage) . '</li>';
+                                echo '<li class="text-success"><p>' . htmlspecialchars($successMessage) . '</p></li>';
                             }
                             ?>
                         </ul>
