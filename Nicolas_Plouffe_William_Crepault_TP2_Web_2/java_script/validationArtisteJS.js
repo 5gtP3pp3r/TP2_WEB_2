@@ -1,6 +1,7 @@
 "use strict";
 
 const regexImage = /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/;
+const regexNomArtiste = /^[a-zàâçéèêëîïôûùüÿñæœ0-9 .'-]*$/i;
 const VALUE_ZERO = 0;
 const EMPTY = "";
 
