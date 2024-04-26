@@ -72,28 +72,31 @@ if (!empty($_GET["action"])) {
                                         <p><b>Prix:&nbsp;</b><?php echo $oeuvreChoisi->getPrix() ?>.00$</p>
                                     </div>
                                     <div class="col-md-12 col-lg-4 px-2">
-                                        <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-between">
-                                            <p><b>Quantité: </b><?php echo $article["qty"]; ?></p>
-                                            <button type="submit" id="retirerPanier" class="styled-button"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
+                                        <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre() ?>" method="post" class="d-flex align-items-end justify-content-center">
+                                            <p style="margin-right: 25px;"><b>Quantité: </b><?php echo $article["qty"]; ?></p>
+                                            <button type="submit" id="retirerPanier" class="styled-button" style="width: 150px;"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
                                         </form>
                                     </div>
                                 </div>
                         <?php }
                         } ?>
                         <div>
-                            <h5><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h5>
+                            <h3><?php echo "Total achat: " . number_format($total_prix, 2) . "$"; ?></h3>
+                            <div class="d-flex justify-content-center mb-3">
                             <form action="pagePanier.php?ajouterCommande" method="post">
                                 <input type="hidden" name="action" value="ajouterCommande">
                                 <button type="submit" class="styled-button">Passer la commande</button>
                             </form>
+                            </div>
                         </div>
                     <?php } else { ?>
                         <div>
                             <h3>Votre panier est vide</h3>
                         </div>
-                    <?php }if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'ajouterCommande'){
-    ajouterCommande($monPanier);
-} ?>
+                    <?php }
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'ajouterCommande') {
+                        ajouterCommande($monPanier);
+                    } ?>
                 </div>
             </div>
             <div class="col-sm-12 mb-3 col-lg-4">
