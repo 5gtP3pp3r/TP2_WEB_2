@@ -19,7 +19,6 @@ let role = document.getElementById("role");
  
 let listResult = document.getElementById("listResult");
 
-let validList = EMPTY;
 let errorList = EMPTY;
 
 document.getElementById("submitUS0").addEventListener("click", validationAjout);
@@ -27,7 +26,6 @@ document.getElementById("resetUS0").addEventListener("click", resetForm);
 
 function validationAjout(event){
     //event.preventDefault();
-    validList = EMPTY;
     errorList = "<li>\"affichage via js avec un preventDefault si valeurs incorrectes\"</li>";
     listResult.classList.remove("red");
     let isValid = true;
