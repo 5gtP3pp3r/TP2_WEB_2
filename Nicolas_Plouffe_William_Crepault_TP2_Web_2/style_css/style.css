@@ -1,16 +1,14 @@
 body
 {    
-    background-color: rgb(66, 175, 170) !important;
+    background-color: rgb(66, 175, 170);
 }
 header, footer
 {
-    font-family: comic sans ms;
     background-color: rgb(66, 175, 170);
     min-height: 105px;
 }
 .navbar.bg-body-tertiary
 {
-    font-family: comic sans ms;
     background-color: rgb(20, 146, 140) !important;
     height: auto;
     min-height: 150px;
@@ -18,7 +16,6 @@ header, footer
 }
 main 
 {    
-    font-family: comic sans ms;
     background-color:  rgb(140, 240, 235);
 }
 main p
@@ -81,7 +78,7 @@ footer p
     border-radius: 50px;  
     font-size: large;  
     font-weight: 500;
-    width: 215px;
+    width: 200px;
     padding: 10px 0px;
 	background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
