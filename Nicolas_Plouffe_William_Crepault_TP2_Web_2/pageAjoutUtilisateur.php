@@ -45,14 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $motPasse = $_POST['password'];
         $motPasseHash = password_hash($motPasse, PASSWORD_DEFAULT);
         $ville = $_POST['ville'];
-        $roleId = $_POST['role'];       
+        $roleId = $_POST['role'];
         $age = $_POST['age'];
 
         $resultat = ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age);
         $nouvelUtil = chercherUtil($email, $motPasse);
-        
+
         require_once 'fichiersPHP/Utilisateur.class.php';
-        if($nouvelUtil){
+        if ($nouvelUtil) {
             $utilisateur = new Utilisateur(
                 $nouvelUtil['id'],
                 $nouvelUtil['nom'],
@@ -60,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $nouvelUtil['mot_passe'],
                 $nouvelUtil['ville'],
                 $nouvelUtil['urRole'],
-                $nouvelUtil['age']                  
-            );                
-        } 
-                
+                $nouvelUtil['age']
+            );
+        }
+
         if ($resultat) {
             $successMessage = "Utilisateur enregistré avec succès !";
         } else {
