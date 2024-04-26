@@ -105,7 +105,7 @@ if (!empty($_GET["action"])) {
                     <div class="ulBtn">
                         <form action="pagePanier.php?action=empty" method="post">
                             <ul class="bntListe">
-                                <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/vider_panier.png" alt="vider_panier"> Vider panier</button></li>
+                                <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/vider_panier.png" alt="vider_panier"> Vider</button></li>
                                 <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button> </li>
                             </ul>
                         </form>
