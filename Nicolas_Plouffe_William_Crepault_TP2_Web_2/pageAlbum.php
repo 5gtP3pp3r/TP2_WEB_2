@@ -47,7 +47,13 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="photo">Photo</label>
-                                <input type="text" id="photo" name="photo" class="form-control">
+                                <input type="text" id="photo" name="photo" placeholder="(.jpg .jpeg .png .gif .bmp)" class="form-control">
+                            </div>
+                            <div class="col-sm-12 d-flex align-items-end"> 
+                                <p class="flex-grow-1 mb-0">Une image 300 x 300 de la photo doit être ajoutée aux 
+                                   dossiers avant d'enregistrer un nouvel album. Si aucune photo n'est 
+                                   disponible, S.V.P. utiliser le nom de l'image suivante: "aucune_image.png"</p>
+                                   <img src="Images/aucune_image.png" alt="aucune image" class="resize ms-3">
                             </div>
                         </div>
                         <div class="ulBtn">
