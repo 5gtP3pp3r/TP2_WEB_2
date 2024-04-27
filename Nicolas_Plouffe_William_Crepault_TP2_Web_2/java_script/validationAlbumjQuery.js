@@ -30,10 +30,8 @@ $(document).ready(function () {
     if ($("#dateAjout").val() > today || $("#dateAjout").val() < today) {
       errorList += "<li><p>Veuillez entrer la date d'aujourd'hui</p></li>";
       isValid = false;
-    } else if ($("#dateAjout").val() == EMPTY) {
-      validList += "<li><p>Date d'ajout: " + today + "</p></li>";
     }
-
+    
     if ($("#genreMusical").val() == VALUE_ZERO) {
       errorList += "<li><p>Veuillez entrer un genre valide</p></li>";
       isValid = false;
