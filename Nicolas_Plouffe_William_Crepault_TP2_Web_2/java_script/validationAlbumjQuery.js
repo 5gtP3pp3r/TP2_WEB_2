@@ -6,13 +6,11 @@ $(document).ready(function () {
   const VALUE_ZERO = 0;
   const EMPTY = "";
 
-  let validList = EMPTY;
   let errorList = EMPTY;
 
   $("#dateAjout").val(today);
 
   $("#submitUS2").click(function (event) {
-    validList = EMPTY;
     errorList = EMPTY;
     $("#listResult").removeClass("red");
     let isValid = true;
@@ -31,7 +29,7 @@ $(document).ready(function () {
       errorList += "<li><p>Veuillez entrer la date d'aujourd'hui</p></li>";
       isValid = false;
     }
-    
+
     if ($("#genreMusical").val() == VALUE_ZERO) {
       errorList += "<li><p>Veuillez entrer un genre valide</p></li>";
       isValid = false;
