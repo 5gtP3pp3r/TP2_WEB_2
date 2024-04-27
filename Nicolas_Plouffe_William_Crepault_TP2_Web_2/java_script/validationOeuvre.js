@@ -45,6 +45,7 @@ function validateInputs(event) {
 
   if (roleOptions.value == VALUE_ZERO) {
     errorList += "<li><p>Veuillez choisir un rôle de l'ariste</p></li>";
+    isValid = false;
   }
 
   if (albumValue.value <= MIN_VALUE || !ValuePattern.test(albumValue.value)) {
