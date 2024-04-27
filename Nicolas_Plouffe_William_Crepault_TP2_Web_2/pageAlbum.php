@@ -10,7 +10,14 @@
             <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form action="submit">
+                    <form method="post">
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+
+                            injectionAlbum();
+                        }
+
+                        ?>
                         <div class="row py-2">
                             <div class="col-md-8">
                                 <label for="titre">Titre</label>

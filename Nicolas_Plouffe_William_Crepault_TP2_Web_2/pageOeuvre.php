@@ -34,20 +34,17 @@
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="timeInSec"><span class="red"><b>*</b></span>Temps (sec)</label>
-                                <input type="number" id="timeInSec" name="duree" placeholder="max 999" min="0" step="15"
-                                    class="form-control">
+                                <input type="number" id="timeInSec" name="duree" placeholder="max 999" min="0" step="15" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="sizeMB">Taille (MB)</label>
-                                <input type="number" id="sizeMB" name="taille" placeholder="max 999" min="0" step="0.5"
-                                    class="form-control">
+                                <input type="number" id="sizeMB" name="taille" placeholder="max 999" min="0" step="0.5" class="form-control">
                             </div>
                         </div>
                         <div class="row py-2">
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="albumValue"><span class="red"><b>*</b></span>Valeur ($)</label>
-                                <input type="number" id="albumValue" name="prix" placeholder="0.00" min="0.95" step="1"
-                                    class="form-control">
+                                <input type="number" id="albumValue" name="prix" placeholder="0.00" min="0.95" step="1" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="datePublication"><span class="red"><b>*</b></span>Publication</label>
@@ -55,8 +52,7 @@
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="albumCode"><span class="red"><b>*</b></span>Code</label>
-                                <input type="text" id="albumCode" name="codeAlbum" placeholder="AAA0000"
-                                    class="form-control">
+                                <input type="text" id="albumCode" name="codeAlbum" placeholder="AAA0000" class="form-control">
                             </div>
                         </div>
                         <div class="row py-2">

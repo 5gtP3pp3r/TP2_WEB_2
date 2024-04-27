@@ -125,8 +125,6 @@ function validerChampsLien()
 }
 
 //Validation du champ Lyrics
-
-//Validation du champ Lyrics
 function validerChampsLyrics()
 {
     $estNonValide = false;
