@@ -1,4 +1,6 @@
 <?php
+require_once("connexionBD.php");
+
 
 function validerChampsNom()
 {
@@ -37,7 +39,6 @@ function validerDesChamps()
 
 function AfficherMenuVille()
 {
-    require_once("connexionBD.php");
 
     $pdo = connexionBD(); // Connexion à la base de données
 
@@ -60,23 +61,21 @@ function injectionArtiste()
 {
 
     $conn = connexionBD();
-    try{
-    $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) VALUES (:nomArtiste, :photoArtiste, :ville )";
+    try {
+        $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) VALUES (:nomArtiste, :photoArtiste, :ville )";
 
-    $stmt = $conn->prepare($sql); // Préparation de la requête
+        $stmt = $conn->prepare($sql); // Préparation de la requête
 
-    $stmt->bindParam(':nomArtiste', $_POST['idArtiste']);
-    $stmt->bindParam(':photoArtiste', $_POST['photoArtiste']);
-    $stmt->bindParam(':ville', $_POST['ville']);
+        $stmt->bindParam(':nomArtiste', $_POST['idArtiste']);
+        $stmt->bindParam(':photoArtiste', $_POST['photoArtiste']);
+        $stmt->bindParam(':ville', $_POST['ville']);
 
-    $stmt->execute();
-    $conn = null; // Fermeture de la connexion
-    }catch(PDOException $e)
-    {
+        $stmt->execute();
+        $conn = null; // Fermeture de la connexion
+    } catch (PDOException $e) {
         error_log("erreur ajout artiste: " . $e->getMessage());
         return false;
     }
-
 }
 
 function testConnection()
