@@ -22,7 +22,6 @@ let albumValue = document.getElementById("albumValue");
 
 let listResult = document.getElementById("listResult");
 
-let validList = EMPTY;
 let errorList = EMPTY;
 
 inputDate.value = today;
@@ -30,7 +29,6 @@ document.getElementById("submitUS3").addEventListener("click", validateInputs);
 document.getElementById("resetUS3").addEventListener("click", clearInputs);
 
 function validateInputs(event) {
-  validList = EMPTY;
   errorList = EMPTY;
   listResult.classList.remove("red");
   let isValid = true;
@@ -45,11 +43,8 @@ function validateInputs(event) {
     isValid = false;
   }
 
-  if (roleOptions.value > VALUE_ZERO) {
-    validList +=
-      "<li><p>Rôle de l'ariste: " +
-      roleOptions.options[roleOptions.selectedIndex].text +
-      "</p></li>";
+  if (roleOptions.value == VALUE_ZERO) {
+    errorList += "<li><p>Veuillez choisir un rôle de l'ariste</p></li>";
   }
 
   if (albumValue.value <= MIN_VALUE || !ValuePattern.test(albumValue.value)) {
@@ -63,18 +58,14 @@ function validateInputs(event) {
   }
 
   if (sizeMB.value == EMPTY) {
-    validList = validList;
-  } else if (sizeMB.value <= VALUE_ZERO || sizeMB.value > MAX_VALUE) {
-    errorList += "<li><p>Veuillez entrer une taille en MB valide</p></li>";
+    errorList += "<li><p>Veuillez entrer une taille en Mb valide</p></li>";
     isValid = false;
-  }
+  } 
 
   if (inputDate.value == EMPTY) {
-    validList += "<li><p>Date de publication: " + today + "</p></li>";
-  } else if (inputDate.value > today) {
-    errorList += "<li><p>Veuillez entrer une date valide</p></li>";
+    errorList += "<li><p>Date de publication: " + today + "</p></li>";
     isValid = false;
-  }
+  } 
 
   if (albumCode.value.trim() == "" || !codePattern.test(albumCode.value)) {
     errorList += "<li><p>Veuillez entrer un code valide</p></li>";
