@@ -25,7 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
                             </div>
                             <div class="group-form col-sm-12 col-lg-6">
                                 <label for="artistName"><span class="red"><b>*</b></span>Artiste</label>
-                                <input type="text" id="artistName" class="form-control" name="nomArtiste">
+                                <select id="artistName" class="form-control" name="nomArtiste">
+                                    <option value="0">Artiste</option>
+                                    <?php chercherNomArtiste() ?>
+                                </select>
                             </div>
                         </div>
                         <div class="row py-2">
