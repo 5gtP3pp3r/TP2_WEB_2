@@ -123,6 +123,50 @@ function chercherMenuGenre()
     $conn = null; // Fermeture de la connexion
 }
 
+function chercherCodeAlbum()
+{
+    require_once("connexionBD.php");
+    $conn = connexionBD();
+
+    $sql = "SELECT id, code_album FROM albums
+           ORDER BY id";
+    try{
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $codesAlbums = $stmt->fetchAll();
+
+        foreach ($codesAlbums as $codeAlbum){
+            echo '<option value="' . htmlspecialchars($codeAlbum["id"]) . '">' .
+                htmlspecialchars($codeAlbum["code_album"]) . " (id $codeAlbum[id])  </option>";
+        }
+    }
+    catch (PDOException $e) {
+    echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+}
+
+function chercherRoleArtiste()
+{
+    require_once("connexionBD.php");
+    $conn = connexionBD();
+
+    $sql = "SELECT id, descRole FROM roles
+           ORDER BY id";
+    try{
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $rolesArtistes = $stmt->fetchAll();
+
+        foreach ($rolesArtistes as $role){
+            echo '<option value="' . htmlspecialchars($role["id"]) . '">' .
+                htmlspecialchars($role["descRole"]) . '</option>';
+        }
+    }
+    catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+}
+
 function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 {
     $conn = connexionBD();

@@ -1,4 +1,11 @@
-<?php include("heads.infos.php"); ?>
+<?php 
+include("heads.infos.php"); 
+require_once 'fichiersPHP/connexionBD.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+    $resultats = validerOeuvre();
+}
+?>
 
 <main>
     <h2>Ajouter une nouvelle oeuvre</h2>
@@ -26,10 +33,7 @@
                                 <label for="roleOptions">Rôle</label>
                                 <select name="role" id="roleOptions" class="form-control">
                                     <option value="0">Rôle de l'artiste</option>
-                                    <option value="1">Chanteur</option>
-                                    <option value="2">Compositeur</option>
-                                    <option value="3">Interprète</option>
-                                    <option value="4">Auteur</option>
+                                    <?php chercherRoleArtiste() ?>
                                 </select>
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
@@ -52,15 +56,14 @@
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="albumCode"><span class="red"><b>*</b></span>Code</label>
-                                <input type="text" id="albumCode" name="codeAlbum" placeholder="AAA0000" class="form-control">
+                                <select id="albumCode" name="codeAlbum" class="form-control">
+                                    <option value="0">Code album</option>
+                                    <?php chercherCodeAlbum() ?>
+                                </select> 
                             </div>
                         </div>
                         <div class="row py-2">
-                            <div class="group-form col-lg-6">
-                                <label for="youtubeLink">Lien Youtube</label>
-                                <input type="text" id="youtubeLink" name="lienYoutube" class="form-control">
-                            </div>
-                            <div class="group-form col-lg-6">
+                            <div class="group-form col-lg-12">
                                 <label for="lyrics">Lyrics</label>
                                 <textarea name="lyrics" id="lyrics" cols="30" rows="5" class="form-control"></textarea>
                             </div>

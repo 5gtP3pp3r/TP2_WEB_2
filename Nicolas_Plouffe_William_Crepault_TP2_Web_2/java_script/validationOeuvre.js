@@ -3,6 +3,8 @@
 const ValuePattern = /^(\d)+.(\d){2}$/;
 const codePattern = /[A-Z]{3}\d{4}/;
 const sizeMBPattern = /[0-9]{1,4}/;
+const regexNomOeuvre = /^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i;
+
 
 const MAX_VALUE = 999;
 const MIN_VALUE = 0.0;
@@ -35,6 +37,11 @@ function validateInputs(event) {
 
   if (pieceName.value.trim() == EMPTY) {
     errorList += "<li><p>Veuillez entrer une pièce valide</p></li>";
+    isValid = false;
+  }
+  else if (!regexNomOeuvre.test(pieceName.value)){
+    errorList += '<li><p>Le titre doit contenir au moins 1 caractère, accèpte' + 
+                 ' les accents, les espaces, ".","-" et les "_"</p></li>';
     isValid = false;
   }
 
