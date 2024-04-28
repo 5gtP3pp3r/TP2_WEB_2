@@ -327,12 +327,13 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
 function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics)
 {
 
-    $conn = connexionBD(); // valeur prise en compte dans les validation mais qui n'ont pas de champs dans la bd
+    $conn = connexionBD(); 
     try {
-        $sql = "INSERT INTO oeuvre (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) 
+        
+        $sql = "INSERT INTO oeuvres (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) 
                 VALUES (:p_titrePiece, :p_nomArtiste, :p_role, :p_dureesec, : p_taillemb, :p_lyrics, :p_date_ajout, :p_id_album :p_prix,)";
 
-        $stmt = $conn->prepare($sql); // Préparation de la requête
+        $stmt = $conn->prepare($sql); 
 
         var_dump($titrePiece); var_dump($nomArtiste); var_dump($role); var_dump($duree); var_dump($taille); var_dump($prix); var_dump($datePublication); var_dump($codeAlbum); var_dump($lyrics);
       
@@ -349,9 +350,10 @@ function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix
 
         $stmt->execute();
         return true;
-        $conn = null; // Fermeture de la connexion
+ 
     } catch (PDOException $e) {
         error_log("erreur ajout artiste: " . $e->getMessage());
         return false;
     }
+    $conn = null;
 }

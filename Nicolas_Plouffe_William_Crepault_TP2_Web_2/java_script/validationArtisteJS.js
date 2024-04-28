@@ -1,7 +1,7 @@
 "use strict";
 
 const regexImage = /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/;
-const regexNomArtiste = /^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i;
+const regexNomArtiste = /^[a-zA-Z0-9 ]+$/;
 const VALUE_ZERO = 0;
 const EMPTY = "";
 
@@ -19,7 +19,7 @@ document
 document.getElementById("resetUS1").addEventListener("click", resetForm);
 
 function validationArtiste(event) {
-  errorList = EMPTY;
+  errorList = "reponse javascript";
   listResult.classList.remove("red");
   let isValid = true;
 
@@ -28,7 +28,7 @@ function validationArtiste(event) {
     errorList += "<li><p>Veuillez entrez un nom d'artiste</p></li>";
     isValid = false;
   }
-  else if (regexNomArtiste.test(nomArtiste.value)){
+  else if (!regexNomArtiste.test(nomArtiste.value)){
     errorList += '<li><p>Le nom de l\'artiste doit contenir au moins 1 caractère,' + 
                  '  accèpte les accents, les espaces, ".","-" et les "_" </p></li>';
     isValid = false;

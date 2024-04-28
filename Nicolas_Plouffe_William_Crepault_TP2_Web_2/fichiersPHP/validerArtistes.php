@@ -7,7 +7,7 @@ function validerArtiste()
 
     if (empty($_POST['nomArtiste'])) {
         $errors[] = "Le nom de l'artiste est requis.";
-    } elseif (!preg_match("/^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i", $_POST['nomArtiste'])) {
+    } elseif (!preg_match("/^[a-zA-Z0-9 ]+$/", $_POST['nomArtiste'])) {
         $errors[] = 'Le nom de l\'artiste doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_" ';
     }
 

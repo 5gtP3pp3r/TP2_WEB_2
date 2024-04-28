@@ -4,13 +4,12 @@ require_once 'connexionBD.php';
 function validerOeuvre()
 {
 
-    $regExNom = "/^[a-z0-9à-öø-ÿ]+(?:[ \-_.]*[a-z0-9à-öø-ÿ]+)*$/i";
+    $regExNom = "/^[a-zA-Z0-9 ]+$/";
     $ZERO = 0;
     $Max = 999;
     $ValeurMin = 0;
     $ValeurMax = 10;
-    $codePattern = '/[A-Z]{3}\d{4}/';
-    $regexLyrics = '/^[a-zA-Z0-9 .\'-]*$/';
+    $regexLyrics = "/^[a-zA-Z0-9 ]+$/";
 
 
     $errors = [];
@@ -58,7 +57,7 @@ function validerOeuvre()
         $errors[] = "Choisir un code d'album parmis la liste.";
     }    
 
-    if (!empty($_POST['lyrics']) || !preg_match($regexLyrics, $_POST['lyrics'])) {
+    if (!empty($_POST['lyrics']) && !preg_match($regexLyrics, $_POST['lyrics'])) {
         $errors[] = "Les paroles ne doivent contenir que des lettres, des chiffres, des espaces, des apostrophes et des tirets.";
     }
 
