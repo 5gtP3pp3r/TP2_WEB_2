@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
             <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form method="POST">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-4">
                                 <label for="idArtiste">Nom</label>
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
                             <?php
                             if (isset($resultats) && is_array($resultats)) {
                                 foreach ($resultats as $resultat) {
-                                    echo '<li class="text-warning"><p>' . htmlspecialchars($resultat) . '</p></li>';
+                                    echo '<li class="text-danger"><p>' . htmlspecialchars($resultat) . '</p></li>';
                                 }
                             } elseif (isset($resultats)) {
                                 echo '<li class="text-success"><p>' . htmlspecialchars($resultats) . '</p></li>';

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php
                             if (isset($resultats) && is_array($resultats)) {
                                 foreach ($resultats as $resultat) {
-                                    echo '<li class="text-warning"><p>' . htmlspecialchars($resultat) . '</p></li>';
+                                    echo '<li class="text-danger"><p>' . htmlspecialchars($resultat) . '</p></li>';
                                 }
                             } elseif (isset($resultats)) {
                                 echo '<li class="text-success"><p>' . htmlspecialchars($resultats) . '</p></li>';

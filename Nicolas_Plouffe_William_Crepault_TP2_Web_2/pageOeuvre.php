@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
             <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Les champs avec <span class="red"><b>*</b></span> sont obligatoires</h3>
-                    <form action="submit">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="row py-2">
                             <div class="group-form col-sm-12 col-lg-6">
                                 <label for="pieceName"><span class="red"><b>*</b></span>Pièce</label>
@@ -41,17 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="timeInSec"><span class="red"><b>*</b></span>Temps (sec)</label>
-                                <input type="number" id="timeInSec" name=" " placeholder="max 999" min="0" step="15" class="form-control">
+                                <input type="number" id="timeInSec" name="duree" placeholder="max 999" min="1" max="999" step="1" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="sizeMB">Taille (MB)</label>
-                                <input type="number" id="sizeMB" name="taille" placeholder="max 999" min="0" step="0.5" class="form-control">
+                                <input type="number" id="sizeMB" name="taille" placeholder="max 999" min="1" max="999" step="1" class="form-control">
                             </div>
                         </div>
                         <div class="row py-2">
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="albumValue"><span class="red"><b>*</b></span>Valeur ($)</label>
-                                <input type="number" id="albumValue" name="prix" placeholder="0.00" min="0.95" step="1" class="form-control">
+                                <input type="number" id="albumValue" name="prix" min="1" max="10" step="1" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="datePublication"><span class="red"><b>*</b></span>Publication</label>
@@ -87,6 +87,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
                             <!-- Zone de validation -->
+                            <?php
+                            if (isset($resultats) && is_array($resultats)) {
+                                foreach ($resultats as $resultat) {
+                                    echo '<li class="text-danger"><p>' . htmlspecialchars($resultat) . '</p></li>';
+                                }
+                            } elseif (isset($resultats)) {
+                                echo '<li class="text-success"><p>' . htmlspecialchars($resultats) . '</p></li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
