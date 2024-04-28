@@ -129,7 +129,7 @@ function chercherCodeAlbum()
     $conn = connexionBD();
 
     $sql = "SELECT id, code_album FROM albums
-           ORDER BY id";
+           ORDER BY code_album";
     try {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -329,19 +329,23 @@ function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix
 
     $conn = connexionBD(); // valeur prise en compte dans les validation mais qui n'ont pas de champs dans la bd
     try {
-        $sql = "INSERT INTO oeuvre (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) VALUES (:p_titrePiece, :p_NomArtiste, :p_role, :p_dureesec, : p_taillemb, :p_lyrics, :p_date_ajout, :prix,)";
+        $sql = "INSERT INTO oeuvre (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) 
+                VALUES (:p_titrePiece, :p_nomArtiste, :p_role, :p_dureesec, : p_taillemb, :p_lyrics, :p_date_ajout, :p_id_album :p_prix,)";
 
         $stmt = $conn->prepare($sql); // Préparation de la requête
 
+        var_dump($titrePiece); var_dump($nomArtiste); var_dump($role); var_dump($duree); var_dump($taille); var_dump($prix); var_dump($datePublication); var_dump($codeAlbum); var_dump($lyrics);
+      
+
         $stmt->bindParam(':p_titrePiece', $titrePiece, PDO::PARAM_STR);
-        $stmt->bindParam(':p_NomArtiste', $nomArtiste, PDO::PARAM_STR);
+        $stmt->bindParam(':p_nomArtiste', $nomArtiste, PDO::PARAM_INT);
         $stmt->bindParam(':p_role', $role, PDO::PARAM_INT);
         $stmt->bindParam(':p_dureesec', $duree, PDO::PARAM_INT);
         $stmt->bindParam(':p_taillemb', $taille, PDO::PARAM_STR);
         $stmt->bindParam(':p_lyrics', $lyrics, PDO::PARAM_STR);
         $stmt->bindParam(':p_date_ajout', $datePublication, PDO::PARAM_STR);
-        $stmt->bindParam(':p_codeAlbum', $codeAlbum, PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $prix, PDO::PARAM_INT);
+        $stmt->bindParam(':p_id_album', $codeAlbum, PDO::PARAM_INT);
+        $stmt->bindParam(':p_prix', $prix, PDO::PARAM_INT);
 
         $stmt->execute();
         return true;
