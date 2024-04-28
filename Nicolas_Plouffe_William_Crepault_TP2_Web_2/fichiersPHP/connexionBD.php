@@ -24,7 +24,12 @@ function chercherVilles()
     $stmt = $conn->prepare($reqSql);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $villes =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($villes as $ville) {
+        echo '<option value="' . htmlspecialchars($ville['id']) . '">'
+            . htmlspecialchars($ville['nom_ville']) . '</option>';
+    }
+    $conn = null;
 }
 
 function chercherIdUserDispo()
@@ -42,6 +47,7 @@ function chercherIdUserDispo()
         }
     }
     return $idsDisponibles;
+    $conn = null;
 }
 
 function chercherUtil($motPasse, $email)
@@ -58,7 +64,7 @@ function chercherUtil($motPasse, $email)
             return $utilisateur;
         }
     }
-    return null;
+    $conn = null;
 }
 
 function chercherOeuvre($idOeuvre)
@@ -92,6 +98,29 @@ function chercherOeuvre($idOeuvre)
     }
     if (!empty($resultset))
         return $resultset;   
+        $conn = null;
+}
+
+function chercherMenuGenre()
+{
+    require_once("connexionBD.php");
+    $conn = connexionBD();
+
+    $sql = "SELECT id, descGenre FROM genres";
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $genres = $stmt->fetchAll();
+        
+        foreach ($genres as $genre) {
+            echo '<option value="' . htmlspecialchars($genre["id"]) . '">' .
+                htmlspecialchars($genre["descGenre"]) . '</option>';
+        }
+    } catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+
+    $conn = null; // Fermeture de la connexion
 }
 
 function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
@@ -129,6 +158,7 @@ function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
         error_log("Erreur lors de l'ajout de l'utilisateur: " . $e->getMessage());
         return false;
     }
+    $conn = null;
 }
 
 
@@ -180,5 +210,33 @@ function ajouterCommande($monPanier)
         error_log("Erreur lors de l'ajout de commande: " . $e->getMessage());
         return false;
     }
+    $conn = null;
+}
+
+function ajouterAlbumBD($titre, $code, $dateAjout, $genreMusical, $photo)
+{
+
+    $conn = connexionBD();
+    try {
+        $sql = "INSERT INTO albums (titre, code_album, date_album, id_genre, pht_couvt) 
+                VALUES (:p_titre, :p_code, :p_dateAjout, :p_id_genre, :p_photo)";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(':p_titre', $titre, PDO::PARAM_STR);
+        $stmt->bindParam(':p_code', $code, PDO::PARAM_STR);
+        $stmt->bindParam(':p_dateAjout', $dateAjout, PDO::PARAM_STR);
+        $stmt->bindParam(':p_id_genre', $genreMusical, PDO::PARAM_INT);
+        $stmt->bindParam(':p_photo', $photo, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return true;
+
+    } catch (PDOException $e) {
+        error_log("erreur ajout album: " . $e->getMessage());
+        return false;
+    }
+    $conn = null;
 }
   
