@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function ()
     {
         ajoutUtilisateur.addEventListener('click', function() 
         {
-            window.location.href = 'pageAjoutUtilisateur.php';
+            window.location.href = 'pageUtilisateur.php';
         });
     }
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function ()
     {
         enregistrer.addEventListener('click', function() 
         {
-            window.location.href = 'pageAjoutUtilisateur.php';
+            window.location.href = 'pageUtilisateur.php';
         });
     }
 

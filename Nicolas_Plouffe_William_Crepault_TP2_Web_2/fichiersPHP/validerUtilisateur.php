@@ -2,7 +2,7 @@
 require_once 'fichiersPHP/connexionBD.php';
  require_once 'fichiersPHP/Utilisateur.class.php';
 
-function validerUtiliosateur(){
+function validerUtilisateur(){
 
 $errors = [];
 
@@ -31,10 +31,10 @@ if (empty($_POST['ville']) || $_POST['ville'] == '0') {
 if (empty($_POST['role']) || $_POST['role'] == '0') {
     $errors[] = "Choix d'un rôle requis.";
 }
-$age = $_POST['age'] ?? null;
-if (empty($age)) {
+
+if (empty($_POST['age'])) {
     $errors[] = "L'âge est requis.";
-} elseif ($age < 18 || $age > 100) {
+} elseif ($_POST['age'] < 18 || $_POST['age'] > 100) {
     $errors[] = "L'âge doit être entre 18 et 100 ans.";
 }
 
@@ -53,7 +53,7 @@ if (count($errors) === 0) {
 
    
     if ($nouvelUtil) {
-        $utilisateur = new Utilisateur(
+        new Utilisateur(
             $nouvelUtil['id'],
             $nouvelUtil['nom'],
             $nouvelUtil['courriel'],
@@ -65,10 +65,10 @@ if (count($errors) === 0) {
     }
 
     if ($resultat) {
-        return "Album ajouté avec succès !";
+        return "Utilisateur ajouté avec succès !";
     } 
     else {
-        return ["Erreur lors de l'ajout de l'album dans la base de données."];
+        return ["Erreur lors de l'ajout de l'utilisateur dans la base de données."];
     }
 } 
 else {
