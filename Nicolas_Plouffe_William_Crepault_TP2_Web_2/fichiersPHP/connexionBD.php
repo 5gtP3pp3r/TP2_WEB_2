@@ -97,8 +97,8 @@ function chercherOeuvre($idOeuvre)
         $resultset[] = $oeuvre;
     }
     if (!empty($resultset))
-        return $resultset;   
-        $conn = null;
+        return $resultset;
+    $conn = null;
 }
 
 function chercherMenuGenre()
@@ -111,7 +111,7 @@ function chercherMenuGenre()
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $genres = $stmt->fetchAll();
-        
+
         foreach ($genres as $genre) {
             echo '<option value="' . htmlspecialchars($genre["id"]) . '">' .
                 htmlspecialchars($genre["descGenre"]) . '</option>';
@@ -132,19 +132,18 @@ function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
                        VALUES (:id, :nom, :email, :motPasseHash, :ville, :age)";
             $reponse = $conn->prepare($reqSql);
             $reponse->bindParam(':id', $roleId, PDO::PARAM_INT);
-        } 
-        elseif ($roleId == 1) {
+        } elseif ($roleId == 1) {
             $reqSql = "INSERT INTO utilisateurs (nom, courriel, mot_passe, id_ville, age) 
                        VALUES (:nom, :email, :motPasseHash, :ville, :age)";
             $reponse = $conn->prepare($reqSql);
         }
-      
+
         $reponse->bindParam(':nom', $nom, PDO::PARAM_STR);
         $reponse->bindParam(':email', $email, PDO::PARAM_STR);
         $reponse->bindParam(':motPasseHash', $motPasseHash, PDO::PARAM_STR);
         $reponse->bindParam(':ville', $ville, PDO::PARAM_INT);
         $reponse->bindParam(':age', $age, PDO::PARAM_INT);
-        
+
         $reponse->execute();
 
         if ($roleId > 5 && $roleId < 11) {
@@ -166,7 +165,7 @@ function ajouterCommande($monPanier)
 {
     $conn = connexionBD();
     $utilisateur = unserialize($_SESSION['user']);
-    $idUtil = $utilisateur->getId();    
+    $idUtil = $utilisateur->getId();
     $dateCommande = date("Y-m-d H:i:s");
 
     try {
@@ -177,21 +176,21 @@ function ajouterCommande($monPanier)
         $reponse->bindParam(':dateCommande', $dateCommande, PDO::PARAM_STR);
 
         $reponse->execute();
-    
+
         $idCommande = $conn->lastInsertId();
         $oeuvreComms = $monPanier->getItems();
 
         $ligneCommande = [];
 
-        foreach ($oeuvreComms as $oeuvreComm){
+        foreach ($oeuvreComms as $oeuvreComm) {
             $idOeuvre = $oeuvreComm['item']->getIdOeuvre();
-        
+
             $ligneCommande[] = [
                 'id_oeuvre' => $idOeuvre,
                 'quantite' => $oeuvreComm['qty']
-            ];        
-        }   
-        foreach ($ligneCommande as $commande){
+            ];
+        }
+        foreach ($ligneCommande as $commande) {
             $idOeuvre = $commande['id_oeuvre'];
             $quantite = $commande['quantite'];
 
@@ -205,8 +204,7 @@ function ajouterCommande($monPanier)
             $reponse->execute();
         }
         return true;
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         error_log("Erreur lors de l'ajout de commande: " . $e->getMessage());
         return false;
     }
@@ -232,11 +230,34 @@ function ajouterAlbumBD($titre, $code, $dateAjout, $genreMusical, $photo)
         $stmt->execute();
 
         return true;
-
     } catch (PDOException $e) {
         error_log("erreur ajout album: " . $e->getMessage());
         return false;
     }
     $conn = null;
 }
-  
+
+function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
+{
+
+    $conn = connexionBD();
+    try {
+        $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) 
+                VALUES (:nomArtiste, :photoArtiste, :ville )";
+
+        $stmt = $conn->prepare($sql); // Préparation de la requête
+
+        $stmt->bindParam(':nomArtiste', $nomArtiste, PDO::PARAM_STR);
+        $stmt->bindParam(':photoArtiste', $ville, PDO::PARAM_STR);
+        $stmt->bindParam(':ville', $photoArtiste, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("erreur ajout artiste: " . $e->getMessage());
+
+        return false;
+    }
+    $conn = null; // Fermeture de la connexion
+
+}

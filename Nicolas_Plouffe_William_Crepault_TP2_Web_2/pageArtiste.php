@@ -1,7 +1,11 @@
-<?php 
+<?php
 include("heads.infos.php");
 require_once "fichiersPHP\connexionBD.php";
 require_once "fichiersPHP/validerArtistes.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+    $resultats = validerArtiste();
+}
 ?>
 
 <main>
@@ -15,17 +19,6 @@ require_once "fichiersPHP/validerArtistes.php";
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
                     <form method="POST">
-                        <?php
-                        testConnection();
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
-
-                            validerArtiste();
-                        }
-
-
-
-                        ?>
-
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-4">
                                 <label for="idArtiste">Nom</label>
@@ -35,12 +28,7 @@ require_once "fichiersPHP/validerArtistes.php";
                                 <label>Ville</label>
                                 <select id="ville" class="form-control" name="ville">
                                     <option value="0">Choix de ville</option>
-                                    <?php
-                                    echo " <h1>test</h1>";
-                                    chercherVilles();
-                                    echo "<p>test2</p>";
-                                    ?>
-
+                                    <?php chercherVilles(); ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-6 col-lg-4">
@@ -65,6 +53,15 @@ require_once "fichiersPHP/validerArtistes.php";
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
                             <!-- Zone de validation -->
+                            <?php
+                            if (isset($resultats) && is_array($resultats)) {
+                                foreach ($resultats as $resultat) {
+                                    echo '<li class="text-warning"><p>' . htmlspecialchars($resultat) . '</p></li>';
+                                }
+                            } elseif (isset($resultats)) {
+                                echo '<li class="text-success"><p>' . htmlspecialchars($resultats) . '</p></li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
