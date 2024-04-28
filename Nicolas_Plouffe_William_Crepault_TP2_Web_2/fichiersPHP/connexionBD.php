@@ -167,6 +167,28 @@ function chercherRoleArtiste()
     }
 }
 
+function chercherNomArtiste()
+{
+    require_once("connexionBD.php");
+    $conn = connexionBD();
+
+    $sql = "SELECT nom_artiste FROM artistes
+           ORDER BY id";
+    try{
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $nomsArtistes = $stmt->fetchAll();
+
+        foreach ($nomsArtistes as $artiste){
+            echo '<option value="' . htmlspecialchars($artiste["id"]) . '">' .
+                htmlspecialchars($artiste["nom_artiste"]) . '</option>';
+        }
+    }
+    catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+}
+
 function ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age)
 {
     $conn = connexionBD();
