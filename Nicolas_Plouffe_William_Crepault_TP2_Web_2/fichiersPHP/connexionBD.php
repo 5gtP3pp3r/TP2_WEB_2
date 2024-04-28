@@ -305,7 +305,7 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
     $conn = null;
 }
 
-function ajouterOeuvreBD()
+function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lienYoutube, $lyrics)
 {
 
     $conn = connexionBD(); // valeur prise en compte dans les validation mais qui n'ont pas de champs dans la bd
@@ -314,17 +314,15 @@ function ajouterOeuvreBD()
 
         $stmt = $conn->prepare($sql); // Préparation de la requête
 
-        $stmt->bindParam(':p_titrePiece', $_POST['titrePiece'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_NomArtiste', $_POST['nomArtiste'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_role', $_POST['role'], PDO::PARAM_INT);
-        $stmt->bindParam(':p_dureesec', $_POST['duree'], PDO::PARAM_INT);
-        $stmt->bindParam(':p_taillemb', $_POST['taille'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_lyrics', $_POST['lyrics'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_date_ajout', $_POST['datePublication'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_codeAlbum', $_POST['codeAlbum'], PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $_POST['prix'], PDO::PARAM_INT);
-        $stmt->bindParam(':p_lienYoutube', $_POST['lienYoutube'], PDO::PARAM_STR);
-        $stmt->bindParam(':p_lyrics', $_POST['lyrics'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_titrePiece', $titrePiece, PDO::PARAM_STR);
+        $stmt->bindParam(':p_NomArtiste', $nomArtiste, PDO::PARAM_STR);
+        $stmt->bindParam(':p_role', $role, PDO::PARAM_INT);
+        $stmt->bindParam(':p_dureesec', $duree, PDO::PARAM_INT);
+        $stmt->bindParam(':p_taillemb', $taille, PDO::PARAM_STR);
+        $stmt->bindParam(':p_lyrics', $lyrics, PDO::PARAM_STR);
+        $stmt->bindParam(':p_date_ajout', $datePublication, PDO::PARAM_STR);
+        $stmt->bindParam(':p_codeAlbum', $codeAlbum, PDO::PARAM_STR);
+        $stmt->bindParam(':prix', $prix, PDO::PARAM_INT);
 
         $stmt->execute();
         $conn = null; // Fermeture de la connexion

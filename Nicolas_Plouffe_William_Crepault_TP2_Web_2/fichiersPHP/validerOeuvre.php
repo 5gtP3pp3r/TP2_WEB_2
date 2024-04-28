@@ -79,7 +79,6 @@ function validerOeuvre()
         $prix = $_POST['prix'];
         $datePublication = $_POST['datePublication'];
         $codeAlbum = $_POST['codeAlbum'];
-        $lienYoutube = $_POST['lienYoutube'];
         $lyrics = $_POST['lyrics'];
 
         $resultat = ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lienYoutube, $lyrics);
