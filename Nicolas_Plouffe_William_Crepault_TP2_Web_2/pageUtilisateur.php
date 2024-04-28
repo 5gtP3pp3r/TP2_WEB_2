@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <div class="col-sm-12 col-md-3">
                                 <label for="age">Age</label><Span> (18 ans et plus)</Span>
-                                <input type="number" id="age" name="age" placeholder="max 100" min="18" step="1" class="form-control">
+                                <input type="number" id="age" name="age" placeholder="max 100" min="18" max="100" step="1" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="email">Courriel</label>

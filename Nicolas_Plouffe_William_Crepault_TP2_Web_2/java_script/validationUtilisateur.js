@@ -30,22 +30,35 @@ function validationAjout(event){
     listResult.classList.remove("red");
     let isValid = true;
 
-    if (nomUtilisateur.value.trim() == EMPTY || !regexNom.test(nomUtilisateur.value)){
+    if (nomUtilisateur.value.trim() == EMPTY) {
         errorList += "<li><p>Entrez un nom d'utilisateur valide</p></li>";
         isValid = false;
     }
+    else if(!regexNom.test(nomUtilisateur.value)) {
+        errorList += "<li><p>Le nom d'utilisateur doit contenir entre 6 et 45 caractères alphanumériques</p></li>";
+        isValid = false;
+    }
+
     if (age.value == EMPTY || age.value < MIN_AGE || age.value > MAX_AGE){
         errorList += "<li><p>Entrez un age valide entre 18 et 100</p></li>";
         isValid = false;
     }
+
     if (email.value.trim() == EMPTY || !regexEmail.test(email.value)){
         errorList += "<li><p>Entrez une adresse mail valide</p></li>";
         isValid = false;
-    }   
-    if (password.value.trim() == EMPTY || !regexPassword.test(password.value)){
+    }  
+
+    if (password.value.trim() == EMPTY) {
         errorList += "<li><p>Entrez un mot de passe valide</p></li>";
         isValid = false;
     }
+    else if (!regexPassword.test(password.value)){
+        errorList += "<li><p>Le mot de passe doit contenir au moins 8 caractères, dont une lettre" +
+                     " majuscule, une lettre minuscule, un chiffre et un caractère spécial.</p></li>";
+        isValid = false;
+    }
+
     if (ville.value == MIN_VALUE){
         errorList += "<li><p>Choisir une ville dans la liste</p></li>";
         isValid = false;
