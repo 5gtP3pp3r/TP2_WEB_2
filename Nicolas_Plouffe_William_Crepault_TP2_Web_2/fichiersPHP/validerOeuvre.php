@@ -21,11 +21,9 @@ function validerOeuvre()
         $errors[] = 'Le titre doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_"';
     }
 
-    if (empty($_POST['nomArtiste'])) {
-        $errors[] = "Le nom de l'artiste est requis.";
-    } else if (!preg_match($regExNom, $_POST['nomArtiste'])) {
-        $errors[] = 'Le nom de l\'artiste doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_" ';
-    }
+    if ($_POST['nomArtiste'] == 0) {
+        $errors[] = "Choisir un artiste parmis la liste.";
+ 
 
     if ($_POST['role'] == 0) {
         $errors[] = "Vous devez choisir un rôle.";
@@ -55,14 +53,10 @@ function validerOeuvre()
         $errors[] = "La date ne doit pas être supérieure à la date d'aujourd'hui.";
     }
 
-    if (empty($_POST['codeAlbum'])) {
-        $errors[] = "Le code album est requis.";
+    if ($_POST['codeAlbum']==0) {
+        $errors[] = "Choisir un code d'album parmis la liste.";
     } else if (!preg_match($codePattern, $_POST['codeAlbum'])) {
         $errors[] = "Le code doit contenir 3 lettres majuscule suivit de 4 chiffres.";
-    }
-
-    if (!preg_match($regexLien, $_POST['lienYoutube'])) {
-        $errors[] = "Le lien Youtube est invalide.";
     }
 
     if (!empty($_POST['lyrics']) || !preg_match($regexLyrics, $_POST['lyrics'])) {
@@ -81,7 +75,7 @@ function validerOeuvre()
         $codeAlbum = $_POST['codeAlbum'];
         $lyrics = $_POST['lyrics'];
 
-        $resultat = ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lienYoutube, $lyrics);
+        $resultat = ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics);
         if ($resultat) {
             return "Oeuvre ajoutée avec succès !";
         } else {

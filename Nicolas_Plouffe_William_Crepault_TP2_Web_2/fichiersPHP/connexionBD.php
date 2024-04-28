@@ -130,18 +130,17 @@ function chercherCodeAlbum()
 
     $sql = "SELECT id, code_album FROM albums
            ORDER BY id";
-    try{
+    try {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $codesAlbums = $stmt->fetchAll();
 
-        foreach ($codesAlbums as $codeAlbum){
+        foreach ($codesAlbums as $codeAlbum) {
             echo '<option value="' . htmlspecialchars($codeAlbum["id"]) . '">' .
                 htmlspecialchars($codeAlbum["code_album"]) . " (id $codeAlbum[id])  </option>";
         }
-    }
-    catch (PDOException $e) {
-    echo "Erreur lors de la requête: " . $e->getMessage();
+    } catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
     }
 }
 
@@ -152,17 +151,16 @@ function chercherRoleArtiste()
 
     $sql = "SELECT id, descRole FROM roles
            ORDER BY id";
-    try{
+    try {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $rolesArtistes = $stmt->fetchAll();
 
-        foreach ($rolesArtistes as $role){
+        foreach ($rolesArtistes as $role) {
             echo '<option value="' . htmlspecialchars($role["id"]) . '">' .
                 htmlspecialchars($role["descRole"]) . '</option>';
         }
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();
     }
 }
@@ -305,7 +303,7 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
     $conn = null;
 }
 
-function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lienYoutube, $lyrics)
+function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics)
 {
 
     $conn = connexionBD(); // valeur prise en compte dans les validation mais qui n'ont pas de champs dans la bd
