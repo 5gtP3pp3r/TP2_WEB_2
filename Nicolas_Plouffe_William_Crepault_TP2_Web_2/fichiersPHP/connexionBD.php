@@ -172,17 +172,16 @@ function chercherNomArtiste()
 
     $sql = "SELECT id, nom_artiste FROM artistes
            ORDER BY id";
-    try{
+    try {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $nomsArtistes = $stmt->fetchAll();
 
-        foreach ($nomsArtistes as $artiste){
+        foreach ($nomsArtistes as $artiste) {
             echo '<option value="' . htmlspecialchars($artiste["id"]) . '">' .
                 htmlspecialchars($artiste["nom_artiste"]) . '</option>';
         }
-    }
-    catch (PDOException $e) {
+    } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();
     }
 }
@@ -345,6 +344,7 @@ function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix
         $stmt->bindParam(':prix', $prix, PDO::PARAM_INT);
 
         $stmt->execute();
+        return true;
         $conn = null; // Fermeture de la connexion
     } catch (PDOException $e) {
         error_log("erreur ajout artiste: " . $e->getMessage());
