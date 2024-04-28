@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const regexNom = /^[a-zA-ZÀ-ÿ0-9]+$/;
+  const regexNom = /^[a-z0-9à-öø-ÿ]+(?:[ \-_.]*[a-z0-9à-öø-ÿ]+)*$/i;
   const regexCode = /^[A-Z]{3}\d{4}$/;
   const regexImage = /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/i;
 
