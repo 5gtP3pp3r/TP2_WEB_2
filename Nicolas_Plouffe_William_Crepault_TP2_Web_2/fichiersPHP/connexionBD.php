@@ -245,19 +245,19 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
         $sql = "INSERT INTO artistes (nom_artiste, pht_artiste, id_ville) 
                 VALUES (:nomArtiste, :photoArtiste, :ville )";
 
-        $stmt = $conn->prepare($sql); // Préparation de la requête
+        $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':nomArtiste', $nomArtiste, PDO::PARAM_STR);
-        $stmt->bindParam(':photoArtiste', $ville, PDO::PARAM_STR);
-        $stmt->bindParam(':ville', $photoArtiste, PDO::PARAM_INT);
+        $stmt->bindParam(':photoArtiste', $photoArtiste, PDO::PARAM_STR);
+        $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
 
-        $stmt->execute();
+        $stmt->execute(); 
         return true;
     } catch (PDOException $e) {
         error_log("erreur ajout artiste: " . $e->getMessage());
 
         return false;
     }
-    $conn = null; // Fermeture de la connexion
+    $conn = null;
 
 }

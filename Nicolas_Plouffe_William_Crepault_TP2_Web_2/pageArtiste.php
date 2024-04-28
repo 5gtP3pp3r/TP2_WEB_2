@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
                         <div class="row">
                             <div class="form-group col-md-12 col-lg-4">
                                 <label for="idArtiste">Nom</label>
-                                <input type="text" id="idArtiste" name="idArtiste" class="form-control">
+                                <input type="text" id="idArtiste" name="nomArtiste" class="form-control">
                             </div>
                             <div class="form-group col-md-6 col-lg-4">
                                 <label>Ville</label>
