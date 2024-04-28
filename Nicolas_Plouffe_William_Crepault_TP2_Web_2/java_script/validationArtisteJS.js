@@ -1,7 +1,7 @@
 "use strict";
 
 const regexImage = /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/;
-const regexNomArtiste = /^[a-zàâçéèêëîïôûùüÿñæœ0-9 .'-]*$/i;
+const regexNomArtiste = /^[a-z0-9à-öø-ÿ]+(?:[ \-_.]*[a-z0-9à-öø-ÿ]+)*$/i;
 const VALUE_ZERO = 0;
 const EMPTY = "";
 
@@ -26,15 +26,14 @@ function validationArtiste(event) {
   if (
     nomArtiste.value.trim() == EMPTY ||
     !regexNomArtiste.test(nomArtiste.value)
-  ) 
-  {
+  ) {
     errorList += "<li><p>Veuillez entrez un nom d'artiste valide</p></li>";
     isValid = false;
   }
   if (ville.value == VALUE_ZERO) {
     errorList += "<li><p>Veullez choisir une ville dans la liste</p></li>";
     isValid = false;
-  } 
+  }
   if (photo.value.trim() == EMPTY || !regexImage.test(photo.value)) {
     errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
     isValid = false;
