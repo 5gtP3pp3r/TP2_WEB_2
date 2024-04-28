@@ -170,7 +170,7 @@ function chercherNomArtiste()
     require_once("connexionBD.php");
     $conn = connexionBD();
 
-    $sql = "SELECT nom_artiste FROM artistes
+    $sql = "SELECT id, nom_artiste FROM artistes
            ORDER BY id";
     try{
         $stmt = $conn->prepare($sql);
