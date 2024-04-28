@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($resultat) {
-            $successMessage = "Utilisateur enregistré avec succès !";
+            $succes = "Utilisateur enregistré avec succès !";
         } else {
             $errors[] = "Erreur lors de l'enregistrement dans la base de données.";
         }
@@ -112,13 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label for="ville">Ville</label>
                                 <select id="ville" name="ville" class="form-control">
                                     <option value="0">Choix de villes</option>
-                                    <?php
-                                    $villes = chercherVilles();
-                                    foreach ($villes as $ville) {
-                                        echo '<option value="' . htmlspecialchars($ville['id']) . '">'
-                                            . htmlspecialchars($ville['nom_ville']) . '</option>';
-                                    }
-                                    ?>
+                                    <?php chercherVilles(); ?>
                                 </select>
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -164,8 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 foreach ($errors as $error) {
                                     echo '<li class="text-danger"><p>' . htmlspecialchars($error) . '</p></li>';
                                 }
-                            } elseif (isset($successMessage)) {
-                                echo '<li class="text-success"><p>' . htmlspecialchars($successMessage) . '</p></li>';
+                            } elseif (isset($succes)) {
+                                echo '<li class="text-success"><p>' . htmlspecialchars($succes) . '</p></li>';
                             }
                             ?>
                         </ul>
