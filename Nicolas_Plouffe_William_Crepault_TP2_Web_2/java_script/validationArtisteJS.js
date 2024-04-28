@@ -1,7 +1,7 @@
 "use strict";
 
 const regexImage = /^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/;
-const regexNomArtiste = /^[a-zàâçéèêëîïôûùüÿñæœ0-9 .'-]*$/i;
+const regexNomArtiste = /^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i;
 const VALUE_ZERO = 0;
 const EMPTY = "";
 
@@ -23,14 +23,17 @@ function validationArtiste(event) {
   listResult.classList.remove("red");
   let isValid = true;
 
-  if (
-    nomArtiste.value.trim() == EMPTY ||
-    !regexNomArtiste.test(nomArtiste.value)
-  ) 
+  if (nomArtiste.value.trim() == EMPTY ) 
   {
-    errorList += "<li><p>Veuillez entrez un nom d'artiste valide</p></li>";
+    errorList += "<li><p>Veuillez entrez un nom d'artiste</p></li>";
     isValid = false;
   }
+  else if (regexNomArtiste.test(nomArtiste.value)){
+    errorList += '<li><p>Le nom de l\'artiste doit contenir au moins 1 caractère,' + 
+                 '  accèpte les accents, les espaces, ".","-" et les "_" </p></li>';
+    isValid = false;
+  }
+  
   if (ville.value == VALUE_ZERO) {
     errorList += "<li><p>Veullez choisir une ville dans la liste</p></li>";
     isValid = false;
