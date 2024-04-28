@@ -34,7 +34,7 @@
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="timeInSec"><span class="red"><b>*</b></span>Temps (sec)</label>
-                                <input type="number" id="timeInSec" name="duree" placeholder="max 999" min="0" step="15" class="form-control">
+                                <input type="number" id="timeInSec" name=" " placeholder="max 999" min="0" step="15" class="form-control">
                             </div>
                             <div class="group-form col-md-6 col-lg-4">
                                 <label for="sizeMB">Taille (MB)</label>

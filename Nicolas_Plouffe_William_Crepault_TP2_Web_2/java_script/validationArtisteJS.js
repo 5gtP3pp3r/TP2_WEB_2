@@ -37,7 +37,7 @@ function validationArtiste(event) {
   if (ville.value == VALUE_ZERO) {
     errorList += "<li><p>Veullez choisir une ville dans la liste</p></li>";
     isValid = false;
-  } 
+  }
   if (photo.value.trim() == EMPTY || !regexImage.test(photo.value)) {
     errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
     isValid = false;

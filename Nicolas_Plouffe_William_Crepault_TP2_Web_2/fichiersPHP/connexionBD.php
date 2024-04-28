@@ -251,7 +251,7 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
         $stmt->bindParam(':photoArtiste', $photoArtiste, PDO::PARAM_STR);
         $stmt->bindParam(':ville', $ville, PDO::PARAM_INT);
 
-        $stmt->execute(); 
+        $stmt->execute();
         return true;
     } catch (PDOException $e) {
         error_log("erreur ajout artiste: " . $e->getMessage());
@@ -259,5 +259,33 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
         return false;
     }
     $conn = null;
+}
 
+function ajouterOeuvreBD()
+{
+
+    $conn = connexionBD(); // valeur prise en compte dans les validation mais qui n'ont pas de champs dans la bd
+    try {
+        $sql = "INSERT INTO oeuvre (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) VALUES (:p_titrePiece, :p_NomArtiste, :p_role, :p_dureesec, : p_taillemb, :p_lyrics, :p_date_ajout, :prix,)";
+
+        $stmt = $conn->prepare($sql); // Préparation de la requête
+
+        $stmt->bindParam(':p_titrePiece', $_POST['titrePiece'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_NomArtiste', $_POST['nomArtiste'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_role', $_POST['role'], PDO::PARAM_INT);
+        $stmt->bindParam(':p_dureesec', $_POST['duree'], PDO::PARAM_INT);
+        $stmt->bindParam(':p_taillemb', $_POST['taille'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_lyrics', $_POST['lyrics'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_date_ajout', $_POST['datePublication'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_codeAlbum', $_POST['codeAlbum'], PDO::PARAM_STR);
+        $stmt->bindParam(':prix', $_POST['prix'], PDO::PARAM_INT);
+        $stmt->bindParam(':p_lienYoutube', $_POST['lienYoutube'], PDO::PARAM_STR);
+        $stmt->bindParam(':p_lyrics', $_POST['lyrics'], PDO::PARAM_STR);
+
+        $stmt->execute();
+        $conn = null; // Fermeture de la connexion
+    } catch (PDOException $e) {
+        error_log("erreur ajout artiste: " . $e->getMessage());
+        return false;
+    }
 }
