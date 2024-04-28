@@ -33,7 +33,7 @@ function validerOeuvre()
 
     if (empty($_POST['duree']) || $_POST['duree'] < $ZERO) {
         $errors[] = "La durée est requise.";
-    } else if ($_POST['duree'] > $DureeMax) {
+    } else if ($_POST['duree'] > $Max) {
         $errors[] = "La durée ne doit pas dépasser 999 secondes.";
     }
 
