@@ -1,4 +1,13 @@
-<?php include("heads.infos.php"); ?>
+<?php
+include("heads.infos.php");
+require_once 'fichiersPHP/validerAlbum.php';
+require_once 'fichiersPHP/connexionBD.php';
+
+$resultats = null;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $resultats = ValiderAlbum();
+} ?>
 
 <main>
     <h2>Ajouter un nouvel album</h2>
@@ -10,14 +19,7 @@
             <div class="col-sm-12 mb-3 col-lg-6">
                 <div class="custom-border px-2">
                     <h3>Tout les champs sont obligatoires</h3>
-                    <form method="post">
-                        <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
-
-                            injectionAlbum();
-                        }
-
-                        ?>
+                    <form action="pageAlbum.php" method="post">
                         <div class="row py-2">
                             <div class="col-md-8">
                                 <label for="titre">Titre</label>
@@ -35,27 +37,14 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="genreMusical">Genre</label>
-                                <select id="genreMusical" name="genre" class="form-control">
-                                    <option value="0" id="GenreMusical">Genre</option>
-                                    <option value="1" id="Pop">Pop</option>
-                                    <option value="2" id="Rock">Rock</option>
-                                    <option value="3" id="Blues">Blues</option>
-                                    <option value="4" id="Jazz">Jazz</option>
-                                    <option value="5" id="Classique">Classique</option>
-                                    <option value="6" id="Folk">Folk</option>
-                                    <option value="7" id="Electro">Electro</option>
-                                    <option value="8" id="Latin">Latin</option>
-                                    <option value="9" id="Opera">Opéra</option>
-                                    <option value="10" id="Country">Country</option>
-                                    <option value="11" id="HipHop">Hip-Hop</option>
-                                    <option value="12" id="RnB">RnB</option>
-                                    <option value="13" id="Funk">Funk</option>
+                                <select id="genreMusical" name="genreMusical" class="form-control">
+                                    <option value="0">Genre</option>
+                                    <?php chercherMenuGenre(); ?>
                                 </select>
                             </div>
                             <div class="col-md-4">
                                 <label for="photo">Photo</label>
-                                <input type="text" id="photo" name="photo" placeholder="(.jpg .jpeg .png .gif .bmp)"
-                                    class="form-control">
+                                <input type="text" id="photo" name="photo" placeholder="(.jpg .jpeg .png .gif .bmp)" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-10">
                                 <p>Une image 300 x 300 de l'album doit être ajoutée aux
@@ -83,6 +72,15 @@
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
                             <!-- Zone de validation -->
+                            <?php
+                            if (isset($resultats) && is_array($resultats)) {
+                                foreach ($resultats as $resultat) {
+                                    echo '<li class="text-warning"><p>' . htmlspecialchars($resultat) . '</p></li>';
+                                }
+                            } elseif (isset($resultats)) {
+                                echo '<li class="text-success"><p>' . htmlspecialchars($resultats) . '</p></li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>

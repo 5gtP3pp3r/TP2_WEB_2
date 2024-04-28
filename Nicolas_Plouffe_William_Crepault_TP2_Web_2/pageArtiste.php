@@ -1,6 +1,7 @@
-<?php include("heads.infos.php");
-include("fichiersPHP\connexionBD.php");
-include("fichiersPHP\ajouterArtistes.php");
+<?php 
+include("heads.infos.php");
+require_once "fichiersPHP\connexionBD.php";
+require_once "fichiersPHP/validerArtistes.php";
 ?>
 
 <main>
@@ -18,7 +19,7 @@ include("fichiersPHP\ajouterArtistes.php");
                         testConnection();
                         if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
 
-                            injectionArtiste();
+                            validerArtiste();
                         }
 
 
@@ -36,7 +37,7 @@ include("fichiersPHP\ajouterArtistes.php");
                                     <option value="0">Choix de ville</option>
                                     <?php
                                     echo " <h1>test</h1>";
-                                    AfficherMenuVille();
+                                    chercherVilles();
                                     echo "<p>test2</p>";
                                     ?>
 
