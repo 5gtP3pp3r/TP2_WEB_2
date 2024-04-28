@@ -61,12 +61,12 @@ function validateInputs(event) {
   if (sizeMB.value == EMPTY) {
     errorList += "<li><p>Veuillez entrer une taille en Mb valide</p></li>";
     isValid = false;
-  } 
+  }
 
   if (inputDate.value == EMPTY) {
     errorList += "<li><p>Date de publication: " + today + "</p></li>";
     isValid = false;
-  } 
+  }
 
   if (albumCode.value.trim() == "" || !codePattern.test(albumCode.value)) {
     errorList += "<li><p>Veuillez entrer un code valide</p></li>";
