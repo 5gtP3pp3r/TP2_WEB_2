@@ -137,7 +137,7 @@ function chercherCodeAlbum()
 
         foreach ($codesAlbums as $codeAlbum) {
             echo '<option value="' . htmlspecialchars($codeAlbum["id"]) . '">' .
-                htmlspecialchars($codeAlbum["code_album"]) . " (id $codeAlbum[id])  </option>";
+                htmlspecialchars($codeAlbum["code_album"]) . '</option>';
         }
     } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();

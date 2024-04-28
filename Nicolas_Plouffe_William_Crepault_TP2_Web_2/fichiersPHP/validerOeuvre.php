@@ -14,6 +14,7 @@ function validerOeuvre()
 
 
     $errors = [];
+    
 
     if (empty($_POST['titrePiece'])) {
         $errors[] = "Le titre de l'oeuvre est requis.";
@@ -55,9 +56,7 @@ function validerOeuvre()
 
     if ($_POST['codeAlbum'] == 0) {
         $errors[] = "Choisir un code d'album parmis la liste.";
-    } else if (!preg_match($codePattern, $_POST['codeAlbum'])) {
-        $errors[] = "Le code doit contenir 3 lettres majuscule suivit de 4 chiffres.";
-    }
+    }    
 
     if (!empty($_POST['lyrics']) || !preg_match($regexLyrics, $_POST['lyrics'])) {
         $errors[] = "Les paroles ne doivent contenir que des lettres, des chiffres, des espaces, des apostrophes et des tirets.";
