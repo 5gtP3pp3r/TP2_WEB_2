@@ -8,7 +8,6 @@ function validerOeuvre()
     $ValeurMin = 0;
     $ValeurMax = 10;
     $codePattern = '/[A-Z]{3}\d{4}/';
-    $regexLien = '/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/';
     $regexLyrics = '/^[a-zA-Z0-9 .\'-]*$/';
 
 
