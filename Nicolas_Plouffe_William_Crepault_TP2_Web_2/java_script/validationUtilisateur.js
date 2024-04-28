@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-const regexNom = /^^[a-zA-Z0-9]{6,45}$/;
+const regexNom = /^[a-zA-Z0-9]{6,45}$/;
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 const regexEmail = /^[\w.-]+@[a-zA-Z_-]+?\.[a-zA-Z]{2,6}$/;
 const MIN_VALUE = 0;

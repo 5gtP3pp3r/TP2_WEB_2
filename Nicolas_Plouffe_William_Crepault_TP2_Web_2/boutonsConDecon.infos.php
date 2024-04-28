@@ -18,7 +18,7 @@ if ($pageNom == 'pageAuth') {
                     <form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
-            } elseif ($_SESSION['role'] == 'GERANT' && $pageNom == 'pageAjoutUtilisateur') {
+            } elseif ($_SESSION['role'] == 'GERANT' && $pageNom == 'pageUtilisateur') {
             ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
                     <form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
