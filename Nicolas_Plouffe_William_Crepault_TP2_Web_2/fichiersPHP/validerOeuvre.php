@@ -37,7 +37,7 @@ function validerOeuvre()
 
     if (!empty($_POST['taille']) && $_POST['taille'] <= $ZERO) {
         $errors[] = 'La valeur doit être entre 1 et "$DureeMax" mb.';
-    } else if ($_POST['taille'] > $Max) {
+    } else if (!empty($_POST['taille']) && $_POST['taille'] > $Max) {
         $errors[] = "La taille ne doit pas dépasser 999 mb.";
     }
 
