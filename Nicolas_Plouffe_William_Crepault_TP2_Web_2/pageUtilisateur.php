@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="email" id="email" name="email" placeholder="nom@domaine.com" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
+                                <h3>**confirmer mot de passe**</h3>
                                 <label for="password">Mot de passe</label>
                                 <input type="password" id="password" name="password" class="form-control">
                             </div>
