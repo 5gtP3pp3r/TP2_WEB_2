@@ -61,6 +61,8 @@ function validerOeuvre()
         $errors[] = "Les paroles ne doivent contenir que des lettres, des chiffres, des espaces, des apostrophes et des tirets.";
     }
 
+    // AJOUTER VALIDATION EMAIL UNIQUE
+
     if (count($errors) == 0) {
 
         $titrePiece = $_POST['titrePiece'];

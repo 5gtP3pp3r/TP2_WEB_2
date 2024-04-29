@@ -30,6 +30,8 @@ function validerAlbum()
         $errors[] = "Le nom de la photo est requis";
     }
 
+    // AJOUTER VALIDATION CODE ALBUM UNIQUE
+
     if (count($errors) === 0) {
 
         $titre = $_POST['titre'];
