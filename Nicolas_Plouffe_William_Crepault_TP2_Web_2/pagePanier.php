@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!$_SESSION['role'] == 'CLIENT') {
+if ($_SESSION['role'] != 'CLIENT') {
     header("Location: index.php");
 } else {
 
