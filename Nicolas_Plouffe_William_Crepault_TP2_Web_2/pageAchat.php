@@ -1,6 +1,8 @@
 <?php
 
-if ($_SESSION['role'] == 'CLIENT') {
+if (!$_SESSION['role'] == 'CLIENT') {
+    header("Location: index.php");
+} else {
 
     include("heads.infos.php");
     require_once "fichiersPHP/connexionBD.php";
@@ -100,9 +102,4 @@ if ($_SESSION['role'] == 'CLIENT') {
             </div>
         </div>
     </main>
-<?php
-    include("foots.infos.php");
-} else {
-    header("Location: index.php");
-}
-?>
+<?php include("foots.infos.php"); } ?>
