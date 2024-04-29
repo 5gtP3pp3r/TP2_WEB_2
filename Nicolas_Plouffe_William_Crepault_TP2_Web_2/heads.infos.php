@@ -58,8 +58,11 @@ if (session_status() == PHP_SESSION_NONE) {
                                 echo '<li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>';
                             }
                         }
+                        date_default_timezone_set('Etc/GMT+4');
                         ?>
+                    </ul>                       
                 </div>
+                <p class="d-flex justify-content-end"><?=date("Y-m-d h:i")?></p>
             </div>
         </div>
     </nav>
