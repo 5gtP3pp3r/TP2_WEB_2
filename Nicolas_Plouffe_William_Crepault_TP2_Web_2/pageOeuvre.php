@@ -1,6 +1,8 @@
 <?php
-
-if (!$_SESSION['role'] == 'GERANT' || !$_SESSION['role'] == 'ADMIN') {
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_SESSION['role'] != 'GERANT') {
     header("Location: index.php");
 } else {
 

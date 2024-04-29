@@ -1,4 +1,8 @@
 <?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("heads.infos.php");
 require_once 'fichiersPHP/connexionBD.php';
 require_once 'fichiersPHP/validerUtilisateur.php';

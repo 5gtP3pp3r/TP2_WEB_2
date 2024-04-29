@@ -1,4 +1,9 @@
-<?php include("heads.infos.php"); ?>
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include("heads.infos.php"); 
+?>
 
 <main>
     <h2>Liste des albums diponibles</h2>
