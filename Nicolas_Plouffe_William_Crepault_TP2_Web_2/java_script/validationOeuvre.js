@@ -31,7 +31,7 @@ document.getElementById("submitUS3").addEventListener("click", validateInputs);
 document.getElementById("resetUS3").addEventListener("click", clearInputs);
 
 function validateInputs(event) {
-  errorList = "<li><p>réponse javascript</p></li>";
+  errorList = "<li><p>\"affichage via js avec un preventDefault si valeurs incorrectes\"</p></li>";
   listResult.classList.remove("red");
   let isValid = true;
 

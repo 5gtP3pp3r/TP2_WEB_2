@@ -19,7 +19,7 @@ document
 document.getElementById("resetUS1").addEventListener("click", resetForm);
 
 function validationArtiste(event) {
-  errorList = "reponse javascript";
+  errorList = "<li><p>\"affichage via js avec un preventDefault si valeurs incorrectes\"</p></li>";
   listResult.classList.remove("red");
   let isValid = true;
 
