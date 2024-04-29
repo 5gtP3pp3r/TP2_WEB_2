@@ -41,16 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="email" id="email" name="email" placeholder="nom@domaine.com" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <h3>**confirmer mot de passe**</h3>
-                                <label for="password">Mot de passe</label>
-                                <input type="password" id="password" name="password" class="form-control">
-                            </div>
-                            <div class="col-sm-12 col-md-6">
                                 <label for="ville">Ville</label>
                                 <select id="ville" name="ville" class="form-control">
                                     <option value="0">Choix de villes</option>
                                     <?php chercherVilles(); ?>
                                 </select>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="password">Mot de passe</label>
+                                <input type="password" id="password" name="password" class="form-control">
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="password">Confirmer mot de passe</label>
+                                <input type="password" id="confPassword" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="role">Rôle</label>
