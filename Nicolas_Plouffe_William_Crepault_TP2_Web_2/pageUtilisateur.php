@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php include("boutonsConDecon.infos.php"); ?>
         </div>
         <div class="row py-4">
-            <div class="col-sm-1 mb-3 col-lg-6">
+            <div class="col-sm-1 col-md-6 mb-3">
                 <div class="custom-border px-2 container-fluid">
                     <h3>Tout les champs sont obligatoires</h3>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="text" id="nomUtilisateur" name="nomUtilisateur" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-3">
-                                <label for="age">Age</label><Span> (18 ans et plus)</Span>
+                                <label for="age">Age</label><Span class="red"> (18 ans et plus)</Span>
                                 <input type="number" id="age" name="age" placeholder="max 100" min="18" max="100" step="1" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -52,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="password" id="password" name="password" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <label for="password">Confirmer mot de passe</label>
-                                <input type="password" id="confPassword" class="form-control">
+                                <label class="red" for="confPassword">Confirmer mot de passe</label>
+                                <input type="password" id="confPassword" name="confPassword" class="form-control">
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <label for="role">Rôle</label>
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 mb-3 col-lg-6">
+            <div class="col-sm-12 col-md-6 mb-3">
                 <div class="custom-border px-2">
                     <h3>Informations personnelles</h3>
                     <div class="validationList" id="resultList">
