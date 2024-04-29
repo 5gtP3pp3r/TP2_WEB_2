@@ -1,6 +1,9 @@
 <?php
 
-if ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
+if (!$_SESSION['role'] == 'GERANT' || !$_SESSION['role'] == 'ADMIN') {
+    header("Location: index.php");
+}
+else{
 
     include("heads.infos.php");
     require_once 'fichiersPHP/validerAlbum.php';
@@ -92,9 +95,4 @@ if ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
         </div>
     </main>
 
-<?php
-    include("foots.infos.php");
-} else {
-    header("Location: index.php");
-}
-?>
+    <?php include("foots.infos.php"); } ?>
