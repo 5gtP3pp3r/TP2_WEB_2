@@ -1,7 +1,10 @@
 "use strict";
 
-function getDate(){    
-    return new Date().toISOString().split('T')[0];          
+function getDate() {
+    var options = { timeZone: 'America/Toronto', year: 'numeric', month: '2-digit', day: '2-digit' };
+    var date = new Date();
+    var formattedDate = date.toLocaleDateString('en-CA', options); 
+    return formattedDate.split('/').reverse().join('-'); 
 }
 let today = getDate();
 document.addEventListener("DOMContentLoaded", getDate);
