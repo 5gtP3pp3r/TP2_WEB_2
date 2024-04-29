@@ -15,7 +15,6 @@ let pieceName = document.getElementById("pieceName");
 let artistName = document.getElementById("artistName");
 let timeInSec = document.getElementById("timeInSec");
 let sizeMB = document.getElementById("sizeMB");
-let roleOptions = document.getElementById("roleOptions");
 let inputDate = document.getElementById("datePublication");
 let albumCode = document.getElementById("albumCode");
 let albumValue = document.getElementById("albumValue");
@@ -50,11 +49,6 @@ function validateInputs(event) {
     isValid = false;
   }
 
-  if (roleOptions.value == VALUE_ZERO) {
-    errorList += "<li><p>Veuillez choisir un rôle de l'ariste</p></li>";
-    isValid = false;
-  }
-
   if (albumValue.value <= MIN_VALUE || albumValue.value > MAX_VALUE) {
     errorList += "<li><p>Veuillez entrer une valeur entre 1$ et 10$</p></li>";
     isValid = false;
@@ -69,11 +63,11 @@ function validateInputs(event) {
     isValid = false;
   }
 
-  if (sizeMB.value == EMPTY) {
-    errorList += "<li><p>Veuillez entrer une taille en Mb</p></li>";
+  if (sizeMB.value != EMPTY &&sizeMB.value <=MIN_VALUE) {
+    errorList += "<li><p>Veuillez entrer une taille entre 1 Mb et 999 Mb </p></li>";
     isValid = false;
   }
-  else if (sizeMB.value <= MIN_VALUE || sizeMB.value > MAX_LENGTH){
+  else if (sizeMB.value != EMPTY && sizeMB.value > MAX_LENGTH){
     errorList += "<li><p>Veuillez entrer une taille entre 1 Mb et 999 Mb </p></li>";
     isValid = false;
   }
