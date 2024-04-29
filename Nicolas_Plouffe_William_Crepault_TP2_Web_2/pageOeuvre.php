@@ -1,4 +1,7 @@
 <?php 
+
+if ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
+
 include("heads.infos.php"); 
 require_once 'fichiersPHP/connexionBD.php';
 require_once 'fichiersPHP/validerOeuvre.php';
@@ -105,4 +108,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide
     </div>
 </main>
 
-<?php include("foots.infos.php"); ?>
+<?php
+    include("foots.infos.php");
+} else {
+    header("Location: index.php");
+}
+?>
