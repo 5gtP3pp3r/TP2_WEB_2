@@ -25,10 +25,6 @@ function validerOeuvre()
         $errors[] = "Choisir un artiste parmis la liste.";
     }
 
-    if ($_POST['role'] == 0) {
-        $errors[] = "Vous devez choisir un rôle.";
-    }
-
     if (empty($_POST['duree']) || $_POST['duree'] <= $ZERO) {
         $errors[] = "La durée est requise.";
     } else if ($_POST['duree'] > $Max) {
