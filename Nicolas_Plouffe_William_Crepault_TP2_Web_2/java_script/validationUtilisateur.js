@@ -14,6 +14,7 @@ let nomUtilisateur = document.getElementById("nomUtilisateur");
 let age = document.getElementById("age"); 
 let email = document.getElementById("email");
 let password = document.getElementById("password");
+let confPassword = document.getElementById("confPassword");
 let ville = document.getElementById("ville");
 let role = document.getElementById("role");
  
@@ -53,9 +54,13 @@ function validationAjout(event){
         errorList += "<li><p>Entrez un mot de passe valide</p></li>";
         isValid = false;
     }
-    else if (!regexPassword.test(password.value)){
+    else if (!regexPassword.test(password.value) ){
         errorList += "<li><p>Le mot de passe doit contenir au moins 8 caractères, dont une lettre" +
                      " majuscule, une lettre minuscule, un chiffre et un caractère spécial.</p></li>";
+        isValid = false;
+    }
+    else if (password.value != confPassword.value){
+        errorList += "<li><p>Vous devez confirmer votre mot de passe, même valeur que \"Mot de passe\".</p></li>";
         isValid = false;
     }
 
