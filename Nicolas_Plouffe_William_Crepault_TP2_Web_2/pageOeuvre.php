@@ -41,7 +41,7 @@ if ($_SESSION['role'] != 'GERANT') {
                             </div>
                             <div class="row py-2">
                                 <div class="group-form col-md-6 col-lg-4">
-                                    <label for="roleOptions">Rôle</label>
+                                    <label for="roleOptions"><span class="red"><b>*</b></span>Rôle</label>
                                     <select name="role" id="roleOptions" class="form-control">
                                         <option value="0">Rôle de l'artiste</option>
                                         <?php chercherRoleArtiste() ?>

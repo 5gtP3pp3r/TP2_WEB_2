@@ -1,9 +1,9 @@
 "use strict";
 
-const ValuePattern = /^(\d)+.(\d){2}$/;
 const codePattern = /[A-Z]{3}\d{4}/;
 const sizeMBPattern = /[0-9]{1,4}/;
-const regexNomOeuvre = /^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i;
+const nomOeuvrePattern = /^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i;
+const lyricsPattern = /^[a-zA-Z0-9 ]+$/;
 
 const MAX_LENGTH = 999;
 const MAX_VALUE = 10;
@@ -13,13 +13,14 @@ const EMPTY = "";
 
 let pieceName = document.getElementById("pieceName");
 let artistName = document.getElementById("artistName");
+let role = document.getElementById("roleOptions");
 let timeInSec = document.getElementById("timeInSec");
 let sizeMB = document.getElementById("sizeMB");
 let inputDate = document.getElementById("datePublication");
 let albumCode = document.getElementById("albumCode");
 let albumValue = document.getElementById("albumValue");
 //let youtubeLink = document.getElementById("youtubeLink");
-//let lyrics = document.getElementById("lyrics")
+let lyrics = document.getElementById("lyrics")
 
 let listResult = document.getElementById("listResult");
 
@@ -38,7 +39,7 @@ function validateInputs(event) {
     errorList += "<li><p>Veuillez entrer une pièce valide</p></li>";
     isValid = false;
   }
-  else if (!regexNomOeuvre.test(pieceName.value)){
+  else if (!nomOeuvrePattern.test(pieceName.value)){
     errorList += '<li><p>Le titre doit contenir au moins 1 caractère, accèpte' + 
                  ' les accents, les espaces, ".","-" et les "_"</p></li>';
     isValid = false;
@@ -46,6 +47,11 @@ function validateInputs(event) {
 
   if (artistName.value == VALUE_ZERO) {
     errorList += "<li><p>Veuillez choisir un nom d'artiste</p></li>";
+    isValid = false;
+  }
+
+  if (role.value == MIN_VALUE){
+    errorList += "<li><p>Veuillez choisir un rôle</p></li>";
     isValid = false;
   }
 
@@ -79,6 +85,11 @@ function validateInputs(event) {
 
   if (albumCode.value == VALUE_ZERO) {
     errorList += "<li><p>Veuillez choisir un code valide</p></li>";
+    isValid = false;
+  }
+
+  if (lyrics.value != Empty && !lyricsPattern.test(lyrics.value)) {
+    errorList += "<li><p>Veuillez des caractères alpha numérique avec espaces seulement</p></li>";
     isValid = false;
   }
 

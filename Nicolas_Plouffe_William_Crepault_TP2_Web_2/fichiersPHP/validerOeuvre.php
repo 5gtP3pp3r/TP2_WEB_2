@@ -18,11 +18,15 @@ function validerOeuvre()
     if (empty($_POST['titrePiece'])) {
         $errors[] = "Le titre de l'oeuvre est requis.";
     } else if (!preg_match($regExNom, $_POST['titrePiece'])) {
-        $errors[] = 'Le titre doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_"';
+        $errors[] = 'Le titre doit contenir que des lettres, des chiffres et des espaces';
     }
 
     if ($_POST['nomArtiste'] == 0) {
         $errors[] = "Choisir un artiste parmis la liste.";
+    }
+
+    if ($_POST['role'] == 0) {
+        $errors[] = "Choisir un rôle parmis la liste.";
     }
 
     if (empty($_POST['duree']) || $_POST['duree'] <= $ZERO) {
@@ -54,7 +58,7 @@ function validerOeuvre()
     }    
 
     if (!empty($_POST['lyrics']) && !preg_match($regexLyrics, $_POST['lyrics'])) {
-        $errors[] = "Les paroles ne doivent contenir que des lettres, des chiffres, des espaces, des apostrophes et des tirets.";
+        $errors[] = "Les paroles ne doivent contenir que des lettres, des chiffres et des espaces.";
     }
 
     // AJOUTER VALIDATION EMAIL UNIQUE

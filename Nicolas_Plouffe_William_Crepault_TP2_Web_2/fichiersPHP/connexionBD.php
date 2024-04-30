@@ -327,10 +327,13 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
 function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics)
 {
 
+    if ($taille == 0 || $taille == null)
+    {
+        $taille = null;
+    }
+
     $conn = connexionBD();
-    try { // si pas de role ,mais talle else if pas de talle ou si pas de role et pade taille
-
-
+    try { 
 
         $sql = "INSERT INTO oeuvres (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) 
                 VALUES (:p_titrePiece, :p_idArtiste, :p_idRole, :p_dureesec, :p_taillemb, :p_lyrics, :p_date_ajout, :p_id_album, :p_prix)";
