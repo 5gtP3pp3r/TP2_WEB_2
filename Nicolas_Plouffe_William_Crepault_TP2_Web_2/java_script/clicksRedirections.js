@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function ()
         });
     }
 
-    let btnDeconnexion = document.getElementById('deconnexion');
+    /*let btnDeconnexion = document.getElementById('deconnexion');
     if (btnDeconnexion) 
     {
         btnDeconnexion.addEventListener('click', function() 
         {
             window.location.href = 'index.php';
         });
-    }
+    }*/
 
     let ajoutUtilisateur = document.getElementById('ajoutUtilisateur');
     if (ajoutUtilisateur)
