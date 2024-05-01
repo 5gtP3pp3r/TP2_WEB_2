@@ -27,7 +27,7 @@ function validerAlbum()
         $errors[] = "Vous devez choisir un genre.";
     }
 
-    if (empty($_POST['photo'])) {
+    if (!empty($_POST['photo']) && !preg_match("/^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/i", $_POST['photo'])) {
         $errors[] = "Le nom de la photo est requis";
     }
 
@@ -41,14 +41,28 @@ function validerAlbum()
         $genreMusical = $_POST['genreMusical'];
         $photo = $_POST['photo'];
 
-        $resultat = ajouterAlbumBD($titre, $code, $dateAjout, $genreMusical, $photo);
-
-        if ($resultat) {
-            return "Album ajouté avec succès !";
+        if (empty($photo)) {
+            $photo = "aucune_image.png";
         } else {
-            return ["Erreur lors de l'ajout de l'album dans la base de données."];
+            $dossierImages = 'Images/';
+            $cheminImage = $dossierImages . $photo;
+
+            if (!file_exists($cheminImage)) {
+                $errors[] = 'L\'image n\'existe pas dans le dossier "Images"';
+            }
+        }
+        if (empty($errors)) {
+            $resultat = ajouterAlbumBD($titre, $code, $dateAjout, $genreMusical, $photo);
+            if ($resultat) {
+                return "Album ajouté avec succès !";
+            } else {
+                $errors[] = "Erreur lors de l'ajout de l'album dans la base de données.";
+                return $errors;  
+            }
+        } else {
+            return $errors; // erreur si la photo existe pas
         }
     } else {
-        return $errors;
+        return $errors; // erreurs validations formulaire 
     }
 }
