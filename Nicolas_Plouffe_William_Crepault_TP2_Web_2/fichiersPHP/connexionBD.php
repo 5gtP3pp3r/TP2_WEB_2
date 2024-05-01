@@ -193,8 +193,9 @@ function chercherEmail()
         $stmt->execute();
         $emailsArray = $stmt->fetchAll();
 
-        foreach ($emailsArray as $emails){
-            $emailArray[] = $emails['courriel'];
+        $emailArray = [];
+        foreach ($emailsArray as $email){
+            $emailArray[] = $email['courriel'];
         }
 
         return $emailArray;
@@ -214,11 +215,12 @@ function chercherCodeAlbum()
         $stmt->execute();
         $codesAlbumsArray = $stmt->fetchAll();
 
-        foreach ($codesAlbumsArray as $codes){
-            $codesArray[] = $codes['code_album'];
+        $codeArray = [];
+        foreach ($codesAlbumsArray as $code){
+            $codeArray[] = $code['code_album'];
         }
 
-        return $codesArray;
+        return $codeArray;
     } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();
     }

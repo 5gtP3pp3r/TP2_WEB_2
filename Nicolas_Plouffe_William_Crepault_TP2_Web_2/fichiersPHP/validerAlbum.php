@@ -31,12 +31,12 @@ function validerAlbum()
         $errors[] = "Le nom de la photo est requis";
     }
 
-$codeAlbumArray[] = chercherCodeAlbum();
-$codeEntrant = $_POST['code'];
+    $codeAlbumArray = chercherCodeAlbum();
+    $codeEntrant = $_POST['code'];
 
-if(!in_array($codeEntrant,$codeAlbumArray)){
-    $errors[]="Code album existant";
-}
+    if (in_array($codeEntrant, $codeAlbumArray)) {
+        $errors[] = "Code album existant";
+    }
 
     if (count($errors) === 0) {
 
@@ -62,12 +62,12 @@ if(!in_array($codeEntrant,$codeAlbumArray)){
                 return "Album ajouté avec succès !";
             } else {
                 $errors[] = "Erreur lors de l'ajout de l'album dans la base de données.";
-                return $errors;  
+                return $errors;
             }
         } else {
-            return $errors; // erreur si la photo existe pas
+            return $errors; 
         }
     } else {
-        return $errors; // erreurs validations formulaire 
+        return $errors;  
     }
 }

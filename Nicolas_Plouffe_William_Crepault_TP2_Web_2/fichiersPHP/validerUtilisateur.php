@@ -39,13 +39,12 @@ function validerUtilisateur()
         $errors[] = "L'âge doit être entre 18 et 100 ans.";
     }
 
-    $mailArray[] = chercherEmail();
+    $mailArray = chercherEmail();
     $mailEntrant = $_POST['email'];
 
-    if (!in_array($mailEntrant, $mailArray )) {
+    if (in_array($mailEntrant, $mailArray)) {
         $errors[] = "Adresse courrielle existante";
     } 
-
     if (count($errors) === 0) {
 
         $nom = $_POST['nomUtilisateur'];
@@ -55,11 +54,9 @@ function validerUtilisateur()
         $ville = $_POST['ville'];
         $roleId = $_POST['role'];
         $age = $_POST['age'];
-
         
             $resultat = ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age);
             $nouvelUtil = chercherUtil($email, $motPasse);
-
 
             if ($nouvelUtil) {
                 new Utilisateur(
