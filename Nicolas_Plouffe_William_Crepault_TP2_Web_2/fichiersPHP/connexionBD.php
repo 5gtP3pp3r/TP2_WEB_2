@@ -185,14 +185,20 @@ function chercherNomArtiste()
 function chercherEmail()
 {
     $conn = connexionBD();
-    $emailArray = [];
+    $emailArrays = [];
 
     try {
         $sql = "SELECT courriel FROM utilisateurs";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $emailArray = $stmt->fetchAll();
+        $emailArrays = $stmt->fetchAll();
+
+        
+
+        foreach ($emailArrays as $email){
+            $emailArray[] = $email['courriel'];
+        }
 
         return $emailArray;
     } catch (PDOException $e) {

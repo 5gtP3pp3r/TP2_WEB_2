@@ -39,10 +39,17 @@ function validerUtilisateur()
         $errors[] = "L'âge doit être entre 18 et 100 ans.";
     }
 
+    $mailArray = []; 
+    $mailArray[] = chercherEmail();
+    var_dump($mailArray);
+    $mailExistant = $_POST['email'];
+    echo $mailExistant;
+    if (in_array($mailExistant, $mailArray )) {
+        $errors[] = "Adresse courrielle existante";
+    } 
+    var_dump($errors);
+
     if (count($errors) === 0) {
-
-        $mailArray = chercherEmail();
-
 
         $nom = $_POST['nomUtilisateur'];
         $email = $_POST['email'];
@@ -52,9 +59,7 @@ function validerUtilisateur()
         $roleId = $_POST['role'];
         $age = $_POST['age'];
 
-        if (in_array($email, $mailArray)) {
-            $errors[] = "Adresse courrielle existante";
-        } else {
+        
             $resultat = ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age);
             $nouvelUtil = chercherUtil($email, $motPasse);
 
@@ -76,7 +81,7 @@ function validerUtilisateur()
             } else {
                 return ["Erreur lors de l'ajout de l'utilisateur dans la base de données."];
             }
-        }
+        
     } else {
         return $errors;
     }
