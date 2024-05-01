@@ -70,7 +70,7 @@ if ($_SESSION['role'] != 'GERANT') {
                                     <label for="albumCode"><span class="red"><b>*</b></span>Code</label>
                                     <select id="albumCode" name="codeAlbum" class="form-control">
                                         <option value="0">Code album</option>
-                                        <?php chercherCodeAlbum() ?>
+                                        <?php chercherIdCodeAlbum() ?>
                                     </select>
                                 </div>
                             </div>
