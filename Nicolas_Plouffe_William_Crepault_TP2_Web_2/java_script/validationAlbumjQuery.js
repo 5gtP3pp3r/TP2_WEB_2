@@ -35,8 +35,8 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    if (!regexImage.test($("#photo").val()) || $("#photo").val() == EMPTY) {
-      errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
+    if ($("#photo").val() != EMPTY && !regexImage.test($("#photo").val())) {
+      errorList += "<li><p>Format d'image invalide, utilisez des fichiers .jpg .jpeg .png .gif .bmp</p></li>";
       isValid = false;
     }
 
