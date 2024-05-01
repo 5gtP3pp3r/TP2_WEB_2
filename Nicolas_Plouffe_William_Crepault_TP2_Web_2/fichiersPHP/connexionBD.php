@@ -122,7 +122,7 @@ function chercherMenuGenre()
     $conn = null; // Fermeture de la connexion
 }
 
-function chercherCodeAlbum()
+function chercherIdCodeAlbum()
 {
     $conn = connexionBD();
 
@@ -177,6 +177,42 @@ function chercherNomArtiste()
             echo '<option value="' . htmlspecialchars($artiste["id"]) . '">' .
                 htmlspecialchars($artiste["nom_artiste"]) . '</option>';
         }
+    } catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+}
+
+function chercherEmail()
+{
+    $conn = connexionBD();
+    $emailArray = [];
+
+    try {
+        $sql = "SELECT courriel FROM utilisateurs";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $emailArray = $stmt->fetchAll();
+
+        return $emailArray;
+    } catch (PDOException $e) {
+        echo "Erreur lors de la requête: " . $e->getMessage();
+    }
+}
+
+function chercherCodeAlbum()
+{
+    $conn = connexionBD();
+    $codeAlbumArray = [];
+
+    try {
+        $sql = "SELECT code_album FROM albums";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $codeAlbumArray = $stmt->fetchAll();
+
+        return $codeAlbumArray;
     } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();
     }
@@ -323,13 +359,12 @@ function ajouterArtisteBD($nomArtiste, $ville, $photoArtiste)
 function ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics)
 {
 
-    if ($taille == 0 || $taille == null)
-    {
+    if ($taille == 0 || $taille == null) {
         $taille = null;
     }
 
     $conn = connexionBD();
-    try { 
+    try {
 
         $sql = "INSERT INTO oeuvres (titre_oeuvre, id_artiste, id_role, dureesec, taillemb, lyrics, date_ajout, id_album, prix) 
                 VALUES (:p_titrePiece, :p_idArtiste, :p_idRole, :p_dureesec, :p_taillemb, :p_lyrics, :p_date_ajout, :p_id_album, :p_prix)";
