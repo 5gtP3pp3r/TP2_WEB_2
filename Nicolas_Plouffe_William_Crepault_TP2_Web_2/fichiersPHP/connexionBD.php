@@ -103,7 +103,6 @@ function chercherOeuvre($idOeuvre)
 
 function chercherMenuGenre()
 {
-    require_once("connexionBD.php");
     $conn = connexionBD();
 
     $sql = "SELECT id, descGenre FROM genres";
@@ -125,7 +124,6 @@ function chercherMenuGenre()
 
 function chercherCodeAlbum()
 {
-    require_once("connexionBD.php");
     $conn = connexionBD();
 
     $sql = "SELECT id, code_album FROM albums
@@ -146,7 +144,6 @@ function chercherCodeAlbum()
 
 function chercherRoleArtiste()
 {
-    require_once("connexionBD.php");
     $conn = connexionBD();
 
     $sql = "SELECT id, descRole FROM roles
@@ -167,7 +164,6 @@ function chercherRoleArtiste()
 
 function chercherNomArtiste()
 {
-    require_once("connexionBD.php");
     $conn = connexionBD();
 
     $sql = "SELECT id, nom_artiste FROM artistes
