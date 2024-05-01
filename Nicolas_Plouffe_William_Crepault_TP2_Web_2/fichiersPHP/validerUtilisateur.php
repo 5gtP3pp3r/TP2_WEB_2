@@ -40,9 +40,9 @@ function validerUtilisateur()
     }
 
     $mailArray[] = chercherEmail();
-    $mailExistant = $_POST['email'];
+    $mailEntrant = $_POST['email'];
 
-    if (!in_array($mailExistant, $mailArray )) {
+    if (!in_array($mailEntrant, $mailArray )) {
         $errors[] = "Adresse courrielle existante";
     } 
 

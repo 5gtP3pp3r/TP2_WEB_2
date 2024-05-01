@@ -31,7 +31,12 @@ function validerAlbum()
         $errors[] = "Le nom de la photo est requis";
     }
 
-    // AJOUTER VALIDATION CODE ALBUM UNIQUE
+$codeAlbumArray[] = chercherCodeAlbum();
+$codeEntrant = $_POST['code'];
+
+if(!in_array($codeEntrant,$codeAlbumArray)){
+    $errors[]="Code album existant";
+}
 
     if (count($errors) === 0) {
 
