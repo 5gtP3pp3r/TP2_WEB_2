@@ -1,8 +1,9 @@
 <?php
-require_once 'fichiersPHP/connexionBD.php';
+require_once 'connexionBD.php';
 
 function validerAlbum()
 {
+    date_default_timezone_set('Etc/GMT+4');
 
     $errors = [];
 
