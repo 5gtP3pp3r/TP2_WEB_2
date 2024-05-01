@@ -1,5 +1,5 @@
 <?php
-require_once("connexionBD.php");
+require_once 'connexionBD.php';
 
 function validerArtiste()
 {
