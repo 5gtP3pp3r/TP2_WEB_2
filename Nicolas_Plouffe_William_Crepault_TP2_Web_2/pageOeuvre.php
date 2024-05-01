@@ -6,11 +6,12 @@ if ($_SESSION['role'] != 'GERANT') {
     header("Location: index.php");
 } else {
 
-    include("heads.infos.php");
-    require_once 'fichiersPHP/connexionBD.php';
     require_once 'fichiersPHP/validerOeuvre.php';
+    include("heads.infos.php");    
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") { // Si la méthode est POST on valide les champs, mais la validation ne fonctionne pas Comme si la M/thode Post n'était pas reconnue
+    $resultats = null;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resultats = validerOeuvre();
     }
 ?>

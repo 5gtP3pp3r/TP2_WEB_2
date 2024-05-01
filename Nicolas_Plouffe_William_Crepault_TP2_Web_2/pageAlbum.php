@@ -4,18 +4,17 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if ($_SESSION['role'] != 'GERANT') {
     header("Location: index.php");
-}
-else{
+} else {
 
-    include("heads.infos.php");
     require_once 'fichiersPHP/validerAlbum.php';
-    require_once 'fichiersPHP/connexionBD.php';
+    include("heads.infos.php");    
 
     $resultats = null;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $resultats = ValiderAlbum();
-    } ?>
+        $resultats = validerAlbum();
+    }
+?>
 
     <main>
         <h2>Ajouter un nouvel album</h2>
@@ -27,7 +26,7 @@ else{
                 <div class="col-sm-12 mb-3 col-lg-6">
                     <div class="custom-border px-2">
                         <h3>Tout les champs sont obligatoires</h3>
-                        <form action="pageAlbum.php" method="post">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                             <div class="row py-2">
                                 <div class="col-md-8">
                                     <label for="titre">Titre</label>
@@ -97,4 +96,5 @@ else{
         </div>
     </main>
 
-    <?php include("foots.infos.php"); } ?>
+<?php include("foots.infos.php");
+} ?>
