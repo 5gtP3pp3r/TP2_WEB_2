@@ -1,11 +1,12 @@
 <?php
 
-if ($pageNom == 'pageAuth') {
-} else {
-    if (isset($_POST['logout'])) {
+if ($pageNom != 'pageAuth') {
+
+    if (isset($_GET['logout'])) {  
+        header("Location: index.php");
         session_unset();
         session_destroy();
-        header("Location: index.php");
+        
         exit();
     }
 ?>
@@ -15,13 +16,13 @@ if ($pageNom == 'pageAuth') {
             if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'ADMIN') {
         ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
-                    <form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
+                    <form method="get"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
             } elseif ($_SESSION['role'] == 'GERANT' && $pageNom == 'pageUtilisateur') {
             ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
-                    <form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
+                    <form method="get"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
             } elseif ($_SESSION['role'] == 'GERANT') {
@@ -30,7 +31,7 @@ if ($pageNom == 'pageAuth') {
                     <button type="button" id="ajoutUtilisateur" class="styled-button">Ajout utilisateur</button>
                 </div>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
-                    <form method="post"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
+                    <form method="get"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
             }
