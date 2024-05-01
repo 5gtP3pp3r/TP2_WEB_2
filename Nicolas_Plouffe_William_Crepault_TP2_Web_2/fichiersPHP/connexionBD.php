@@ -185,19 +185,16 @@ function chercherNomArtiste()
 function chercherEmail()
 {
     $conn = connexionBD();
-    $emailArrays = [];
-
+    
     try {
         $sql = "SELECT courriel FROM utilisateurs";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $emailArrays = $stmt->fetchAll();
+        $emailsArray = $stmt->fetchAll();
 
-        
-
-        foreach ($emailArrays as $email){
-            $emailArray[] = $email['courriel'];
+        foreach ($emailsArray as $emails){
+            $emailArray[] = $emails['courriel'];
         }
 
         return $emailArray;
@@ -209,16 +206,19 @@ function chercherEmail()
 function chercherCodeAlbum()
 {
     $conn = connexionBD();
-    $codeAlbumArray = [];
 
     try {
         $sql = "SELECT code_album FROM albums";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $codeAlbumArray = $stmt->fetchAll();
+        $codesAlbumsArray = $stmt->fetchAll();
 
-        return $codeAlbumArray;
+        foreach ($codesAlbumsArray as $codes){
+            $codesArray[] = $codes['code_album'];
+        }
+
+        return $codesArray;
     } catch (PDOException $e) {
         echo "Erreur lors de la requête: " . $e->getMessage();
     }

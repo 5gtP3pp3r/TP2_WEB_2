@@ -39,15 +39,12 @@ function validerUtilisateur()
         $errors[] = "L'âge doit être entre 18 et 100 ans.";
     }
 
-    $mailArray = []; 
     $mailArray[] = chercherEmail();
-    var_dump($mailArray);
     $mailExistant = $_POST['email'];
-    echo $mailExistant;
-    if (in_array($mailExistant, $mailArray )) {
+
+    if (!in_array($mailExistant, $mailArray )) {
         $errors[] = "Adresse courrielle existante";
     } 
-    var_dump($errors);
 
     if (count($errors) === 0) {
 
