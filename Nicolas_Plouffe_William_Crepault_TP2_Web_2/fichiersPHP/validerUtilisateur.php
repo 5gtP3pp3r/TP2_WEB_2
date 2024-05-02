@@ -3,48 +3,47 @@ require_once 'connexionBD.php';
 
 function validerUtilisateur()
 {
-
-    $errors = [];
+    $erreurs = [];
 
     if (empty($_POST['nomUtilisateur'])) {
-        $errors[] = "Le nom d'utilisateur est requis.";
+        $erreurs[] = "Le nom d'utilisateur est requis.";
     } elseif (!preg_match('/^[a-zA-Z0-9]{6,45}$/', $_POST['nomUtilisateur'])) {
-        $errors[] = "Le nom d'utilisateur doit contenir entre 6 et 45 caractères alphanumériques.";
+        $erreurs[] = "Le nom d'utilisateur doit contenir entre 6 et 45 caractères alphanumériques.";
     }
 
     if (empty($_POST['email'])) {
-        $errors[] = "L'email est requis.";
+        $erreurs[] = "L'email est requis.";
     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "L'email n'est pas valide.";
+        $erreurs[] = "L'email n'est pas valide.";
     }
 
     if (empty($_POST['password'])) {
-        $errors[] = "Le mot de passe est requis.";
+        $erreurs[] = "Le mot de passe est requis.";
     } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $_POST['password'])) {
-        $errors[] = "Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
+        $erreurs[] = "Le mot de passe doit contenir au moins 8 caractères, dont une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.";
     }
 
     if (empty($_POST['ville']) || $_POST['ville'] == '0') {
-        $errors[] = "Choix de ville requis.";
+        $erreurs[] = "Choix de ville requis.";
     }
 
     if (empty($_POST['role']) || $_POST['role'] == '0') {
-        $errors[] = "Choix d'un rôle requis.";
+        $erreurs[] = "Choix d'un rôle requis.";
     }
 
     if (empty($_POST['age'])) {
-        $errors[] = "L'âge est requis.";
+        $erreurs[] = "L'âge est requis.";
     } elseif ($_POST['age'] < 18 || $_POST['age'] > 100) {
-        $errors[] = "L'âge doit être entre 18 et 100 ans.";
+        $erreurs[] = "L'âge doit être entre 18 et 100 ans.";
     }
 
     $mailArray = chercherEmail();
     $mailEntrant = $_POST['email'];
 
     if (in_array($mailEntrant, $mailArray)) {
-        $errors[] = "Adresse courrielle existante";
+        $erreurs[] = "Adresse courrielle existante";
     } 
-    if (count($errors) === 0) {
+    if (count($erreurs) === 0) {
 
         $nom = $_POST['nomUtilisateur'];
         $email = $_POST['email'];
@@ -76,6 +75,6 @@ function validerUtilisateur()
             }
         
     } else {
-        return $errors;
+        return $erreurs;
     }
 }
