@@ -1,13 +1,14 @@
 <footer>
-    <div class="container-fluid">
+    <div class="container-fluid align-items-center">
         <div class="row align-items-center">
             <div class="col-3 d-flex justify-content-center">
                 <a href="#top"><img src="Images/retour_haut.png" alt="Retour vers le haut"></a>
             </div>
             <div class="col-6 text-center">
-                <p><b>Will&Nic</b> -Une filliale de Gammick International -Copyright © 2024-</p>
+                <p><b>Will&Nic</b> - Une filliale de Gammick International -Copyright © 2024-</p>
                 <?php date_default_timezone_set('Etc/GMT+4');?>
                 <p><b><?=date("Y-m-d H:i")?></b></p>
+                <p>Ce projet utilise: &nbsp;<img src="Images/outils.png" alt="outlis"></p>
             </div>
             <div class="col-3 d-flex justify-content-center">
                 <img src="Images/cd1.png" alt="Image de cd" class="img-fluid">
