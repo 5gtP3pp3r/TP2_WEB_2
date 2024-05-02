@@ -2,8 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include('fichiersPHP/connexionBD.php');
-require_once 'fichiersPHP/Utilisateur.class.php';
 
 if (session_id() == "") {
     session_start();

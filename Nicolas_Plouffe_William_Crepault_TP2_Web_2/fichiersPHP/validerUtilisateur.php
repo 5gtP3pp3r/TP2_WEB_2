@@ -1,6 +1,5 @@
 <?php
-require_once 'fichiersPHP/connexionBD.php';
-require_once 'fichiersPHP/Utilisateur.class.php';
+require_once 'connexionBD.php';
 
 function validerUtilisateur()
 {

@@ -6,8 +6,8 @@ if ($_SESSION['role'] != 'GERANT') {
     header("Location: index.php");
 } else {
 
-    require_once "fichiersPHP/validerArtistes.php";
-    include("heads.infos.php");        
+    include("heads.infos.php");
+    require_once "fichiersPHP/validerArtistes.php";        
 
     $resultats = null;
 

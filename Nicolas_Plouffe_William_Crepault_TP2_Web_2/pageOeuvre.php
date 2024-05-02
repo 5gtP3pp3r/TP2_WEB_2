@@ -6,9 +6,9 @@ if ($_SESSION['role'] != 'GERANT') {
     header("Location: index.php");
 } else {
 
+    include("heads.infos.php");
     require_once 'fichiersPHP/validerOeuvre.php';
-    include("heads.infos.php");    
-
+        
     $resultats = null;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
