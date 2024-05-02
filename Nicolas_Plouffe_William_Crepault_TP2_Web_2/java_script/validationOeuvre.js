@@ -31,7 +31,7 @@ document.getElementById("submitUS3").addEventListener("click", validateInputs);
 document.getElementById("resetUS3").addEventListener("click", clearInputs);
 
 function validateInputs(event) {
-  errorList = "<li><p>\"affichage via js avec un preventDefault si valeurs incorrectes\"</p></li>";
+  errorList = "<li>\"affichage via js avec un preventDefault si valeurs incorrectes\"</li>";
   listResult.classList.remove("red");
   let isValid = true;
 
@@ -69,7 +69,7 @@ function validateInputs(event) {
     isValid = false;
   }
 
-  if (sizeMB.value != EMPTY &&sizeMB.value <=MIN_VALUE) {
+  if (sizeMB.value != EMPTY && sizeMB.value <=MIN_VALUE) {
     errorList += "<li><p>Veuillez entrer une taille entre 1 Mb et 999 Mb </p></li>";
     isValid = false;
   }
@@ -88,7 +88,7 @@ function validateInputs(event) {
     isValid = false;
   }
 
-  if (lyrics.value != Empty && !lyricsPattern.test(lyrics.value)) {
+  if (lyrics.value != EMPTY && !lyricsPattern.test(lyrics.value)) {
     errorList += "<li><p>Veuillez des caractères alpha numérique avec espaces seulement</p></li>";
     isValid = false;
   }
@@ -105,13 +105,10 @@ function clearInputs() {
     listResult.innerHTML = EMPTY;
     inputDate.value = today;
     pieceName.value = EMPTY;
-    artistName.value = EMPTY;
     timeInSec.value = EMPTY;
     sizeMB.value = EMPTY;
     roleOptions.value = VALUE_ZERO;
     albumValue.value = EMPTY;
-    albumCode.value = EMPTY;
-    youtubeLink.value = EMPTY;
     lyrics.value = EMPTY;
   }, 0);
 }
