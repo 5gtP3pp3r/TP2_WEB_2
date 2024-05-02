@@ -3,28 +3,27 @@ require_once 'connexionBD.php';
 
 function validerArtiste()
 {
-    $errors = [];
+    $erreurs = [];
 
     if (empty($_POST['nomArtiste'])) {
-        $errors[] = "Le nom de l'artiste est requis.";
+        $erreurs[] = "Le nom de l'artiste est requis.";
     } elseif (!preg_match("/^[a-zA-Z0-9 ]+$/", $_POST['nomArtiste'])) {
-        $errors[] = 'Le nom de l\'artiste doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_" ';
+        $erreurs[] = 'Le nom de l\'artiste doit contenir au moins 1 caractère,accèpte les accents, les espaces, ".","-" et les "_" ';
     }
 
     if ($_POST["ville"] == 0) {
-        $errors[] = "Vous devez choisir une ville.";
+        $erreurs[] = "Vous devez choisir une ville.";
     }
 
     if (empty($_POST['photoArtiste']) || !preg_match("/^[^\s]+\.(jpg|jpeg|png|gif|bmp)$/", $_POST['photoArtiste'])) {
-        $errors[] = "Format de l'image invalide.";
+        $erreurs[] = "Format de l'image invalide.";
     }
 
-    if (count($errors) === 0) {
+    if (count($erreurs) === 0) {
 
         $nomArtiste = $_POST['nomArtiste'];
         $ville = $_POST['ville'];
         $photoArtiste = $_POST['photoArtiste'];
-
 
         $resultat = ajouterArtisteBD($nomArtiste, $ville, $photoArtiste);
 
@@ -34,6 +33,6 @@ function validerArtiste()
             return ["Erreur lors de l'ajout de l'artiste dans la base de données."];
         }
     } else {
-        return $errors;
+        return $erreurs;
     }
 }
