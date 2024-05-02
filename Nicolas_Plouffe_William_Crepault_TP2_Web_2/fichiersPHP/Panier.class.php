@@ -31,7 +31,7 @@ class Panier
             if (isset($this->items[$idOeuvre])) {
                 $this->updateItem($p_idOeuvre, $p_Quantite);
             } else {
-                $this->items[$idOeuvre] = array('item' => $p_idOeuvre, 'qty' => $p_Quantite);
+                $this->items[$idOeuvre] = array('item' => $p_idOeuvre, 'qte' => $p_Quantite);
             }
         }
     }
@@ -44,7 +44,7 @@ class Panier
             if ($p_Quantite === 0) {
                 $this->deleteItem($p_idOeuvre);
             } elseif ($p_Quantite > 0) {
-                $this->items[$idOeuvre]['qty'] += $p_Quantite;
+                $this->items[$idOeuvre]['qte'] += $p_Quantite;
                 // ajoute au panier à chaque clique je ne veux pas 
                 // "écraser" la quantité, mais l'ajouter au panier.
             }

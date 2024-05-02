@@ -7,6 +7,7 @@ if ($_SESSION['role'] != 'CLIENT') {
 } else {
 
     include("heads.infos.php");
+    require_once "fichiersPHP/connexionBD.php";
     require_once "fichiersPHP/Panier.class.php";
 
     $res = "";
