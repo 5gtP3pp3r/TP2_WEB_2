@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <!--**********Travail par William Crépault  et Nicolas Plouffe**********-->
@@ -47,17 +45,17 @@
                         <?php
                         if (isset($_SESSION['role'])) {
                             if ($_SESSION['role'] == 'CLIENT') {
-                                ?>
+                        ?>
                                 <li class="nav-item"><a class="nav-link" href="pageAchat.php"><b>&nbsp;&nbsp;&nbsp;Passer un achat</b></a></li>
-                                <?php
+                            <?php
                             } elseif ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
-                                ?>
+                            ?>
                                 <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>
                                 <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>
                                 <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>
-                                <?php
+                        <?php
                             }
-                        }                        
+                        }
                         ?>
                     </ul>
                 </div>
@@ -65,10 +63,10 @@
         </div>
     </nav>
     <main class="flex-grow-1">
-    <?php
-    function getPageNom($page)
-    {
-        $page = explode(".", $page);
-        return $page[0];
-    }
-    ?>
+        <?php
+        function getPageNom($page)
+        {
+            $page = explode(".", $page);
+            return $page[0];
+        }
+        ?>
