@@ -62,15 +62,15 @@ include("heads.infos.php");
             <?php
             if (isset($_SESSION['role'])) {
               if ($_SESSION['role'] == 'CLIENT') {
-                ?>
+            ?>
                 <li><a href="pageAchat.php" class="styled-button">Passer un achat</a></li>
-                <?php
+              <?php
               } elseif ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
-                ?>
+              ?>
                 <li><a href="pageArtiste.php" class="styled-button">Ajouter un artiste</a></li>
                 <li><a href="pageOeuvre.php" class="styled-button">Ajouter une oeuvre</a></li>
                 <li><a href="pageAlbum.php" class="styled-button">Ajouter un album</a></li>
-                <?php
+            <?php
               }
             }
             ?>
