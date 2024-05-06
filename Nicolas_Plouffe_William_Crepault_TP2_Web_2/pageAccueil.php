@@ -58,7 +58,7 @@ include("heads.infos.php");
         <h3 id="menu">Faites votre sélection</h3>
         <div class="ulBtn">
           <ul class="bntListe">
-            <li><a href="pageListeAlbums.php" class="styled-button">Listes des albums</a></li>
+            <li><a href="pageListeAlbums.php" class="styled-button">Liste des albums</a></li>
             <?php
             if (isset($_SESSION['role'])) {
               if ($_SESSION['role'] == 'CLIENT') {
