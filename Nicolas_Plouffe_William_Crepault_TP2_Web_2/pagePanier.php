@@ -15,13 +15,13 @@ if ($_SESSION['role'] != 'CLIENT') {
 
     if (!empty($_GET["action"])) {
         switch ($_GET["action"]) {
-            case "remove":
+            case "retirer":
                 if ($afficherPanier) {
                     $monPanier = unserialize($_SESSION['panier_oeuvre']);
                     if (isset($_GET['id_oeuvre'])) {
                         $oeuvre = chercherOeuvre($_GET["id_oeuvre"])[0];
-                        $monPanier->deleteItem($oeuvre);
-                        if ($monPanier->isEmpty()) {
+                        $monPanier->supprimerItem($oeuvre);
+                        if ($monPanier->estVide()) {
                             unset($_SESSION["panier_oeuvre"]);
                             $afficherPanier = false;
                         } else {
@@ -32,7 +32,7 @@ if ($_SESSION['role'] != 'CLIENT') {
                     }
                 }
                 break;
-            case "empty":
+            case "vider":
                 unset($_SESSION["panier_oeuvre"]);
                 $afficherPanier = false;
                 break;
@@ -83,8 +83,8 @@ if ($_SESSION['role'] != 'CLIENT') {
 
                             foreach ($listItems as $article) {
                                 $oeuvreChoisi = $article["item"];
-                                $items_prix = $article["qty"] * $oeuvreChoisi->getPrix();
-                                $total_quantite += $article["qty"];
+                                $items_prix = $article["qte"] * $oeuvreChoisi->getPrix();
+                                $total_quantite += $article["qte"];
                                 $total_prix += $items_prix;
                             ?>
                                 <div class="row py-2">
@@ -98,8 +98,8 @@ if ($_SESSION['role'] != 'CLIENT') {
                                         <p><b>Prix:&nbsp;</b><?php echo htmlspecialchars($oeuvreChoisi->getPrix()); ?>.00$</p>
                                     </div>
                                     <div class="col-md-12 col-lg-4 px-2">
-                                        <form action="pagePanier.php?action=remove&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre(); ?>" method="post" class="d-flex align-items-end justify-content-center">
-                                            <p style="margin-right: 25px;"><b>Quantité: </b><?php echo $article["qty"]; ?></p>
+                                        <form action="pagePanier.php?action=retirer&id_oeuvre=<?php echo $oeuvreChoisi->getIdOeuvre(); ?>" method="post" class="d-flex align-items-end justify-content-center">
+                                            <p style="margin-right: 25px;"><b>Quantité: </b><?php echo $article["qte"]; ?></p>
                                             <button type="submit" id="retirerPanier" class="styled-button" style="width: 140px;"><img src="Images/retirer_panier.png" alt="retirer panier"> Retirer</button>
                                         </form>
                                     </div>
@@ -125,7 +125,7 @@ if ($_SESSION['role'] != 'CLIENT') {
                     <div class="custom-border px-2">
                         <h3 id="menu">Mon panier:&nbsp;&nbsp;</h3>
                         <div class="ulBtn">
-                            <form action="pagePanier.php?action=empty" method="post">
+                            <form action="pagePanier.php?action=vider" method="post">
                                 <ul class="bntListe">
                                     <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/vider_panier.png" alt="vider_panier"> Vider</button></li>
                                     <li><button type="button" id="retourAchat" class="styled-button">Retour achat</button> </li>

@@ -17,22 +17,22 @@ if ($_SESSION['role'] != 'CLIENT') {
         if (!empty($_GET["action"])) {
 
             switch ($_GET["action"]) {
-                case "add":
+                case "ajout":
                     if (!empty($_POST["quantite"])) {
 
                         $item = chercherOeuvre($_GET["id_oeuvre"])[0];
                         if (isset($_SESSION["panier_oeuvre"]) && !empty($_SESSION["panier_oeuvre"])) {
                             $monpanier = unserialize($_SESSION["panier_oeuvre"]);
-                            $monpanier->addItem($item, $_POST["quantite"]);
+                            $monpanier->ajouterItem($item, $_POST["quantite"]);
                             $_SESSION['panier_oeuvre'] = serialize($monpanier);
                         } else {
                             $monpanier = new Panier();
-                            $monpanier->addItem($item, $_POST["quantite"]);
+                            $monpanier->ajouterItem($item, $_POST["quantite"]);
                             $_SESSION['panier_oeuvre'] = serialize($monpanier);
                         }
                     }
                     break;
-                case "empty":
+                case "vider":
                     unset($_SESSION["panier_oeuvre"]);
                     break;
             }
@@ -69,7 +69,7 @@ if ($_SESSION['role'] != 'CLIENT') {
                                             <p><b>Prix:&nbsp;</b><?php echo $oeuvre->getPrix() ?>.00$</p>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center">
-                                            <form action="pageAchat.php?action=add&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
+                                            <form action="pageAchat.php?action=ajout&id_oeuvre=<?php echo $oeuvre->getIdOeuvre() ?>" method="post" class="d-flex align-items-center">
                                                 <input type="number" name="quantite" value="1" min="1" max="10" class="form-control" style="width: 75px; margin-right: 25px;">
                                                 <button type="submit" id="ajoutPanier" class="styled-button" style="width: 140px;"><img src="Images/ajout_panier.png" alt="ajouter panier"> Ajouter</button>
                                             </form>
@@ -83,25 +83,31 @@ if ($_SESSION['role'] != 'CLIENT') {
                 <div class="col-sm-12 mb-3 col-lg-4">
                     <div class="custom-border px-2">
                         <h3 id="menu">Voir mon panier:</h3>
-                        <div class="col-sm-12 d-flex justify-content-center px-4 py-2">
-                            <?php
-                            if (isset($_SESSION["panier_oeuvre"])) {
-                                $total_quantity = 0;
-                                $total_price = 0;
+                        <div class="ulBtn">
+                            <form action="pageAchat.php?action=vider" method="post">
+                                <ul class="bntListe">                                   
+                                    <?php
+                                    if (isset($_SESSION["panier_oeuvre"])) {
+                                        $total_quantity = 0;
+                                        $total_price = 0;
 
-                                if (!empty($_SESSION["panier_oeuvre"])) {
-                                    $monpanier = unserialize($_SESSION['panier_oeuvre']);
-                                    $qt = $monpanier->getCountItems();
-                            ?>
-                                    <button type="button" id="panier" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp;<?= $qt ?> Articles</button>
-                                <?php }
-                            } else { ?>
-                                <button type="button" id="panier" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp; Article</button>
-                            <?php } ?>
+                                        if (!empty($_SESSION["panier_oeuvre"])) {
+                                            $monpanier = unserialize($_SESSION['panier_oeuvre']);
+                                            $qt = $monpanier->getCompteItems();
+                                    ?>
+                                            <li><button type="button" id="panier" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp;<?= $qt ?> Articles</button></li>
+                                            <li><button type="submit" id="videPanier" class="styled-button"><img src="Images/vider_panier.png" alt="vider_panier"> Vider</button></li>
+                                        <?php }
+                                    } else { ?>
+                                        <li><button type="button" id="panier" class="styled-button"><img src="Images/panier.png" alt="panier">&nbsp;&nbsp; Article</button></li>
+                                    <?php } ?>
+                                </ul>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-<?php include("foots.infos.php"); } ?>
+<?php include("foots.infos.php");
+} ?>

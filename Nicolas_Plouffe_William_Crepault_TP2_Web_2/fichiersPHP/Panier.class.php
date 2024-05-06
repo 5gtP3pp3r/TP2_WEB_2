@@ -9,49 +9,49 @@ class Panier
     {
         return $this->items;
     }
-    public function getCountItems()
+    public function getCompteItems()
     {
         return count($this->items);
     }
 
-    public function isEmpty()
+    public function estVide()
     {
         return (empty($this->items));
     }
 
-    public function addItem(Oeuvre $p_idOeuvre, $p_Quantite)
+    public function ajouterItem(Oeuvre $p_idOeuvre, $p_Quantite)
     {
 
-        if ($this->valideQte($p_Quantite) == true) {
+        if ($this->validerQte($p_Quantite) == true) {
 
             $idOeuvre = $p_idOeuvre->getIdOeuvre();
             if (!$idOeuvre) {
                 throw new Exception("Le panier utilise l'ID du produit.");
             }
             if (isset($this->items[$idOeuvre])) {
-                $this->updateItem($p_idOeuvre, $p_Quantite);
+                $this->miseAJourItem($p_idOeuvre, $p_Quantite);
             } else {
-                $this->items[$idOeuvre] = array('item' => $p_idOeuvre, 'qty' => $p_Quantite);
+                $this->items[$idOeuvre] = array('item' => $p_idOeuvre, 'qte' => $p_Quantite);
             }
         }
     }
 
-    public function updateItem(Oeuvre $p_idOeuvre, $p_Quantite)
+    public function miseAJourItem(Oeuvre $p_idOeuvre, $p_Quantite)
     {
-        if ($this->valideQte($p_Quantite) == true) {
+        if ($this->validerQte($p_Quantite) == true) {
 
             $idOeuvre = $p_idOeuvre->getIdOeuvre();
             if ($p_Quantite === 0) {
-                $this->deleteItem($p_idOeuvre);
+                $this->supprimerItem($p_idOeuvre);
             } elseif ($p_Quantite > 0) {
-                $this->items[$idOeuvre]['qty'] += $p_Quantite;
+                $this->items[$idOeuvre]['qte'] += $p_Quantite;
                 // ajoute au panier à chaque clique je ne veux pas 
                 // "écraser" la quantité, mais l'ajouter au panier.
             }
         }
     }  
 
-    public function deleteItem(Oeuvre $p_Item)
+    public function supprimerItem(Oeuvre $p_Item)
     {
         $idOeuvre = $p_Item->getIdOeuvre();
         if (isset($this->items[$idOeuvre])) {
@@ -60,7 +60,7 @@ class Panier
         }
     }
 
-    private function valideQte($p_Quantite)
+    private function validerQte($p_Quantite)
     {
         if (filter_var(
             $p_Quantite,
