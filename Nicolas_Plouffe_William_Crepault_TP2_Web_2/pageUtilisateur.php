@@ -67,10 +67,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         if ($_SESSION['role'] == 'GERANT') {
                                             $idsDisponibles = chercherIdUserDispo();
                                             if (empty($idsDisponibles)) {
-                                                echo '<option disabled>Aucun espace disponible pour ajouter un gérant</option>';
+                                                ?>
+                                                <option disabled>Aucun espace disponible pour ajouter un gérant</option>
+                                                <?php
                                             } else {
                                                 foreach ($idsDisponibles as $idDisponible) {
-                                                    echo '<option value="' . $idDisponible . '">Gérant (ID: ' . $idDisponible . ')</option>';
+                                                    ?>
+                                                    <option value="' . $idDisponible . '">Gérant (ID: ' . $idDisponible . ')</option>
+                                                    <?php
                                                 }
                                             }
                                         }
