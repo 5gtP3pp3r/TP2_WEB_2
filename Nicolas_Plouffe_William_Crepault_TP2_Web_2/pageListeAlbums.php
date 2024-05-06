@@ -5,7 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 include("heads.infos.php"); 
 ?>
 
-<main>
     <h2>Liste des albums diponibles</h2>
     <div class="container-fluid">
         <div class="col-sm-12 py-2 d-flex justify-content-end px-4">

@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-auto fixed-bottom">
     <div class="container-fluid align-items-center">
         <div class="row align-items-center">
             <div class="col-3 d-flex justify-content-center">

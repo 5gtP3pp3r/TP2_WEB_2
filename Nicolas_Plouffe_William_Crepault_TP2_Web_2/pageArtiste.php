@@ -16,7 +16,6 @@ if ($_SESSION['role'] != 'GERANT') {
     }
 ?>
 
-    <main>
         <h2>Ajouter un nouvel artiste</h2>
         <div class="container-fluid">
             <div class="col-sm-12 py-2 d-flex justify-content-end px-4">

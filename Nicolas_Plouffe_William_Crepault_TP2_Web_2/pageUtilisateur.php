@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<main>
     <?php
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] == 'GERANT') {

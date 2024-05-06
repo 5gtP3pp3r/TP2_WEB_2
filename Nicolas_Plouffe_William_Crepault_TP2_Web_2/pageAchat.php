@@ -42,7 +42,6 @@ if ($_SESSION['role'] != 'CLIENT') {
     }
 ?>
 
-    <main>
         <h2>Passer un achat</h2>
         <div class="container-fluid">
             <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
