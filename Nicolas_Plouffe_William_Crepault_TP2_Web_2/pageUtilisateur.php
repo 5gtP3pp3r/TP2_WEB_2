@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="col-sm-12 col-md-6 mb-3">
                 <div class="custom-border px-2">
-                    <h3>Informations personnelles</h3>
+                    <h3>Informations sur l'utilisateur</h3>
                     <div class="validationList" id="resultList">
                         <ul class="validationUl" id="listResult">
                             <!-- Zone de validation client -->
