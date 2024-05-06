@@ -21,7 +21,7 @@ include("heads.infos.php");
         ?>
             <p>En tant que client, vous avez
               accès à quelques fonctionnalités. Vous pouvez, grace aux liens de la barre
-              de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
+              de navigation ou le lien <span><b><a href="#menu" id="target">ci-joint</a></b></span>,
               afficher la listes des produits disponibles ou acheter des oeuvres.</p>
           <?php
           } elseif ($_SESSION['role'] == 'ADMIN') {
