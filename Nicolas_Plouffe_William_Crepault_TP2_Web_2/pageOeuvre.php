@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if ($_SESSION['role'] != 'GERANT') {
-    header("Location: index.php");
+    header("Location: pageAccueil.php");
 } else {
 
     include("heads.infos.php");
