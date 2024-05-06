@@ -72,9 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <?php
                                             } else {
                                                 foreach ($idsDisponibles as $idDisponible) {
-                                                    ?>
-                                                    <option value="' . $idDisponible . '">Gérant (ID: ' . $idDisponible . ')</option>
-                                                    <?php
+                                                    
+                                                   echo '<option value="' . $idDisponible . '">Gérant (ID: ' . $idDisponible . ')</option>';                                                    
                                                 }
                                             }
                                         }
