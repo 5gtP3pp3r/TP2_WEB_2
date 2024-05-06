@@ -290,7 +290,7 @@ function ajouterCommande($monPanier)
 
             $ligneCommande[] = [
                 'id_oeuvre' => $idOeuvre,
-                'quantite' => $oeuvreComm['qty']
+                'quantite' => $oeuvreComm['qte']
             ];
         }
         foreach ($ligneCommande as $commande) {
