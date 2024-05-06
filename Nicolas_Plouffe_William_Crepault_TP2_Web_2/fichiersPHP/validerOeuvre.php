@@ -46,9 +46,9 @@ function validerOeuvre()
     }
 
     if (empty($_POST['datePublication'])) {
-        $erreurs[] = "La date d'aujourd'hui est requise.";
-    } else if ($_POST['datePublication'] > date('Y-m-d')) {
-        $erreurs[] = "La date ne doit pas être supérieure à la date d'aujourd'hui.";
+        $erreurs[] = "La date de publication est requise.";
+    } else if ($_POST['datePublication'] >= date('Y-m-d')) {
+        $erreurs[] = "La date ne doit pas être supérieure ou égale à la date d'aujourd'hui.";
     }
 
     if ($_POST['codeAlbum'] == 0) {
