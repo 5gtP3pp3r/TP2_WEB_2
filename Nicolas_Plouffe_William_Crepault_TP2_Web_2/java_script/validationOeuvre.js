@@ -25,8 +25,11 @@ let lyrics = document.getElementById("lyrics")
 let listResult = document.getElementById("listResult");
 
 let errorList = EMPTY;
+let setYesterday = new Date(today);
+setYesterday.setDate(setYesterday.getDate() - 1);
+let yesterday = setYesterday.toISOString().substring(0, 10);
 
-inputDate.value = today;
+inputDate.value = yesterday;
 document.getElementById("submitUS3").addEventListener("click", validateInputs);
 document.getElementById("resetUS3").addEventListener("click", clearInputs);
 
@@ -103,7 +106,7 @@ function validateInputs(event) {
 function clearInputs() {
   setTimeout(function () {
     listResult.innerHTML = EMPTY;
-    inputDate.value = today;
+    inputDate.value = yesterday;
     pieceName.value = EMPTY;
     timeInSec.value = EMPTY;
     sizeMB.value = EMPTY;
