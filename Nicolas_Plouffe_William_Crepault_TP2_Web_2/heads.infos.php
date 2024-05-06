@@ -47,11 +47,15 @@
                         <?php
                         if (isset($_SESSION['role'])) {
                             if ($_SESSION['role'] == 'CLIENT') {
-                                echo '<li class="nav-item"><a class="nav-link" href="pageAchat.php"><b>&nbsp;&nbsp;&nbsp;Passer un achat</b></a></li>';
+                                ?>
+                                <li class="nav-item"><a class="nav-link" href="pageAchat.php"><b>&nbsp;&nbsp;&nbsp;Passer un achat</b></a></li>
+                                <?php
                             } elseif ($_SESSION['role'] == 'GERANT' || $_SESSION['role'] == 'ADMIN') {
-                                echo '<li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>';
-                                echo '<li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>';
-                                echo '<li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>';
+                                ?>
+                                <li class="nav-item"><a class="nav-link" href="pageArtiste.php">&nbsp;&nbsp;&nbsp;Ajouter un artiste</a></li>
+                                <li class="nav-item"><a class="nav-link" href="pageOeuvre.php">&nbsp;&nbsp;&nbsp;Ajouter une oeuvre</a></li>
+                                <li class="nav-item"><a class="nav-link" href="pageAlbum.php">&nbsp;&nbsp;&nbsp;Ajouter un album</a></li>
+                                <?php
                             }
                         }                        
                         ?>
