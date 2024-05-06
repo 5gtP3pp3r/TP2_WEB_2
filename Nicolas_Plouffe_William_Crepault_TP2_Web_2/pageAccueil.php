@@ -21,7 +21,7 @@ include("heads.infos.php");
         ?>
             <p>En tant que client, vous avez
               accès à quelques fonctionnalités. Vous pouvez, grace aux liens de la barre
-              de navigation ou le lien <span><b><a href="#menu" id="target">ci-joint</a></b></span>,
+              de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles ou acheter des oeuvres.</p>
           <?php
           } elseif ($_SESSION['role'] == 'ADMIN') {
@@ -44,8 +44,8 @@ include("heads.infos.php");
         } else {
           ?>
           <p>Vous êtes maintenant sur le site My Music Online. Est ce votre première visite?
-            Vous pouvez consulter la liste des albums disponibles via la barre de navigation ou les liens
-            <span><b><a href="#menu" id="target">ci-joints</a></b></span>. Pour acheter une oeuvre,
+            Vous pouvez consulter la liste des albums disponibles via la barre de navigation ou le lien
+            <span><b><a href="#menu" id="target">ci-joint</a></b></span>. Pour acheter une oeuvre,
             veuillez vous enregister comme client.
           <?php
         }
