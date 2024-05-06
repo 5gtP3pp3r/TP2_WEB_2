@@ -68,7 +68,7 @@ if (isset($_SESSION['role'])) {
                                         $idsDisponibles = chercherIdUserDispo();
                                         if (empty($idsDisponibles)) {
                                 ?>
-                                            <option disabled>Aucun espace disponible pour ajouter un gérant</option>
+                                            <option disabled>Espace gérant non disponible</option>
                                 <?php
                                         } else {
                                             foreach ($idsDisponibles as $idDisponible) {
