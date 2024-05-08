@@ -9,6 +9,6 @@ window.onload = function() {
     });
 }
 
-/* Merci GPT pour cette fonction qui remety la page en place après un clique 
+/* Merci GPT pour cette fonction qui remet la page en place après un clique 
 sur un oeuvre à ajouter ou à supprimer, la page revient à la position où le 
 click a eu lieu pour ne pas trop perdre la position après un choix.*/
