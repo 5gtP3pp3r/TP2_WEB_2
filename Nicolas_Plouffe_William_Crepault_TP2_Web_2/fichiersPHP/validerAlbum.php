@@ -40,11 +40,11 @@ function validerAlbum()
 
     if (count($erreurs) === 0) {
 
-        $titre = $_POST['titre'];
-        $code = $_POST['code'];
-        $dateAjout = $_POST['dateAjout'];
-        $genreMusical = $_POST['genreMusical'];
-        $photo = $_POST['photo'];
+        $titre = htmlspecialchars($_POST['titre']);
+        $code = htmlspecialchars($_POST['code']);
+        $dateAjout = htmlspecialchars($_POST['dateAjout']);
+        $genreMusical = htmlspecialchars($_POST['genreMusical']);
+        $photo = htmlspecialchars($_POST['photo']);
 
         if (empty($photo)) {
             $photo = "aucune_image.png";

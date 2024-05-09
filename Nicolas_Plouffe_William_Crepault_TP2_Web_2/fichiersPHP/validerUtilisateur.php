@@ -45,13 +45,13 @@ function validerUtilisateur()
     } 
     if (count($erreurs) === 0) {
 
-        $nom = $_POST['nomUtilisateur'];
-        $email = $_POST['email'];
-        $motPasse = $_POST['password'];
+        $nom = htmlspecialchars($_POST['nomUtilisateur']);
+        $email = htmlspecialchars($_POST['email']);
+        $motPasse = htmlspecialchars($_POST['password']);
         $motPasseHash = password_hash($motPasse, PASSWORD_DEFAULT);
-        $ville = $_POST['ville'];
-        $roleId = $_POST['role'];
-        $age = $_POST['age'];
+        $ville = htmlspecialchars($_POST['ville']);
+        $roleId = htmlspecialchars($_POST['role']);
+        $age = htmlspecialchars($_POST['age']);
         
             $resultat = ajoutUtilisateurBD($roleId, $nom, $email, $motPasseHash, $ville, $age);
             $nouvelUtil = chercherUtil($email, $motPasse);

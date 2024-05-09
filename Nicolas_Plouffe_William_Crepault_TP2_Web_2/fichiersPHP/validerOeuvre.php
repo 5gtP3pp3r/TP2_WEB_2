@@ -61,15 +61,15 @@ function validerOeuvre()
 
     if (count($erreurs) == 0) {
 
-        $titrePiece = $_POST['titrePiece'];
-        $nomArtiste = $_POST['nomArtiste'];
-        $role = $_POST['role'];
-        $duree = $_POST['duree'];
-        $taille = $_POST['taille'];
-        $prix = $_POST['prix'];
-        $datePublication = $_POST['datePublication'];
-        $codeAlbum = $_POST['codeAlbum'];
-        $lyrics = $_POST['lyrics'];
+        $titrePiece = htmlspecialchars($_POST['titrePiece']);
+        $nomArtiste = htmlspecialchars($_POST['nomArtiste']);
+        $role = htmlspecialchars($_POST['role']);
+        $duree = htmlspecialchars($_POST['duree']);
+        $taille = htmlspecialchars($_POST['taille']);
+        $prix = htmlspecialchars($_POST['prix']);
+        $datePublication = htmlspecialchars($_POST['datePublication']);
+        $codeAlbum = htmlspecialchars($_POST['codeAlbum']);
+        $lyrics = htmlspecialchars($_POST['lyrics']);
 
         $resultat = ajouterOeuvreBD($titrePiece, $nomArtiste, $role, $duree, $taille, $prix, $datePublication, $codeAlbum, $lyrics);
         if ($resultat) {
