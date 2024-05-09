@@ -21,9 +21,9 @@ function validerArtiste()
 
     if (count($erreurs) === 0) {
 
-        $nomArtiste = htmlspecialchars($_POST['nomArtiste']);
-        $ville = htmlspecialchars($_POST['ville']);
-        $photoArtiste = htmlspecialchars($_POST['photoArtiste']);
+        $nomArtiste = $_POST['nomArtiste'];
+        $ville = $_POST['ville'];
+        $photoArtiste = $_POST['photoArtiste'];
 
         $resultat = ajouterArtisteBD($nomArtiste, $ville, $photoArtiste);
 
