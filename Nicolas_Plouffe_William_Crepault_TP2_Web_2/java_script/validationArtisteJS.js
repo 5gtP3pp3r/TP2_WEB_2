@@ -39,7 +39,7 @@ function validationArtiste(event) {
     isValid = false;
   }
   if (photo.value.trim() == EMPTY || !regexImage.test(photo.value)) {
-    errorList += "<li><p>Format d'image invalide</p></li>";
+    errorList += "<li><p>Image manquante ou format d'image invalide</p></li>";
     isValid = false;
   }
   if (!isValid) {
