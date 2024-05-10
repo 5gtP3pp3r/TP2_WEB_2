@@ -13,19 +13,19 @@ if ($pageNom != 'pageAuth') {
     <div class="row">
         <?php
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'ADMIN') {
+            if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'GERANT') {
         ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
                     <form method="get"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
-            } elseif ($_SESSION['role'] == 'GERANT' && $pageNom == 'pageUtilisateur') {
+            } elseif ($_SESSION['role'] == 'ADMIN' && $pageNom == 'pageUtilisateur') {
             ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
                     <form method="get"><button type="submit" name="logout" class="styled-button">Déconnexion</button></form>
                 </div>
             <?php
-            } elseif ($_SESSION['role'] == 'GERANT') {
+            } elseif ($_SESSION['role'] == 'ADMIN') {
             ?>
                 <div class="col-sm-12 d-flex justify-content-end mb-3">
                     <button type="button" id="ajoutUtilisateur" class="styled-button">Ajout utilisateur</button>

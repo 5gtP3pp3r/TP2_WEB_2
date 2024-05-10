@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <?php
 if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] == 'GERANT') {
-        echo '<h1>Enregistrer un utilisateur</h1>';
+    if ($_SESSION['role'] == 'ADMIN') {
+        echo '<h2>Enregistrer un utilisateur</h2>';
     }
 } else {
-    echo '<h1>S\'enregistrer</h1>';
+    echo '<h2>S\'enregistrer</h2>';
 }
 ?>
 <div class="container-fluid">

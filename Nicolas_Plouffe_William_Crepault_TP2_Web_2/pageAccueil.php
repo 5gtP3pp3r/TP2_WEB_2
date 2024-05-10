@@ -24,17 +24,17 @@ include("heads.infos.php");
               de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles ou acheter des oeuvres.</p>
           <?php
-          } elseif ($_SESSION['role'] == 'ADMIN') {
+          } elseif ($_SESSION['role'] == 'GERANT') {
           ?>
-            <p>En tant qu'administrateur, vous avez
+            <p>En tant que gérant, vous avez
               accès à plusieurs fonctionnalités. Vous pouvez, grace aux liens de la barre
               de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles, ajouter un artiste, ajouter une oeuvre ou
               ajouter un album.</p>
           <?php
-          } elseif ($_SESSION['role'] == 'GERANT') {
+          } elseif ($_SESSION['role'] == 'ADMIN') {
           ?>
-            <p>En tant que gérant, vous avez
+            <p>En tant qu'administrateur, vous avez
               accès à toutes les fonctionnalités. Vous pouvez, grace aux liens de la barre
               de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles, ajouter un artiste, ajouter une oeuvre ou
