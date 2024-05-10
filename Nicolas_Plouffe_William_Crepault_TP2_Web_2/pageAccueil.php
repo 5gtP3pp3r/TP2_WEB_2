@@ -38,7 +38,7 @@ include("heads.infos.php");
               accès à toutes les fonctionnalités. Vous pouvez, grace aux liens de la barre
               de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles, ajouter un artiste, ajouter une oeuvre ou
-              ajouter un album. Vous pouvez aussi ajouter d\'autres utilisateur.</p>
+              ajouter un album. Vous pouvez aussi ajouter d'autres utilisateur.</p>
           <?php
           }
         } else {
