@@ -36,13 +36,14 @@ label
 }
 .custom-border 
 {
-    border: 5px solid  rgb(20, 146, 140); 
+    border: 10px ridge ; 
+    border-color: rgb(66, 175, 170);
     border-radius: 10px; 
     min-height: 290px;    
 }
 .border-bot
 {
-    border-bottom: 3px solid  rgb(20, 146, 140);
+    border-bottom: 3px solid  rgb(66, 175, 170);
 }
 footer p
 {

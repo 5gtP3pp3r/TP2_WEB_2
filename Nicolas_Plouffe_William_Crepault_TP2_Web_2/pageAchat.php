@@ -57,7 +57,7 @@ if ($_SESSION['role'] != 'CLIENT') {
                             if (!empty($product_array)) {
                                 foreach ($product_array as $oeuvre) {
                             ?>
-                                    <div class="border-bot row py-2 align-items-center">
+                                    <div class="border-bot ms-1 me-1 row py-2 align-items-center">
                                         <div class="col-sm-12 col-md-4 col-lg-2 d-flex justify-content-center">
                                             <img src="Images/<?php echo $oeuvre->getAlbumImg() ?>" alt="<?php echo $oeuvre->getAlbumImg() ?>" class="resize img-fluid rounded">
                                         </div>
