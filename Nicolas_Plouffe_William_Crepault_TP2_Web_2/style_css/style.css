@@ -38,7 +38,7 @@ label
 {
     border: 10px outset ; 
     border-color: rgb(66, 175, 170);
-    /*border-radius: 10px; */
+    border-radius: 3px; 
     min-height: 290px;    
 }
 .border-bot
@@ -81,7 +81,7 @@ footer p
     background-color: rgb(20, 146, 140);
     border: 5px outset rgb(20, 146, 140);
     color: rgb(140, 240, 235);
-    /*border-radius: 10px;*/  
+    border-radius: 3px;  
     font-size: large;  
     font-weight: 500;
     width: 200px;
