@@ -81,8 +81,11 @@ function validateInputs(event) {
   }
 
   if (inputDate.value == EMPTY) {
-    errorList += "<li><p>Date de publication: " + today + "</p></li>";
+    errorList += "<li><p>Date de publication minimum: " + yesterday + "</p></li>";
     isValid = false;
+  }
+  else if (inputDate.value > yesterday) {
+    errorList += "<li><p>Entrez une date antérieur à aujourd'hui</p></li>";
   }
 
   if (albumCode.value == VALUE_ZERO) {
