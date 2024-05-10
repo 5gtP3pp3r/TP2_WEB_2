@@ -4,7 +4,7 @@ require_once 'connexionBD.php';
 function validerOeuvre()
 {
 
-    $regExNom = "/^[a-zA-Z0-9 ]+$/";
+    $regExNom = "/^[a-zà-öø-ÿ]+(?:[ \-_.]*[a-zà-öø-ÿ]+)*/i";
     $ZERO = 0;
     $Max = 999;
     $ValeurMin = 0;
