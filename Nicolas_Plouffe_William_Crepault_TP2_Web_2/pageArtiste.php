@@ -56,7 +56,7 @@ if ($_SESSION['role'] != 'GERANT') {
                 </div>
                 <div class="col-sm-12 mb-3 col-lg-6">
                     <div class="custom-border px-2">
-                        <h3>Informations sur l'auteur</h3>
+                        <h3>Informations sur l'artiste</h3>
                         <div class="validationList" id="resultList">
                             <ul class="validationUl" id="listResult">
                                 <!-- Zone de validation -->
