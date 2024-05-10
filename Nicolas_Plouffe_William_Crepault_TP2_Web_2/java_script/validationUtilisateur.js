@@ -27,7 +27,7 @@ document.getElementById("resetUS0").addEventListener("click", resetForm);
 
 function validationAjout(event){
     
-    errorList = "<li>\"affichage via js avec un preventDefault si valeurs incorrectes\"</li>";
+    errorList = EMPTY;
     listResult.classList.remove("red");
     let isValid = true;
 

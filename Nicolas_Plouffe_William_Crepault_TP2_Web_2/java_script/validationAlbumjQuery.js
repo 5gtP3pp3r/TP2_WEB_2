@@ -11,7 +11,7 @@ $(document).ready(function () {
   $("#dateAjout").val(today);
 
   $("#submitUS2").click(function (event) {
-    errorList = "<li>\"affichage via js avec un preventDefault si valeurs incorrectes\"</li>";
+    errorList = EMPTY;
     $("#listResult").removeClass("red");
     let isValid = true;
 
