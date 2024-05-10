@@ -69,7 +69,7 @@ function validationAjout(event){
         isValid = false;
     }
     if (role && (role.value == MIN_VALUE)){
-        errorList += "<li><p>Choisir un role valide</p></li>";
+        errorList += "<li><p>Choisir un rôle dans la liste</p></li>";
         isValid = false;
     }    
     if (!isValid){
