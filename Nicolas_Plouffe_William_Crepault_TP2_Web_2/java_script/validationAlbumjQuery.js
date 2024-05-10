@@ -25,7 +25,7 @@ $(document).ready(function () {
       isValid = false;
     }
 
-    if ($("#dateAjout").val() > today || $("#dateAjout").val() < today) {
+    if ($("#dateAjout").val() == EMPTY || $("#dateAjout").val() > today || $("#dateAjout").val() < today) {
       errorList += "<li><p>Veuillez entrer la date d'aujourd'hui</p></li>";
       isValid = false;
     }
