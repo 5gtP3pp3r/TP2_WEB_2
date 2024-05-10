@@ -36,9 +36,9 @@ label
 }
 .custom-border 
 {
-    border: 10px ridge ; 
+    border: 10px outset ; 
     border-color: rgb(66, 175, 170);
-    border-radius: 10px; 
+    /*border-radius: 10px; */
     min-height: 290px;    
 }
 .border-bot
@@ -79,9 +79,9 @@ footer p
     display: inline-block;
     text-decoration: none;
     background-color: rgb(20, 146, 140);
-    border: 5px solid rgb(20, 146, 140);
+    border: 5px outset rgb(20, 146, 140);
     color: rgb(140, 240, 235);
-    border-radius: 50px;  
+    /*border-radius: 10px;*/  
     font-size: large;  
     font-weight: 500;
     width: 200px;
@@ -90,13 +90,13 @@ footer p
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
                                       rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-                inset -2px -2px 3px rgba(0, 0, 0, .6);
+    box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.6),
+                inset -4px -4px 8px rgba(0, 0, 0, .6);
 }
 .styled-button:active 
 {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-                inset 2px 2px 3px rgba(0, 0, 0, .6);
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.6),
+                inset 4px 4px 8px rgba(0, 0, 0, .6);
 }
 input::placeholder
 {
