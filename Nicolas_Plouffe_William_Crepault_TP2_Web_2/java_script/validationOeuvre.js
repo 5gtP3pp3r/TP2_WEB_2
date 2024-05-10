@@ -19,7 +19,6 @@ let sizeMB = document.getElementById("sizeMB");
 let inputDate = document.getElementById("datePublication");
 let albumCode = document.getElementById("albumCode");
 let albumValue = document.getElementById("albumValue");
-//let youtubeLink = document.getElementById("youtubeLink");
 let lyrics = document.getElementById("lyrics")
 
 let listResult = document.getElementById("listResult");
@@ -64,7 +63,7 @@ function validateInputs(event) {
   }
 
   if (timeInSec.value == EMPTY){
-    errorList += "<li><p>Veuillez entrer un en seconde</p></li>";
+    errorList += "<li><p>Veuillez entrer un temps en seconde</p></li>";
     isValid = false;
   }
   else if (timeInSec.value <= VALUE_ZERO || timeInSec.value > MAX_LENGTH) {
