@@ -87,7 +87,7 @@ if ($_SESSION['role'] != 'CLIENT') {
                                 $total_quantite += $article["qte"];
                                 $total_prix += $items_prix;
                             ?>
-                                <div class="border-bottom row py-2">
+                                <div class="border-bot row py-2">
                                     <div class="col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
                                         <img src="Images/<?php echo htmlspecialchars($oeuvreChoisi->getAlbumImg()); ?>" alt="<?php echo htmlspecialchars($oeuvreChoisi->getAlbumImg()); ?>" class="resize img-fluid rounded">
                                     </div>
