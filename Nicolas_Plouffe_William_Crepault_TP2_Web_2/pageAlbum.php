@@ -56,10 +56,10 @@ if ($_SESSION['role'] != 'GERANT') {
                                     <p>Une image 300 x 300 de l'album doit être ajoutée aux
                                         dossiers avant d'enregistrer un nouvel album. Si aucune image n'est
                                         disponible, S.V.P. utilisez le nom et l'extension de l'image suivante:
-                                        "aucune_image.png"</p>
+                                        <b>" aucune_image.png "</b></p>
                                 </div>
                                 <div class="col-sm-12 col-md-2 d-flex align-items-center justify-content-center">
-                                    <img src="Images/aucune_image.png" alt="aucune image" class="resize">
+                                    <img src="Images/aucune_image.png" alt="aucune image" class="resize mt-4">
                                 </div>
                             </div>
                             <div class="ulBtn">
