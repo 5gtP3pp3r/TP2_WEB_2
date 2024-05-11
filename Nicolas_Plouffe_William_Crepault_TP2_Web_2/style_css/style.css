@@ -36,10 +36,10 @@ label
 }
 .custom-border 
 {
-    border: 10px outset ; 
+    border: 7px outset ; 
     border-color: rgb(66, 175, 170);
     border-radius: 3px; 
-    min-height: 290px;    
+    min-height: 300px;    
 }
 .border-bot
 {
