@@ -22,7 +22,7 @@ function getAlbums(){
             let albumImg = document.createElement("img");
             albumImg.src = "images/" + album.pht_couvt;
             albumImg.alt = "Couverture de l'album : " + album.titre;
-            albumImg.className = "img-fluid rounded mx-auto d-block";
+            albumImg.className = "custom-border img-fluid mx-auto d-block";
 
             albumLink.appendChild(albumImg);
             albumPlaceholder.appendChild(albumLink);
