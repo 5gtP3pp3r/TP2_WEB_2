@@ -4,6 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if ($_SESSION['role'] != 'CLIENT') {
     header("Location: pageAccueil.php");
+    exit;
 } else {
 
     include("heads.infos.php");

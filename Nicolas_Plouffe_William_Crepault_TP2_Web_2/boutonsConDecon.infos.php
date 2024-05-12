@@ -5,8 +5,7 @@ if ($pageNom != 'pageAuth') {
     if (isset($_GET['logout'])) {  
         header("Location: index.php");
         session_unset();
-        session_destroy();
-        
+        session_destroy();        
         exit();
     }
 ?>

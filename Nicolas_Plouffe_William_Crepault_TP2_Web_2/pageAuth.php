@@ -11,7 +11,7 @@ if (session_id() == "") {
 
 if (isset($_SESSION['user'])) {   
     header("Location: pageAccueil.php");
-    exit();
+    exit;
 }
 
 if (isset($_POST["password"]) && isset($_POST["email"])) {
@@ -34,7 +34,7 @@ if (isset($_POST["password"]) && isset($_POST["email"])) {
             $_SESSION['role'] = $utilisateur->getRole();
             
             header("Location: pageAccueil.php");
-            exit();
+            exit;
         } else {
             $rep = 'Courriel ou mot de passe incorrect.';
         }
