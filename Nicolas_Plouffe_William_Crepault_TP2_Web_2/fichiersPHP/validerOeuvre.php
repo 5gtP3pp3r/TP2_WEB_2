@@ -12,7 +12,7 @@ function validerOeuvre()
     $regexLyrics = "/^[a-zA-Z0-9 ]+$/";
 
     $erreurs = [];
-    
+
     if (empty($_POST['titrePiece'])) {
         $erreurs[] = "Le titre de l'oeuvre est requis.";
     } else if (!preg_match($regExNom, $_POST['titrePiece'])) {
@@ -53,7 +53,7 @@ function validerOeuvre()
 
     if ($_POST['codeAlbum'] == 0) {
         $erreurs[] = "Choisir un code d'album parmis la liste.";
-    }    
+    }
 
     if (!empty($_POST['lyrics']) && !preg_match($regexLyrics, $_POST['lyrics'])) {
         $erreurs[] = "Les paroles ne doivent contenir que des lettres, des chiffres et des espaces.";
