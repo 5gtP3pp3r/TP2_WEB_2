@@ -64,7 +64,7 @@ if (isset($_SESSION['role'])) {
                                 <?php
                                 echo '<option value="1">Client</option>';
                                 if (isset($_SESSION['role'])) {
-                                    if ($_SESSION['role'] == 'GERANT') {
+                                    if ($_SESSION['role'] == 'ADMIN') {
                                         $idsDisponibles = chercherIdUserDispo();
                                         if (empty($idsDisponibles)) {
                                 ?>
