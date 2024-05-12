@@ -12,6 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 <?php
+if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'GERANT') {
+    header("Location: pageAccueil.php");
+    exit;
+}
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'ADMIN') {
         echo '<h2>Enregistrer un utilisateur</h2>';
@@ -19,6 +23,7 @@ if (isset($_SESSION['role'])) {
 } else {
     echo '<h2>S\'enregistrer</h2>';
 }
+
 ?>
 <div class="container-fluid">
     <div class="col-sm-12 py-2 d-flex justify-content-end px-4">
