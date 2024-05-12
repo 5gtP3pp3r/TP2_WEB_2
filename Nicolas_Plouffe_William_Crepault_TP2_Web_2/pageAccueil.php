@@ -35,8 +35,9 @@ include("heads.infos.php");
           } elseif ($_SESSION['role'] == 'ADMIN') {
           ?>
             <p>En tant qu'administrateur, vous avez
-              accès à toutes les fonctionnalités. Vous pouvez, grace aux liens de la barre
-              de navigation ou les liens <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
+              accès à toutes les fonctionnalités afin de pouvoir tout tester. 
+              Vous pouvez, grace aux liens de la barrede navigation ou les liens 
+              <span><b><a href="#menu" id="target">ci-joints</a></b></span>,
               afficher la listes des produits disponibles, ajouter un artiste, ajouter une oeuvre ou
               ajouter un album. Vous pouvez aussi ajouter d'autres utilisateur.</p>
           <?php
