@@ -34,15 +34,15 @@ function validerOeuvre()
     }
 
     if (!empty($_POST['taille']) && $_POST['taille'] <= $ZERO) {
-        $erreurs[] = 'La valeur doit être entre 1 et "$DureeMax" mb.';
+        $erreurs[] = "La valeur doit être entre 1 et $Max mb.";
     } else if (!empty($_POST['taille']) && $_POST['taille'] > $Max) {
         $erreurs[] = "La taille ne doit pas dépasser 999 mb.";
     }
 
     if (empty($_POST['prix']) || $_POST['prix'] < $ValeurMin) {
-        $erreurs[] = 'La valeur requise doit être suppérieure à "$ZERO" $.';
+        $erreurs[] = "La valeur requise doit être suppérieure à $ZERO $.";
     } else if ($_POST['prix'] > $ValeurMax) {
-        $erreurs[] = 'La valeur ne doit pas dépasser " $ValeurMax" $.';
+        $erreurs[] = "La valeur ne doit pas dépasser $ValeurMax $.";
     }
 
     if (empty($_POST['datePublication'])) {
