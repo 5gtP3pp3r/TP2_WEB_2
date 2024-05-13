@@ -12,9 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 <?php
-if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'GERANT') {
-    header("Location: pageAccueil.php");
-    exit;
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'CLIENT' || $_SESSION['role'] == 'GERANT') {
+        header("Location: pageAccueil.php");
+        exit;
+    }
 }
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'ADMIN') {
