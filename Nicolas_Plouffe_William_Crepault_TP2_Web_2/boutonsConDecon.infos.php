@@ -34,7 +34,7 @@ if ($pageNom != 'pageAuth') {
                 </div>
             <?php
             }
-        } elseif ($pageNom == 'pageAjoutUtilisateur') {
+        } elseif ($pageNom == 'pageUtilisateur') {
             ?>
             <div class="col-sm-12 d-flex justify-content-end mb-3">
                 <button type="button" id="connexion" class="styled-button">Connexion</button>
