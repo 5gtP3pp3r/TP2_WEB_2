@@ -46,8 +46,8 @@ function validerAlbum()
         $genreMusical = $_POST['genreMusical'];
         $photo = $_POST['photo'];
 
-        if (empty($photo)) {
-            $photo = "aucune_image.png";
+        if (empty($photo)) {                // puisque l'image peut être un problème, si aucune image 
+            $photo = "aucune_image.png";    // n'est entrée "aucune_image.png" sera l'image par défaut
         } else {
             $dossierImages = 'Images/';
             $cheminImage = $dossierImages . $photo;
